@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+    color: #fff; /* White text color */
+    padding: 20px; /* Add padding to the header */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+    align-items: center; /* Center items vertically */
+}
+
+.logo img {
+    width: 175px; /* Adjust the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    @media only screen and (max-width: 768px) {
+        width: 100px;
+    }
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points from the list */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox for layout */
+}
+
+nav ul li {
+    margin-left: 20px; /* Add margin between list items */
+}
+
+nav ul li:first-child {
+    margin-left: 0; /* Remove margin from the first list item */
+}
+
+nav ul li a {
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #555; 
+    color: #fff; 
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px; 
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #391b68; 
+}
+
+.dropbtn {
+    border-radius: 10px;
+
+    background-color: #0000003a;
+    color: white;
+    font-size: 16px;
+    padding: 10px; 
+    border: none;
+  }
+
+
+section {
+    padding: 20px;
+    margin: 40px;
+    border-radius: 10px;
+    width: 70%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+ul, ol {
+    margin-top: 0;
+    padding-left: 20px;
+}
+
+.footer {
+    background-color: transparent;
+    color: grey;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 0;
+
+}
+
+footer p {
+    font-size: 14px;
+}
+
+footer .copyright {
+    font-size: 12px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.centered {
+    text-align: center;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 80%;
+    }
+
+}

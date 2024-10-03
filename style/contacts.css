@@ -1,0 +1,130 @@
+    body {
+        background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    .contact-form {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .contact-form label {
+        text-align: left;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+    }
+    
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .contact-form textarea {
+        resize: vertical;
+    }
+    
+    .contact-form input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .contact-form input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    
+
+header {
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 175px; /* Adjust the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    @media only screen and (max-width: 768px) {
+        width: 100px;
+    }
+}
+
+nav ul {
+    list-style-type: none; 
+    padding: 0; 
+    display: flex; 
+}
+
+nav ul li {
+    margin-left: 20px; 
+}
+
+nav ul li:first-child {
+    margin-left: 0; 
+}
+
+nav ul li a {
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #555; 
+    color: #fff; 
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px; 
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #391b68; 
+}
+
+.dropbtn {
+    border-radius: 10px;
+
+    background-color: #0000003a;
+    color: white;
+    font-size: 16px;
+    padding: 10px; 
+    border: none;
+  }
+
+
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}

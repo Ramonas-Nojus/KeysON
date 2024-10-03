@@ -1,0 +1,172 @@
+body {
+            background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .status {
+            position: relative;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: #f2f2f2;
+            color: #555;
+        }
+
+        .status-line {
+            flex-grow: 1;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+        .active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #333;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                max-width: 80%;
+            }
+
+            .status-bar {
+                flex-wrap: wrap;
+                margin: auto
+            }
+        
+            .status {
+                flex-basis: 45%;
+                margin-bottom: 10px;
+            }
+        
+            .status-line {
+                display: none;
+                margin: 10px 0;
+            }
+        }
+        
+
+
+    header {
+        background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+        color: #fff; /* White text color */
+        padding: 20px; /* Add padding to the header */
+        display: flex; /* Use flexbox for layout */
+        justify-content: space-between; /* Distribute items evenly along the main axis */
+        align-items: center; /* Center items vertically */
+    }
+    
+    .logo img {
+        width: 175px; /* Adjust the width of the logo */
+        height: auto; /* Maintain aspect ratio */
+        @media only screen and (max-width: 768px) {
+            width: 100px;
+        }
+    }
+    
+    nav ul {
+        list-style-type: none; /* Remove bullet points from the list */
+        padding: 0; /* Remove default padding */
+        display: flex; /* Use flexbox for layout */
+    }
+    
+    nav ul li {
+        margin-left: 20px; /* Add margin between list items */
+    }
+    
+    nav ul li:first-child {
+        margin-left: 0; /* Remove margin from the first list item */
+    }
+    
+    nav ul li a {
+        display: inline-block; 
+        padding: 10px 20px; 
+        background-color: #555; 
+        color: #fff; 
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 18px; 
+        transition: background-color 0.3s;
+    }
+    
+    nav ul li a:hover {
+        background-color: #391b68; 
+    }
+    
+    .dropbtn {
+        border-radius: 10px;
+    
+        background-color: #0000003a;
+        color: white;
+        font-size: 16px;
+        padding: 10px; 
+        border: none;
+      }
+    
+
+    .footer {
+        background-color: transparent;
+        color: rgb(194, 193, 193);
+        padding: 10px 0;
+        text-align: center;
+        margin-bottom: 0;
+
+    }

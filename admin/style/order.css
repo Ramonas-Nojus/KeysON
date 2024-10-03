@@ -1,0 +1,181 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+}
+
+header {
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+    color: #fff; /* White text color */
+    padding: 20px; /* Add padding to the header */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+    align-items: center; /* Center items vertically */
+}
+
+.logo img {
+    width: 175px; /* Adjust the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    @media only screen and (max-width: 768px) {
+        width: 100px;
+    }
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points from the list */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox for layout */
+}
+
+nav ul li {
+    margin-left: 20px; /* Add margin between list items */
+}
+
+nav ul li:first-child {
+    margin-left: 0; /* Remove margin from the first list item */
+}
+
+nav ul li a {
+    display: inline-block; /* Display links as block elements */
+    padding: 10px 20px; /* Add padding to the links */
+    background-color: #555; /* Background color for the links */
+    color: #fff; /* White text color for links */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 5px; /* Add rounded corners */
+    font-size: 18px; /* Adjust font size */
+    transition: background-color 0.3s; /* Add transition effect for background color */
+}
+
+nav ul li a:hover {
+    background-color: #391b68; /* Darker background color on hover */
+}
+
+.dropbtn {
+    border-radius: 10px;
+
+    background-color: #0000003a;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+
+h2 {
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+.order {
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.order h2 {
+    margin-top: 0;
+}
+
+.order p {
+    margin: 5px 0;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.pending {
+    color: orange;
+}
+
+.status.in-progress {
+    color: blue;
+}
+
+.status.completed {
+    color: green;
+}
+
+
+
+.btn {
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+form {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+button.btn:hover {
+    background-color: #0056b3;
+}
+
+
+.footer {
+    background-color: transparent;
+    color: rgb(190, 189, 189);
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 0;
+
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+.footer .copyright {
+    font-size: 12px;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}

@@ -1,0 +1,154 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+}
+
+/* CSS for the header */
+header {
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+    color: #fff; /* White text color */
+    padding: 20px; /* Add padding to the header */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+    align-items: center; /* Center items vertically */
+}
+
+.logo img {
+    width: 175px; /* Adjust the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    @media only screen and (max-width: 768px) {
+        width: 100px;
+    }
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points from the list */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox for layout */
+}
+
+nav ul li {
+    margin-left: 20px; /* Add margin between list items */
+}
+
+nav ul li:first-child {
+    margin-left: 0; /* Remove margin from the first list item */
+}
+
+nav ul li a {
+    display: inline-block; /* Display links as block elements */
+    padding: 10px 20px; /* Add padding to the links */
+    background-color: #555; /* Background color for the links */
+    color: #fff; /* White text color for links */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 5px; /* Add rounded corners */
+    font-size: 18px; /* Adjust font size */
+    transition: background-color 0.3s; /* Add transition effect for background color */
+}
+
+nav ul li a:hover {
+    background-color: #391b68; /* Darker background color on hover */
+}
+
+.dropbtn {
+    border-radius: 10px;
+
+    background-color: #0000003a;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+
+h1 {
+    margin: 0;
+}
+
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
+}
+
+#orders table {
+    margin-top: 25px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#orders th, #orders td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#orders th {
+    background-color: #f2f2f2;
+}
+
+#orders tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#orders tr:hover {
+    background-color: #ddd;
+}
+
+.btn {
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: transparent;
+    color: grey;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+.footer .copyright {
+    font-size: 12px;
+}
+
+.container {
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.order-button {
+    text-decoration: none;
+    border-radius: 7px;
+    background: linear-gradient(90deg, rgb(112, 86, 184) 0%,  rgb(74, 9, 128) 100%);
+    color: white;
+    padding: 10px;
+    margin-bottom: 1000px;
+    font-size: 16px;
+    border: none;
+}

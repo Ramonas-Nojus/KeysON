@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteRule ^(index|contact|keyboard_builder|guide)$ $1.php [NC,L]
+
+RewriteRule ^order/([^/]*)$ order_info.php?order_number=$1

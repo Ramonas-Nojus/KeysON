@@ -1,0 +1,783 @@
+/* Reset some default styles for better consistency */
+body, h1, h2, h3, p, select {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+}
+
+/* Overall container styles */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.selection-panel {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-right: 50px;
+    position: relative;
+}
+
+.selection-panel .component h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.selection-panel .component-button {
+    border-radius: 10px;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Set the width of the button */
+    height: 100px; /* Set the height of the button */
+    padding: 0;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333; /* Text color for the button */
+    transition: color 0.3s, transform 0.3s;
+    text-decoration: none; /* Remove underlines for links */
+}
+
+.selection-panel .component-button img {
+    width: 60px; /* Adjust image size as needed */
+    height: auto;
+    margin-bottom: 5px; /* Space between image and title */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    text-align: center;
+
+}
+
+/* Add styles for hover state */
+.selection-panel .component-button:hover {
+    border: 2px solid black;
+    border-radius: 10px;
+    color: #6E32CF; /* Change text color on hover */
+    transform: scale(1.1); /* Increase size on hover */
+}
+
+.keyboard-window {
+    flex: 2; /* Adjust the flex value to allocate more space to the keyboard window */
+    border-radius: 5px;
+    background-color: #fff;
+    margin-right: 50px; /* Adjust the margin-right for spacing */
+    padding-bottom: 5px;
+}
+
+.keyboard-display {
+    height: 500px;
+    position: relative;
+    padding-top: 0;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+}
+
+.kbrd-img {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 85%;
+}
+
+.navigation {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.prev-button,
+.next-button {
+    background: linear-gradient(90deg, rgba(75,5,161,1) 0%, rgba(118,7,200,1) 100%, rgba(68,6,138,1) 100%);
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prev-button:hover,
+.next-button:hover {
+    background-color: #8e44ad;
+}
+
+/* Style the status row */
+.status-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+    color: #fff;
+    padding: 10px 0;
+}
+
+/* Style the status bubbles */
+.status-bubble {
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position: relative; /* Add this */
+    border: #333 solid;
+}
+
+/* Style the active status*/
+.active {
+    background-color: orange;
+}
+
+.unactive {
+    background-color: white;
+}
+
+/* Style the connecting lines */
+.line {
+    border-bottom: #333 solid;
+    border-top: #333 solid;
+    height: 4px;
+    width: 40px;
+    position: relative;
+}
+
+
+
+.white-button {
+    background-color: #FFFF;
+}
+
+.black-button {
+    background-color: #2B2B2B;
+}
+
+.red-button{
+    background-color: #A82029;
+}
+
+.blue-button{
+    background-color: #44A9FF;
+}
+
+.green-button{
+    background-color: #12A81C;
+}
+
+.purple-button{
+    background-color: #5813A8;
+}
+
+.pink-button{
+    background-color: #DDA6B6;
+}
+
+
+.footer {
+    background-color: transparent;
+    color: rgb(194, 193, 193);
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 0;
+
+}
+
+/* CSS for the header */
+header {
+    background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
+    color: #fff; /* White text color */
+    padding: 20px; /* Add padding to the header */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+    align-items: center; /* Center items vertically */
+}
+
+.logo img {
+    width: 175px; /* Adjust the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    @media only screen and (max-width: 768px) {
+        width: 100px;
+    }
+}
+nav ul {
+    list-style-type: none; /* Remove bullet points from the list */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox for layout */
+}
+
+nav ul li {
+    margin-left: 20px; /* Add margin between list items */
+}
+
+nav ul li:first-child {
+    margin-left: 0; /* Remove margin from the first list item */
+}
+
+nav ul li a {
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #555; 
+    color: #fff; 
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px; 
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #391b68; 
+}
+
+.dropbtn {
+    border-radius: 10px;
+
+    background-color: #0000003a;
+    color: white;
+    font-size: 16px;
+    padding: 10px; 
+    border: none;
+  }
+
+  .summary-window {
+    position: relative;
+    flex: 1; /* Adjust the flex value for the summary window */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.summary-window h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.summary-window ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.summary-window li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #666;
+}
+
+.summary-window li span {
+    font-weight: bold;
+    color: #333;
+}
+
+
+.Royal-Kludge-OEM-Tiffany-PBT-UK{
+    background: linear-gradient(
+    to right,
+    #6D6D69 0%,
+    #6D6D69 50%,
+    #A3D9D1 50%,
+    #A3D9D1 100%
+  );
+}
+
+
+.OEM-Dye-Sub-PBT-Iceberg {
+    background: linear-gradient(
+        to right,
+        #2AAC9C 0%,
+        #2AAC9C 40%,
+        #E6E8E9 40%,
+        #E6E8E9 60%,
+        #3B93C2 60%,
+        #3B93C2 100%
+      );
+}
+
+.Royal-Kludge-PBT-muse {
+    background: linear-gradient(
+        to right,
+        #444345 0%,
+        #444345 40%,
+        #6ABDCE 40%,
+        #6ABDCE 60%,
+        #D6E3E9 60%,
+        #D6E3E9 100%
+      );
+}
+
+.Royal-Kludge-RK68KC01-Double-Shot-PBT {
+    background: linear-gradient(
+        to right,
+        #8ECCD1 0%,
+        #8ECCD1 50%,
+        #9A77C3 50%,
+        #9A77C3 100%
+      );
+}
+
+.Royal-Kludge-PBT-XDA-15 {
+    background: linear-gradient(
+    to right,
+    #E9FBC8 0%,
+    #E9FBC8 50%,
+    #9FB570 50%,
+    #9FB570 100%
+  );
+}
+
+
+.Royal-Kludge-PBT-XDA-3 {
+    background: linear-gradient(
+    to right,
+    #626262 0%,
+    #626262 40%,
+    #E1AE6B 40%,
+    #E1AE6B 60%,
+    #F9F1ED 60%,
+    #F9F1ED 100%
+  );
+}
+
+
+.Royal-Kludge-PBT-XDA-28 {
+    background: linear-gradient(
+    to right,
+    #C9CFE1 0%,
+    #C9CFE1 40%,
+    #E89AAD 40%,
+    #E89AAD 60%,
+    #EFE1B8 60%,
+    #EFE1B8 100%
+  );
+}
+
+
+.Royal-Kludge-PBT-XDA-116 {
+    background: linear-gradient(
+    to right,
+    #1F1F1F 0%,
+    #1F1F1F 40%,
+    #AA463E 40%,
+    #AA463E 60%,
+    #D1C26B 60%,
+    #D1C26B 100%
+  );
+}
+
+
+.brown-milky-yellow {
+    background: linear-gradient(
+    to right,
+    #B59062 0%,
+    #B59062 50%,
+    #F7F7D6 50%,
+    #F7F7D6 100%
+  );
+}
+
+.retro-blue-and-white {
+    background: linear-gradient(
+    to right,
+    #FFFF 0%,
+    #FFFF 50%,
+    #2C3D7C 50%,
+    #2C3D7C 100%
+  );
+}
+
+.retro-white-and-orange {
+    background: linear-gradient(
+    to right,
+    #FFFF 0%,
+    #FFFF 50%,
+    #E7905C 50%,
+    #E7905C 100%
+  );
+}
+
+.pink-barbie {
+    background: linear-gradient(
+    to right,
+    #FEEEE5 0%,
+    #FEEEE5 50%,
+    #FFCECE 50%,
+    #FFCECE 100%
+  );
+}
+
+.sky-blue {
+    background: linear-gradient(
+    to right,
+    #FFFF 0%,
+    #fff 40%,
+    #EE9731 40%,
+    #EE9731 60%,
+    #3D4459 60%,
+    #3D4459 100%
+  );
+}
+
+.mojito {
+    background: linear-gradient(
+    to right,
+    #FFFF 0%,
+    #fff 50%,
+    #8AC19F 50%,
+    #8AC19F 100%
+  );
+}
+
+.pink-and-retro-green {
+    background: linear-gradient(
+    to right,
+    #FBE3EB 0%,
+    #FBE3EB 50%,
+    #D9FDFC 50%,
+    #D9FDFC 100%
+  );
+}
+
+.black-Sugar {
+    background: linear-gradient(
+    to right,
+    #262626 0%,
+    #262626 40%,
+    #EE9000 40%,
+    #EE9000 60%,
+    #3D4459 60%,
+    #3D4459 100%
+  );
+}
+
+
+.retro-dark-blue {
+    background: #415F7A;
+}
+
+.gradient-retro-purple {
+    background: linear-gradient(90deg, rgba(238,230,248,1) 0%, rgba(211,195,240,1) 50%, rgba(77,64,127,1) 100%);    
+}
+
+.retro-mixed-green {
+    background: linear-gradient(90deg, rgba(255,251,159,1) 0%, rgba(148,174,112,1) 50%, rgba(118,128,101,1) 100%);
+}
+
+.retro-dark-green {
+    background: #607469;
+}
+
+
+.non-display {
+    display: none;
+}
+
+
+.layout-button {
+    background-color: #6E32CF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px; /* Add margin between buttons */
+}
+
+.layout-button:hover {
+    background-color: #391b68; /* Darker background color on hover */
+}
+
+.image-disclaimer {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.total-price {
+    padding: 10px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+.summary-footer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn {
+    flex: 1 1 auto;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--c1, rgba(75,5,161,1)), var(--c2, rgba(118,7,200,1)) 51%, var(--c1, rgba(68,6,138,1))) var(--x, 0)/ 200%;
+    border-radius: 4px;
+    border: none;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    --x: 100%;
+}
+
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 14px; /* Adjust font size for better readability on smaller screens */
+        margin: 0;
+        padding: 0;    
+    }
+
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    .selection-panel {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 20px; /* Add bottom margin for spacing */
+        display: flex;
+        justify-content: flex-end; 
+        flex-direction: column;
+        align-items: center; /* Align items in the center */
+    }
+
+    .keyboard-window {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 20px; /* Add bottom margin for spacing */
+    }
+
+    .summary-window {
+        margin-bottom: 20px; /* Add bottom margin for spacing */
+    }
+
+    /* Adjust font size for smaller screens */
+    .selection-panel .component h3 {
+        font-size: 20px;
+    }
+
+    .selection-panel .component-button {
+        font-size: 16px;
+        width: 80px; 
+        height: 80px; 
+    }
+
+    .keyboard-display {
+        height: 300px; /* Reduce keyboard display height */
+    }
+
+    /* Adjust font size for smaller screens */
+    .summary-window h2 {
+        font-size: 20px;
+    }
+
+    .summary-window li {
+        font-size: 16px;
+    }
+
+    .layout-button {
+        font-size: 14px; /* Adjust font size */
+        padding: 8px 16px; /* Adjust button padding */
+    }
+
+    .btn {
+        padding: 8px 16px; /* Adjust button padding */
+    }
+
+    .image-disclaimer {
+        font-size: 12px; /* Adjust font size */
+    }
+
+
+}
+
+
+
+
+/* Checkbox styles */
+
+.checkbox-container {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    padding-left: 25px;
+    margin-right: 15px;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 3px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+.bottom-text-container {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    padding-bottom: 10px;
+    text-align: center;
+    
+    @media only screen and (max-width: 768px) {
+        position: relative; /* Override to relative for screens 768px and below */
+    }
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+  }
+  
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  .assembly-button {
+    margin: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    width: 90%; /* Set the width of the button */
+    height: 100px; /* Set the height of the button */
+    padding: 0;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333; /* Text color for the button */
+    transition: color 0.3s, transform 0.3s;
+    text-decoration: none; /* Remove underlines for links */
+}
+
+.assembly-button:hover {
+    border: 2px solid black;
+    border-radius: 10px;
+    color: #6E32CF; /* Change text color on hover */
+    transform: scale(1.1); /* Increase size on hover */
+}
+
+
+.color-options {
+    height: 350px; /* Set the height of the outer window */
+    overflow: hidden; /* Hide content that overflows the outer window */
+    position: relative; /* Establish positioning context */
+    border-radius: 10px;
+    border: 2px solid black; /* Add border for visibility */
+
+}
+
+.premade {
+    width: 90%; /* Take up full width of the outer window */
+    height: 90%; /* Take up full height of the outer window */
+    overflow-y: auto; /* Enable vertical scrolling for overflowing content */
+    padding: 20px; /* Add padding for inner content */
+}
+
+::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Set the color of the scrollbar handle */
+    border-radius: 5px; /* Set border radius to round the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Change handle color on hover */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Set the color of the scrollbar track */
+}
+

@@ -1,4 +1,5 @@
 <?php require "../inlcudes/autoload.php" ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +40,7 @@
         $date = $order['date'];
         $status = $order['status'];
         $id = $order['id'];
+        $worker = $order['worker'];
         
         
         $components = explode(",", $order['components']);
@@ -47,6 +49,10 @@
         header('Location: ./');
     }
 
+    if(isset($_GET['accept'])){
+        $orders->assignWorker($_SESSION['id'], $_GET['accept']);
+        header('Location: ./order.php?order_nr='.$order_nr);
+    }
 
     if(isset($_POST['status'])){
         $status = $_POST['status'];
@@ -119,7 +125,9 @@
                     });
                 </script>
 
+
                 <!-- Add more order details as needed -->
+                 <?php if($worker != 0){  ?>
                 <div class="update-status">
                     <form action="./order.php?order_nr=<?php echo $order_nr; ?>" method="post">
                         <label for="status">Update Status:</label>
@@ -133,6 +141,9 @@
                         <button class="btn" type="submit">Update</button>
                     </form>
                 </div>
+                <?php  } else { ?>                                  
+                    <a class="btn" href="./order.php?order_nr=<?php echo $order_nr; ?>&accept=<?php echo $id; ?>">Accept</a>
+                <?php } ?>
             </div>
         </section>
     </main>

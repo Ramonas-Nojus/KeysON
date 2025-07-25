@@ -19,7 +19,7 @@ if(!isset($_SESSION['id'])){
 
 $orders = new Order;
 
-$order = $orders->getAllOrders(); 
+$order = $orders->getOrders(); 
 
 
 if(isset($_GET['order_id'])){
@@ -48,40 +48,71 @@ if(isset($_GET['order_id'])){
 <div class="container">
         <section id="orders">
             <h2>Orders</h2>
-            
+            <a class="order-button" href="./index.php?progress=0">Not Processed</a>
+            <a class="order-button" href="./index.php?progress=1">Being Processed</a>
+            <a class="order-button" href="./index.php?progress=2">Processed</a>
+
             <table>
                 <thead>
                     <tr>
                         <th>Order ID</th>
+                        <th>Order Number</th>
                         <th>Customer Name</th>
                         <th>Date</th>
                         <th>Order Status</th>
                         <th>Price</th>
+
+                        <?php if(isset($_GET['progress']) && $_GET['progress'] != 0){ ?> 
+                            <th>Worker ID</th>
+                        <?php } ?>  
 
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php 
+
+
+                    if(isset($_GET['progress']) && $_GET['progress'] == 0){
+                        $order = $orders->getOrders($_SESSION['id']);
+                    } else if (isset($_GET['progress']) && $_GET['progress'] == 1){ 
+                        $order = $orders->getAllAssignedOrders($_SESSION['id']);
+                     } else if (isset($_GET['progress']) && $_GET['progress'] == 2){ 
+                        $order = $orders->getFinishedOrders($_SESSION['id']);
+                     }
+
                     
                         foreach($order as $row){
 
                             $id = $row['id'];
+                            $order_nr = $row['order_number'];
                             $name = $row['customer_name'];
                             $status = $row['status'];
                             $order_number = $row['order_number'];
                             $date = $row['date'];
                             $price = $row['price'];
+                            $worker = $row['worker'];
                     ?>
                         <tr>
                             <td><?php echo $id; ?></td>
+                            <td><?php echo $order_nr; ?></td>
                             <td><?php echo $name; ?></td>
                             <td><?php echo $date; ?></td>
                             <td><?php echo $status; ?></td>
                             <td><?php echo $price; ?> €</td>
 
+                            <?php if(isset($_GET['progress']) && $_GET['progress'] != 0){ ?> 
+                                <td><?php echo $worker; ?></td>
+                            <?php } ?> 
+
+                            <?php if(isset($_GET['progress']) && $_GET['progress'] == 0){ ?> 
+                                <td>
+                                    <a class="btn" href="./index.php?order_id=<?php echo $id; ?>">Accept</a>
+                                </td>
+                            <?php } ?> 
+
                             <td>
-                                <a class="btn" href="./index.php?order_id=<?php echo $id; ?>">Accept</a>
+                                <a class="btn" href="./order.php?order_nr=<?php echo $order_nr; ?>">Details</a>
                             </td>
                         </tr>
 

@@ -129,7 +129,7 @@ $html_content = "
                 <p><strong>El. paštas:</strong> $email</p>
                 <p><strong>Pristatymas:</strong> kurjeriu į namus</p>
                 <p><strong>Adresas:</strong> $address, $city, Lietuva, $postal_code</p>
-                <p>Daugiau informacijos apie savo užsakymą galite pažiurėti paspaude <a href='http://keyboardbuilder.local/order/$order_number'>šią nuorodą</a></p>
+                <p>Daugiau informacijos apie savo užsakymą galite pažiurėti paspaude <a href='http://keyson.local/order/$order_number'>šią nuorodą</a></p>
             </div>
         </div>
     </body>

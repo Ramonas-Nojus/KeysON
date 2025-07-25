@@ -13,7 +13,7 @@
 </style>
 <body>
 
-<?php include "./inlcudes/header.php"; ?>
+<?php include "./inlcudes/header.php";?>
 
     <!-- <div class="navbar">
         <div class="select">

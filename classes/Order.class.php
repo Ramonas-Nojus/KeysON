@@ -26,8 +26,8 @@ class Order extends Db{
         return $sth->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function getAllOrders(){
-        $sql = "SELECT * FROM orders WHERE status = 'Užsakytas' AND worker = 0";
+    public function getOrders(){
+        $sql = "SELECT * FROM orders WHERE worker = 0";
         $sth = $this->connection()->prepare($sql);
         $sth->execute();
         return $sth->fetchAll(\PDO::FETCH_ASSOC);
@@ -56,6 +56,23 @@ class Order extends Db{
         $sth->execute();
         return $sth->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+
+
+    public function getAllAssignedOrders(){
+        $sql = "SELECT * FROM orders WHERE worker != 0";
+        $sth = $this->connection()->prepare($sql);
+        $sth->execute();
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getFinishedOrders(){
+        $sql = "SELECT * FROM orders WHERE status = 'Pristatytas' ";
+        $sth = $this->connection()->prepare($sql);
+        $sth->execute();
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
 
     public function updateStatus($status, $order_id){
         $sql = "UPDATE orders SET status = :status WHERE id = :order_id ";

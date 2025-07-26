@@ -46,7 +46,7 @@
     <div class="hero">
         <div>
             <img src="img/keyboard3.gif">
-            <h1>Sveiki atvykę į KeyON</h1>
+            <h1>Sveiki atvykę į KeysON</h1>
             <p>Sukurkite tobulą klaviatūrą, pritaikytą jūsų poreikiams.</p>
             <a class="cta-button" href="/keyboard_builder">Pradėkite kurti</a>
         </div>

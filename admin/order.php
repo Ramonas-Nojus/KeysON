@@ -115,7 +115,6 @@
                 </div>
 
                 <script>
-                    // Wait for all images to load before calculating the container's height
                     window.addEventListener('load', function() {
                         document.getElementById('container').style.height = document.getElementById('image').height + 'px';
                     });
@@ -126,7 +125,6 @@
                 </script>
 
 
-                <!-- Add more order details as needed -->
                  <?php if($worker != 0){  ?>
                 <div class="update-status">
                     <form action="./order.php?order_nr=<?php echo $order_nr; ?>" method="post">

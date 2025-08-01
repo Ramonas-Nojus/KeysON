@@ -1,10 +1,11 @@
 <?php 
+include '../config.php';
 
 class Db {
-    private $host = "localhost";
-    private $user = "u216558363_Keyson";
-    private $password = "Keyson200510021216";
-    private $dbName = "u216558363_Keyson";
+    private $host = DB_HOST;
+    private $user = DB_USER;
+    private $password = DB_PASS;
+    private $dbName = DB_NAME;
 
     public function connection(){
         $dsn = "mysql:host=".$this->host.";dbname=".$this->dbName;

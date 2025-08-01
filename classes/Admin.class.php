@@ -22,7 +22,7 @@ class Admin extends Db{
             $_SESSION['last_name'] = $last_name;
             $_SESSION['id'] = $id;
 
-            header('Location: /admin/index.php');
+            header('Location: ./index.php');
             exit();
         } else {
             echo 'Invalid Log In data';
@@ -37,7 +37,7 @@ class Admin extends Db{
         $_SESSION['last_name'] = null;
         $_SESSION['id'] = null;
     
-        header('Location: /admin/index.php');
+        header('Location: ./index.php');
         exit();
 
     }

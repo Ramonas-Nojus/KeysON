@@ -37,7 +37,7 @@ if(isset($_POST['price'])){
 
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 
-$success_url =  'http://keyson.local/finish_order.php?' .
+$success_url =  'https://goldenrod-cheetah-195571.hostingersite.com/finish_order.php?' .
                 'KeyboardSizeValue=' . urlencode($KeyboardSizeValue) .
                 '&KeyboardColorValue=' . urlencode($KeyboardColorValue) .
                 '&SwitchTypeValue=' . urlencode($SwitchTypeValue) .
@@ -64,7 +64,7 @@ $checkout_session = \Stripe\Checkout\Session::create([
     "mode" => "payment",
     "success_url" => $success_url,
 
-    "cancel_url" => 'http://keyson.local/index.php',
+    "cancel_url" => 'https://goldenrod-cheetah-195571.hostingersite.com/index.php',
     "line_items" => [
         [
             "quantity" => 1,

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Užsakymo informacija</title>
-    <link rel="stylesheet" href="/style/order_info.css">
+    <link rel="stylesheet" href="./style/order_info.css">
 </head>
 
 <?php
@@ -122,10 +122,10 @@ $component_images = explode(",", $order['component_images']);
         </table>
 
         <div id="container" style="width: 65%; margin: auto; border: 3px solid; border-radius: 10px; position: relative; overflow: hidden;">
-            <img id="image" src="/img/<?php echo $components[0].'/'.$component_images[0]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
-            <img src="/img/<?php echo $components[0].'/'.$component_images[1]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
-            <img src="/img/<?php echo $components[0].'/'.$component_images[2]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
-            <img src="/img/<?php echo $components[0].'/'.$component_images[3]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
+            <img id="image" src="./img/<?php echo $components[0].'/'.$component_images[0]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
+            <img src="./img/<?php echo $components[0].'/'.$component_images[1]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
+            <img src="./img/<?php echo $components[0].'/'.$component_images[2]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
+            <img src="./img/<?php echo $components[0].'/'.$component_images[3]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
         </div>
 
         <script>

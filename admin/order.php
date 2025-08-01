@@ -11,15 +11,15 @@
 <body>
     <header>
             <div class="logo">
-                <img src="/img/logo-no-background-2.png" alt="Your Logo">
+                <img src="../img/logo-no-background-2.png" alt="Your Logo">
             </div>
             <nav>
                 <ul>
                     <li><a class="dropbtn" href="/">Home</a></li>
-                    <li><a class="dropbtn" href="/admin/">Orders</a></li>
-                    <li><a class="dropbtn" href="/admin/my_orders.php">My Assigned Orders</a></li>
-                    <li><a class="dropbtn" href="/admin/dashboard.php">Dashboard</a></li>
-                    <li><a class="dropbtn" href="/admin/logout.php">Logout</a></li>
+                    <li><a class="dropbtn" href="./">Orders</a></li>
+                    <li><a class="dropbtn" href="./my_orders.php">My Assigned Orders</a></li>
+                    <li><a class="dropbtn" href="./dashboard.php">Dashboard</a></li>
+                    <li><a class="dropbtn" href="./logout.php">Logout</a></li>
                 </ul>
             </nav>
     </header>
@@ -109,9 +109,9 @@
                 
                 <div id="container" style="width: 50%; margin: auto; border: 3px solid; border-radius: 10px; position: relative; overflow: hidden;">
                     <img id="image" src="/img/<?php echo $components[0].'/'.$component_images[0]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
-                    <img src="/img/<?php echo $components[0].'/'.$component_images[1]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
-                    <img src="/img/<?php echo $components[0].'/'.$component_images[2]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
-                    <img src="/img/<?php echo $components[0].'/'.$component_images[3]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
+                    <img src="../img/<?php echo $components[0].'/'.$component_images[1]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
+                    <img src="../img/<?php echo $components[0].'/'.$component_images[2]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
+                    <img src="../img/<?php echo $components[0].'/'.$component_images[3]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
                 </div>
 
                 <script>

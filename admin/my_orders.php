@@ -13,7 +13,7 @@
 <?php 
 
 if(!isset($_SESSION['id'])){
-    header("Location: /admin/login.php");
+    header("Location: ./login.php");
 
 }
 
@@ -25,23 +25,23 @@ $orders = new Order;
 <body>
     <header>
         <div class="logo">
-            <img src="/img/logo-no-background-2.png" alt="Your Logo">
+            <img src="../img/logo-no-background-2.png" alt="Your Logo">
         </div>
         <nav>
             <ul>
                 <li><a class="dropbtn" href="/">Home</a></li>
-                <li><a class="dropbtn" href="/admin/">Orders</a></li>
-                <li><a class="dropbtn" href="/admin/my_orders.php">My Assigned Orders</a></li>
-                <li><a class="dropbtn" href="/admin/dashboard.php">Dashboard</a></li>
-                <li><a class="dropbtn" href="/admin/logout.php">Logout</a></li>
+                <li><a class="dropbtn" href="./">Orders</a></li>
+                <li><a class="dropbtn" href="./my_orders.php">My Assigned Orders</a></li>
+                <li><a class="dropbtn" href="./dashboard.php">Dashboard</a></li>
+                <li><a class="dropbtn" href="./logout.php">Logout</a></li>
             </ul>
         </nav>
 </header>
 <div class="container">
         <section id="orders">
         <h2>My Assigned Orders</h2>
-            <a class="order-button" href="/admin/my_orders.php?not_proccessed=true">Not Processed</a>
-            <a class="order-button" href="/admin/my_orders.php">Being Processed</a>
+            <a class="order-button" href="./my_orders.php?not_proccessed=true">Not Processed</a>
+            <a class="order-button" href="./my_orders.php">Being Processed</a>
             <table>
                 <thead>
                     <tr>

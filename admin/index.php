@@ -13,7 +13,7 @@
 <?php 
 
 if(!isset($_SESSION['id'])){
-    header("Location: /admin/login.php");
+    header("Location: ./login.php");
 
 }
 
@@ -25,7 +25,7 @@ $order = $orders->getOrders();
 if(isset($_GET['order_id'])){
     $order_id = $_GET['order_id'];
     $orders->assignWorker($_SESSION['id'], $order_id);
-    header('Location: /admin/');
+    header('Location: ./admin/');
 }
 
 ?>
@@ -33,7 +33,7 @@ if(isset($_GET['order_id'])){
 <body>
     <header>
         <div class="logo">
-            <img src="/img/logo-no-background-2.png" alt="Your Logo">
+            <img src="../img/logo-no-background-2.png" alt="Your Logo">
         </div>
         <nav>
             <ul>

@@ -66,15 +66,13 @@ $component_images = explode(",", $order['component_images']);
         </div>
 
         <script>
-            // Assume you retrieved the status from the database and stored it in a variable
-            var status = "<?php echo $status; ?>"; // For example
+            var status = "<?php echo $status; ?>";
 
             var statusElements = document.querySelectorAll('.status');
             var statusLineElements = document.querySelectorAll('.status-line');
 
             var statusIndex = -1;
 
-            // Loop through all status elements to find the index of the matching status
             for (var i = 0; i < statusElements.length; i++) {
                 if (statusElements[i].textContent.trim() === status) {
                     statusIndex = i;
@@ -82,14 +80,12 @@ $component_images = explode(",", $order['component_images']);
                 }
             }
 
-            // If a matching status is found
             if (statusIndex !== -1) {
-                // Loop through all status elements up to the matched index
+
                 for (var j = 0; j <= statusIndex; j++) {
-                    // Add 'active' class to the status element
+
                     statusElements[j].classList.add('active');
 
-                    // Add 'active' class to the previous status line, if it exists
                     if (j > 0) {
                         statusLineElements[j - 1].classList.add('active');
                     }
@@ -133,7 +129,7 @@ $component_images = explode(",", $order['component_images']);
         </div>
 
         <script>
-            // Wait for all images to load before calculating the container's height
+
             window.addEventListener('load', function() {
                 document.getElementById('container').style.height = document.getElementById('image').height + 'px';
             });

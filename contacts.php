@@ -29,7 +29,6 @@
             try {
                 $mail = new PHPMailer(true);
 
-                // Server settings
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->Port       = 587;
@@ -39,11 +38,9 @@
                 $mail->Username   = 'keyon.customs@gmail.com';
                 $mail->Password   = getenv('GMAIL_APP_PASSWORD');
 
-                // Recipients
                 $mail->setFrom('keyon.customs@gmail.com', 'KeyON');
                 $mail->addAddress('keyon.customs@gmail.com', $name);
 
-                // Content
                 $mail->isHTML(true);
                 $mail->Subject = $subject;
                 $mail->Body    = $body;

@@ -128,7 +128,7 @@
             </div>
 
             <script>
-                // Wait for all images to load before calculating the container's height
+
                 window.addEventListener('load', function() {
                     document.getElementById('container').style.height = document.getElementById('image').height + 'px';
                 });

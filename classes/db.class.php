@@ -2,9 +2,9 @@
 
 class Db {
     private $host = "localhost";
-    private $user = "root";
-    private $password = "";
-    private $dbName = "keyon";
+    private $user = "u216558363_Keyson";
+    private $password = "Keyson200510021216";
+    private $dbName = "u216558363_Keyson";
 
     public function connection(){
         $dsn = "mysql:host=".$this->host.";dbname=".$this->dbName;

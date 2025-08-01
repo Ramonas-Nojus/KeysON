@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-    <title>KeyON</title>
+    <title>KeysON</title>
     <link rel="stylesheet" href="./style/builder.css">
 </head>
 <body>
@@ -159,14 +159,7 @@
                         </button>
 
                     </div>
-                    <!-- <div class="custom non-display">
-                        <button class="component-button white-button" data-value="keycaps-2-white" data-price="50"><span style="display: none;">White</span></button>
-                        <button class="component-button black-button" data-value="keycaps-2-black" data-price="50"><span style="display: none;">black</span></button>
-                        <button class="component-button green-button" data-value="keycaps-2-green" data-price="50"><span style="display: none;">green</span></button>
-                        <button class="component-button red-button" data-value="keycaps-2-red" data-price="50"><span style="display: none;">red</span></button>
-                        <button class="component-button blue-button" data-value="keycaps-2-blue" data-price="50"><span style="display: none;">blue</span></button>
-                        <button class="component-button purple-button" data-value="keycaps-2-purple" data-price="50"><span style="display: none;">purple</span></button>
-                    </div> -->
+                    
                 </div>
             </div>
  
@@ -201,13 +194,13 @@
         <div class="summary-window">
             <h2>Santrauka</h2>
             <ul id="summary-list">
-                <!-- Summary items will be added dynamically here -->
+                <!-- Summary items -->
             </ul>
             <div class="summary-footer">
                 <div id="total-price" class="total-price">Bendra kaina: 0.00 €</div>
-                <!-- <button id="order-button" class="order-button">Užsisakyti</button> -->
+
                 <form id="orderForm" action="order.php" method="post">
-                    <!-- Hidden input fields to store selected component values -->
+                   
                     <input type="hidden" name="selectedKeyboardSize" id="selectedKeyboardSize">
                     <input type="hidden" name="selectedKeyboardColor" id="selectedKeyboardColor">
                     <input type="hidden" name="selectedSwitchType" id="selectedSwitchType">
@@ -223,14 +216,12 @@
                     <input type="hidden" name="selectedCableColorPrice" id="selectedCableColorPrice">
                     <input type="hidden" name="pvm" id="pvm">
 
-
                     <input type="hidden" name="KeyboardSizeValue" id="KeyboardSizeValue">
                     <input type="hidden" name="KeyboardColorValue" id="KeyboardColorValue">
                     <input type="hidden" name="SwitchTypeValue" id="SwitchTypeValue">
                     <input type="hidden" name="stabilizersValue" id="stabilizersValue">
                     <input type="hidden" name="KeycapsValue" id="KeycapsValue">
                     <input type="hidden" name="CableColorValue" id="CableColorValue">
-
 
                     <button type="submit" id="order-button" class="btn">Užsisakyti</button>
                 </form>

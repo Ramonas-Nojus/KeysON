@@ -1,14 +1,31 @@
 <?php require 'inlcudes/autoload.php'; ?>
+<?php include 'settings-core-7189.php'; ?>
+<?php
+error_reporting(E_ALL);  // Show all errors
+ini_set('display_errors', 1);  // Enable error display
+?>
+
 <!DOCTYPE html>
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Užsakymo informacija</title>
-    <link rel="stylesheet" href="./style/order_info.css">
+    <link rel="stylesheet" href="../style/order_info.css">
 </head>
 
-<?php
+
+<header>
+        <div class="logo">
+            <img src="../img/logo-no-background-2.png" alt="Your Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a class="dropbtn" href="./">Pagr. puslapis</a></li>
+                <li><a class="dropbtn" href="../contacts.php">Kontaktai</a></li>
+            </ul>
+        </nav>
+</header><?php
 
 if(isset($_GET['order_number'])){
     $order_number = $_GET['order_number'];
@@ -35,7 +52,6 @@ $component_images = explode(",", $order['component_images']);
 
 <body>
 
-<?php include "./inlcudes/header.php"; ?>
 
     <div class="container">
         <h1>Užsakymo informacija</h1>        
@@ -122,10 +138,10 @@ $component_images = explode(",", $order['component_images']);
         </table>
 
         <div id="container" style="width: 65%; margin: auto; border: 3px solid; border-radius: 10px; position: relative; overflow: hidden;">
-            <img id="image" src="./img/<?php echo $components[0].'/'.$component_images[0]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
-            <img src="./img/<?php echo $components[0].'/'.$component_images[1]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
-            <img src="./img/<?php echo $components[0].'/'.$component_images[2]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
-            <img src="./img/<?php echo $components[0].'/'.$component_images[3]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
+            <img id="image" src="../img/<?php echo $components[0].'/'.$component_images[0]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
+            <img src="../img/<?php echo $components[0].'/'.$component_images[1]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
+            <img src="../img/<?php echo $components[0].'/'.$component_images[2]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
+            <img src="../img/<?php echo $components[0].'/'.$component_images[3]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
         </div>
 
         <script>

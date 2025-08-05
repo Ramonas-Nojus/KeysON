@@ -1,5 +1,4 @@
 <?php 
-include '../config.php';
 
 class Db {
     private $host = DB_HOST;

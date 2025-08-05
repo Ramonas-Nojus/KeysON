@@ -1,3 +1,4 @@
+<?php include '../settings-core-7189.php' ?>
 <?php include '../inlcudes/autoload.php' ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +10,11 @@
     <link rel="stylesheet" href="./style/dashboard.css">
 </head>
 <body>
+    
 
 <?php 
+    
+    
     
     $order = new Order;
 
@@ -31,15 +35,15 @@
 
 <header>
         <div class="logo">
-            <img src="../img/logo-no-background-2.png" alt="Your Logo">
+            <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="Your Logo">
         </div>
         <nav>
             <ul>
-                <li><a class="dropbtn" href="/">Home</a></li>
-                <li><a class="dropbtn" href="/admin/">Orders</a></li>
-                <li><a class="dropbtn" href="/admin/my_orders.php">My Assigned Orders</a></li>
-                <li><a class="dropbtn" href="/admin/dashboard.php">Dashboard</a></li>
-                <li><a class="dropbtn" href="/admin/logout.php">Logout</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>">Home</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/">Orders</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/my_orders.php">My Assigned Orders</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/dashboard.php">Dashboard</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/logout.php">Logout</a></li>
             </ul>
         </nav>
 </header>
@@ -77,9 +81,7 @@
    
 
     <script>
-        // JavaScript code for initializing and rendering charts
         document.addEventListener('DOMContentLoaded', function () {
-            // Placeholder data for charts
             const profitData = {
                 labels: <?php echo json_encode($dates); ?>,
                 datasets: [{
@@ -102,7 +104,6 @@
                 }]
             };
 
-            // Render profit chart
             const profitCtx = document.getElementById('profitChart').getContext('2d');
             const profitChart = new Chart(profitCtx, {
                 type: 'line',
@@ -121,7 +122,6 @@
                 }
             });
 
-            // Render orders chart
             const ordersCtx = document.getElementById('ordersChart').getContext('2d');
             const ordersChart = new Chart(ordersCtx, {
                 type: 'line',
@@ -147,7 +147,7 @@
 
                 const colorBox = document.createElement('span');
                 colorBox.classList.add('color-box');
-                colorBox.style.backgroundColor = profitChart.data.datasets[0].backgroundColor[index]; // Set color from dataset
+                colorBox.style.backgroundColor = profitChart.data.datasets[0].backgroundColor[index]; 
                 item.appendChild(colorBox);
 
                 const text = document.createElement('span');
@@ -157,7 +157,6 @@
                 customLegend.appendChild(item);
             });
 
-            // Add additional charts as needed
         });
     </script>
 </body>

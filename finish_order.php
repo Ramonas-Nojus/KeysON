@@ -3,6 +3,9 @@ require 'vendor/autoload.php';
 
 require 'inlcudes/autoload.php';
 
+require_once 'settings-core-7189.php';
+
+
 if(isset($_GET['KeyboardSizeValue'])){
     $KeyboardSizeValue = $_GET['KeyboardSizeValue'];
     $KeyboardColorValue = $_GET['KeyboardColorValue'];
@@ -129,7 +132,7 @@ $html_content = "
                 <p><strong>El. paštas:</strong> $email</p>
                 <p><strong>Pristatymas:</strong> kurjeriu į namus</p>
                 <p><strong>Adresas:</strong> $address, $city, Lietuva, $postal_code</p>
-                <p>Daugiau informacijos apie savo užsakymą galite pažiurėti paspaude <a href='http://keyson.local/order/$order_number'>šią nuorodą</a></p>
+                <p>Daugiau informacijos apie savo užsakymą galite pažiurėti paspaude <a href='https://goldenrod-cheetah-195571.hostingersite.com/order/$order_number'>šią nuorodą</a></p>
             </div>
         </div>
     </body>
@@ -154,7 +157,7 @@ try {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->SMTPAuth   = true;
     $mail->Username   = 'keyon.customs@gmail.com';
-    $mail->Password   = getenv('GMAIL_APP_PASSWORD');
+    $mail->Password   = GMAIL_APP_PASSWORD;
 
     // Recipients
     $mail->setFrom('keyon.customs@gmail.com', 'KeyON');

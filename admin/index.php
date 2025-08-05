@@ -1,5 +1,8 @@
 <?php session_start(); ?>
 <?php require '../inlcudes/autoload.php' ?>
+<?php include '../settings-core-7189.php'; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +75,7 @@ if(isset($_GET['order_id'])){
 
                     <?php 
 
-                    if(!isset($_GET['progress']) && $_GET['progress'] == 0){
+                    if(!isset($_GET['progress']) || $_GET['progress'] == 0){
                         $order = $orders->getOrders($_SESSION['id']);
                     } else if (isset($_GET['progress']) && $_GET['progress'] == 1){ 
                         $order = $orders->getAllAssignedOrders($_SESSION['id']);

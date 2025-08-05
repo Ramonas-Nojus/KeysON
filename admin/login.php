@@ -1,4 +1,6 @@
 <?php require '../inlcudes/autoload.php'; ?>
+<?php include '../settings-core-7189.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

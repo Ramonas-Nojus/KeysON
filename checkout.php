@@ -1,8 +1,10 @@
 <?php 
 
 require_once './vendor/autoload.php';
+require_once 'settings-core-7189.php';
 
-$stripeSecretKey = getenv('STRIPE_SECRET_KEY');
+
+$stripeSecretKey = STRIPE_SECRET_KEY;
 
 $stripe = new \Stripe\StripeClient($stripeSecretKey);
 

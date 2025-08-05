@@ -139,7 +139,7 @@
             </script>
 
             <h2>Siuntimo informacija</h2>
-            <form action="/checkout.php" method="post">
+            <form action="./checkout.php" method="post">
                 <div class="form-group">
                     <label for="email">El. paštas:</label>
                     <input type="text" id="email" name="email" required>

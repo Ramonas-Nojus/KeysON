@@ -3,10 +3,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-    <title>KeysON</title>
+    <title>Custom Keyboard Builder | KeysON</title>
     <link rel="stylesheet" href="./style/builder.css">
 </head>
 <body>
+
+<style>
+button:hover {
+  transform: scale(1.2);
+}
+</style>
 
 <?php include "./inlcudes/header.php"; ?>
 
@@ -26,7 +32,7 @@
     <div class="container">
         <div class="selection-panel">
             <div class="component step-1 required">
-                <h2>Klaviaturos Dydis</h2>
+                <h2>Keyboard’s Size</h2>
                 <br>
                 <div class="grid">
                     <button class="component-button" data-price="109.99" data-value="100" value="100%">
@@ -35,16 +41,20 @@
                     <button class="component-button" data-price="99.99" data-value="80" value="80%">
                         <p>80%</p>
                     </button>
+                    <button class="component-button" data-price="99.99" data-value="75" value="75%">
+                        <p>75%</p>
+                    </button>
                     <button class="component-button" data-price="89.99" data-value="65" value="65%">
                         <p>65%</p>
                     </button>
-                    <!-- <button class="component-button" data-price="89.99" data-value="60" value="60%">
+                    <button class="component-button" data-price="79.99" data-value="60" value="60%">
                         <p>60%</p>
-                    </button> -->
+                    </button>
+
                 </div>
             </div>
             <div class="component step-2 required">
-                <h2>Klaviaturos spalva</h2>
+                <h2>Keyboard’s Colour</h2>
                 <br>
                 <div class="grid">
                     <button id="whitebutton" class="component-button white-button" data-value="case-white" data-price="10" value="Balta"><span style="display: none;">Balta</span></button>
@@ -52,129 +62,228 @@
                     <!-- <button id="pinkButton" class="component-button pink-button" data-price="20" data-value="case-pink" value="Rožinė"><span style="display: none;">Rožinė</span></button> -->
                 </div>
             </div>
+
+            <!---------------------------------------------------------------------------------------------------------------------->
+
+
             <div class="component step-3 required">
-                <h2>Switch'ai</h2>
-                <br>
-                <div class="grid">
-                    <button class="component-button" data-value="switch-red" data-price="40" value="Red"><p>Red</p><img src="/img/swithes/red.png"></button>
-                    <button class="component-button" data-value="switch-brown" data-price="40" value="Brown"><p>Brown</p><img src="/img/swithes/brown.png"></button>
-                    <button class="component-button" data-value="switch-blue" data-price="40" value="Blue"><p>Blue</p><img src="/img/swithes/blue.png"></button>
-                    <button class="component-button" data-value="switch-yellow" data-price="40" value="Yellow"><p>Yellow</p><img src="/img/swithes/yellow.png"></button>
-                </div>
-                <br>
-                <h2>Stabilizatoriai</h2>
-                <br> 
-                <div class="grid">
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="defaultStabilizer" name="stabilizerType" data-price="0" data-value="default" value="Numatyti" checked>
-                        <span class="checkmark"></span>
-                        Numatyti stabilizatoriai
-                    </label>
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="improvedStabilizer" name="stabilizerType" data-price="20" data-value="improved" value="Patobulinti">
-                        <span class="checkmark"></span>
-                        Patobulinti stabilizatoriai
-                    </label>
-                </div>
-            </div>
-            <div class="component step-4 required">
-                <h2>Keycaps'ai</h2>
+                <h2>Switches</h2>
                 <br>
 
-                <!-- <p>Select Layout:</p>
-                <div class="layout-buttons">
-                    <button class="layout-button" data-value="premade">Pre Made</button>
-                    <button class="layout-button" data-value="custom">Custom</button>
-                </div> -->
+
+                <div class="color-options">
+                    
+                    <div class="premade">
+                        <h2 style="display: inline; margin-right: 10px;">Linear</h2>
+                        <button onclick="playSound('click1')" 
+                                style="background-color: #FFA500; color: #fff; border: none; margin: 10px; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: transform 0.2s; vertical-align: middle;">
+                                Play Sound
+                        </button>
+                        <audio id="click1" src="./audio/linear-output.mp3"></audio>
+
+                        <br>
+                        <div class="grid">
+
+                            <button class="component-button" data-value="switch-red-2" data-price="40" value="cherry-mx-red"><p>Cherry MX Red</p><img src="/img/swithes/red-2.png"></button>
+                            <button class="component-button" data-value="switch-red-2" data-price="40" value="gateron-red-pro"><p>Gateron Red Pro</p><img src="/img/swithes/red-2.png"></button>
+                            <button class="component-button" data-value="switch-yellow-2" data-price="40" value="gateron-yellow"><p>Gateron Yellow</p><img src="/img/swithes/yellow-2.png"></button>
+                            <button class="component-button" data-value="switch-red-2" data-price="40" value="kailh-box-red"><p>Kailh Box Red</p><img src="/img/swithes/red-2.png"></button>
+                            <button class="component-button" data-value="switch-black" data-price="40" value="cherry-mx-black"><p>Cherry MX Black</p><img src="/img/swithes/black.png"></button>
+                            <button class="component-button" data-value="switch-oil-king" data-price="40" value="gateron-oil-king"><p>Gateron Oil King</p><img src="/img/swithes/oil-king.png"></button>
+
+                        </div>
+                        
+                        <h2 style="display: inline; margin-right: 10px;">Tactile</h2>
+                        <button onclick="playSound('click2')" 
+                                style="background-color: #FFA500; color: #fff; border: none; margin: 10px; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: transform 0.2s; vertical-align: middle;">
+                                Play Sound
+                        </button>
+                        <audio id="click2" src="./audio/tactile-output.mp3"></audio>
+
+                        <br>
+                        <div class="grid">
+
+                            <button class="component-button" data-value="switch-brown-2" data-price="40" value="cherry-mx-brown"><p>Cherry MX Brown</p><img src="/img/swithes/brown-2.png"></button>
+                            <button class="component-button" data-value="switch-brown-2" data-price="40" value="gateron-brown"><p>Gateron Brown</p><img src="/img/swithes/brown-2.png"></button>
+                            <button class="component-button" data-value="switch-purple-2" data-price="40" value="zealios-v2"><p>Zealios V2 (ZealPC)</p><img src="/img/swithes/purple-2.png"></button>
+                            <button class="component-button" data-value="switch-yellow-2" data-price="40" value="panda-mx"><p>Panda MX</p><img src="/img/swithes/yellow-2.png"></button>
+                            <button class="component-button" data-value="switch-yellow" data-price="40" value="gazzew-boba"><p>GAZZEW Boba U4T</p><img src="/img/swithes/yellow.png"></button>
+
+                        </div>
+
+                        <h2 style="display: inline; margin-right: 10px;">Clicky</h2>
+                        <button onclick="playSound('click3')" 
+                                style="background-color: #FFA500; color: #fff; border: none; margin: 10px; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: transform 0.2s; vertical-align: middle;">
+                        Play Sound
+                        </button>
+                        <audio id="click3" src="./audio/clicky-output.mp3"></audio>
+                        <br>
+
+                        <div class="grid">
+                            <button class="component-button" data-value="switch-blue-2" data-price="40" value="cherry-mx-blue"><p>CHERRY MX Blue</p><img src="./img/swithes/blue-2.png"></button>
+                            <button class="component-button" data-value="switch-white" data-price="40" value="kailh-box-white"><p>Kailh Box White</p><img src="./img/swithes/white.png"></button>
+                            <button class="component-button" data-value="switch-navy" data-price="40" value="kailh-box-navy"><p>Kailh Box Navy</p><img src="./img/swithes/navy.png"></button>
+                            <button class="component-button" data-value="switch-green-2" data-price="40" value="cherry-mx-green"><p>Cherry MX Green</p><img src="./img/swithes/green-2.png"></button>
+                        </div>
+
+                    </div>
+                    <br>
+ 
+            </div>
+             </div>
+
+    <!---------------------------------------------------------------------------------------------------------------------->
+
+            <div class="component step-4 required">
+                <h2>Keycaps</h2>
+                <br>
+
                 <div class="color-options">
                     <div class="premade grid">
-                        <button class="component-button retro-dark-blue" data-value="retro-dark-blue"data-price="30">
-                            <span style="display: none;">Retro Dark Blue PBT Keycaps</span>
+
+                       
+                        
+                       <!-- <button class="component-button  gradient-green" data-value="gradient-green"data-price="25">
+                            <span style="display: none;">Gradient Green Keycaps</span>
+                        </button> 
+                             
+                        <button class="component-button  gradient-purple" data-value="gradient-purple"data-price="25">
+                            <span style="display: none;">Gradient Purple Keycaps</span>
+                        </button>
+                        -->
+                        <button class="component-button  purple-green" data-value="purple-green"data-price="25">
+                            <span style="display: none;">Purple and Green Keycaps</span>
+                        </button>
+                        <button class="component-button  pink-white" data-value="pink-white"data-price="25">
+                            <span style="display: none;">Pink and White Keycaps</span>
                         </button>
 
-                        <button class="component-button retro-dark-green" data-value="retro-dark-green"data-price="30">
-                            <span style="display: none;">Retro Dark Green PBT Keycaps</span>
+                        <button class="component-button  matcha" data-value="matcha"data-price="25">
+                            <span style="display: none;">Matcha Keycaps</span>
                         </button>
 
-                        <button class="component-button Royal-Kludge-OEM-Tiffany-PBT-UK" data-price="30" data-value="Royal-Kludge-OEM-Tiffany-PBT-UK">
-                            <span style="display: none;">Royal Kludge OEM Tiffany PBT UK</span>
+                        <button class="component-button peach-pink" data-value="peach-pink"data-price="30">
+                            <span style="display: none;">Peach Pink Keycaps</span>
                         </button>
-                        <button class="component-button OEM-Dye-Sub-PBT-Iceberg" data-price="50" data-value="OEM-Dye-Sub-PBT-Iceberg">
-                            <span style="display: none;">OEM Dye Sub PBT Iceberg</span>
+                        
+                        <button class="component-button mint-green-and-dark-blue" data-price="30" data-value="mint-green-and-dark-blue">
+                            <span style="display: none;">Mint green and Dark blue Keycaps</span>
                         </button>
-                        <!-- <button class="component-button Royal-Kludge-RK68KC01-Double-Shot-PBT" data-price="35" data-value="Royal-Kludge-RK68KC01-Double-Shot-PBT">
-                            <span style="display: none;">Royal Kludge RK68KC01 Double Shot PBT</span>
-                        </button> -->
-                        <button class="component-button Royal-Kludge-PBT-XDA-15" data-value="Royal-Kludge-PBT-XDA-15" data-price="35">
-                            <span style="display: none;">Royal Kludge PBT XDA-15</span>
+                        
+                        
+                        <button class="component-button blue-starry" data-value="blue-starry" data-price="35">
+                            <span style="display: none;">Blue and Starry Keycaps</span>
                         </button>
-                        <button class="component-button Royal-Kludge-PBT-XDA-3" data-value="Royal-Kludge-PBT-XDA-3"data-price="35">
-                            <span style="display: none;">Royal Kludge PBT XDA-3</span>
+                        <button class="component-button hhq-cherry" data-value="hhq-cherry"data-price="35">
+                            <span style="display: none;">HHQ-Cherry Keycaps</span>
                         </button>
-                        <button class="component-button Royal-Kludge-PBT-XDA-28" data-value="Royal-Kludge-PBT-XDA-28"data-price="35">
-                            <span style="display: none;">Royal Kludge PBT XDA-28</span>
+                        
+                        <button class="component-button mlv" data-value="mlv"data-price="25">
+                            <span style="display: none;">MLV Keycaps</span>
                         </button>
-                        <button class="component-button Royal-Kludge-PBT-XDA-116" data-value="Royal-Kludge-PBT-XDA-116"data-price="35">
-                            <span style="display: none;">Royal Kludge PBT XDA-116</span>
+                        <button class="component-button starfall" data-value="starfall"data-price="30">
+                            <span style="display: none;">Starfall Keycaps</span>
                         </button>
-                <!---------------------------------------------------------------------------------------------------------------------->
-                        <button class="component-button brown-milky-yellow" data-value="brown-milky-yellow"data-price="25">
-                            <span style="display: none;">Brown Milky Yellow ABS Keycaps</span>
+                        <button class="component-button british-racing" data-value="british-racing"data-price="30">
+                            <span style="display: none;">British Racing Keycaps</span>
+                        </button>
+                        
+                        <button class="component-button retro-a" data-value="retro-a"data-price="30">
+                            <span style="display: none;">Retro A Keycaps</span>
+                        </button>
+                        <button class="component-button retro-b" data-value="retro-b"data-price="30">
+                            <span style="display: none;">Retro B Keycaps</span>
+                        </button>
+                        <button class="component-button bhh-backlit" data-value="bhh-backlit"data-price="30">
+                            <span style="display: none;">BHH Backlit Keycaps</span>
+                        </button>
+                         <button class="component-button qkl-backlit" data-value="qkl-backlit"data-price="30">
+                            <span style="display: none;">QKL Backlit Keycaps</span>
+                        </button>
+                         
+                        <button class="component-button  blh" data-value="blh"data-price="25">
+                            <span style="display: none;">BLH Keycaps</span>
+                        </button>
+                         <button class="component-button  ml-cherry" data-value="ml-cherry"data-price="25">
+                            <span style="display: none;">ML-cherry Keycaps</span>
+                        </button>
+                         <button class="component-button  bw-cherry" data-value="bw-cherry"data-price="25">
+                            <span style="display: none;">BW-cherry Keycaps</span>
+                        </button>
+                         <button class="component-button  huizong-cherry" data-value="huizong-cherry"data-price="25">
+                            <span style="display: none;">Huizong Cherry Keycaps</span>
+                        </button>
+                         <button class="component-button  hxf-cherry" data-value="hxf-cherry"data-price="25">
+                            <span style="display: none;">HXF-Cherry Keycaps</span>
                         </button>
 
-                        <button class="component-button retro-blue-and-white" data-value="retro-blue-and-white"data-price="30">
-                            <span style="display: none;">Retro Blue and White PBT Keycaps</span>
+
+                        <button class="component-button jungle-green" data-value="jungle-green"data-price="30">
+                            <span style="display: none;">Jungle Green Keycaps</span>
+                        </button>
+                        <button class="component-button orange-red" data-value="orange-red"data-price="35">
+                            <span style="display: none;">Orange Red Keycaps</span>
+                        </button>
+                        <button class="component-button mountain-blue" data-price="50" data-value="mountain-blue">
+                            <span style="display: none;">Mountain Blue Keycaps</span>
+                        </button>
+                        <button class="component-button  cyan" data-value="cyan"data-price="25">
+                            <span style="display: none;">Cyan Keycaps</span>
+                        </button>
+                        <button class="component-button  light-blue" data-value="light-blue"data-price="25">
+                            <span style="display: none;">Light Blue Keycaps</span>
+                        </button>
+                        <button class="component-button  lemon-tree" data-value="lemon-tree"data-price="25">
+                            <span style="display: none;">Lemon Tree Keycaps</span>
                         </button>
 
-                        <button class="component-button retro-white-and-orange" data-value="retro-white-and-orange"data-price="30">
-                            <span style="display: none;">Retro White and Orange PBT Keycaps</span>
+                        <button class="component-button  blue" data-value="blue"data-price="25">
+                            <span style="display: none;">Blue Keycaps</span>
+                        </button>
+                        <button class="component-button  brown" data-value="brown"data-price="25">
+                            <span style="display: none;">Brown Keycaps</span>
+                        </button>
+                        <button class="component-button  berry" data-value="berry"data-price="25">
+                            <span style="display: none;">Berry Keycaps</span>
+                        </button>
+                        <button class="component-button  orange" data-value="orange"data-price="25">
+                            <span style="display: none;">Orange Keycaps</span>
+                        </button>
+                        <button class="component-button  red" data-value="red"data-price="25">
+                            <span style="display: none;">Red Keycaps</span>
+                        </button>
+                        <button class="component-button  pink" data-value="pink"data-price="25">
+                            <span style="display: none;">Pink Keycaps</span>
                         </button>
 
-                        <button class="component-button  pink-barbie" data-value="pink-barbie"data-price="25">
-                            <span style="display: none;">Pink Barbie ABS Keycaps</span>
-                        </button>
-
-                        <button class="component-button sky-blue" data-value="sky-blue"data-price="30">
-                            <span style="display: none;">Sky Blue PBT Keycaps</span>
-                        </button>
-
-                        <button class="component-button mojito" data-value="mojito"data-price="30">
-                            <span style="display: none;">Mojito PBT Keycaps</span>
-                        </button>
-<!-- 
-                        <button class="component-button black-Sugar" data-value="black-Sugar"data-price="35">
-                            <span style="display: none;">Black Sugar ABS Keycaps</span>
-                        </button> -->
-
-                        <!-- <button class="component-button gradient-retro-purple" data-value="gradient-retro-purple"data-price="35">
-                            <span style="display: none;">Gradient Retro Purple ABS Keycaps</span>
-                        </button> -->
-
-                        <!-- <button class="component-button retro-mixed-green" data-value="retro-mixed-green"data-price="35">
-                            <span style="display: none;">Retro Mixed Green ABS Keycaps</span>
-                        </button> -->
-
-                        <button class="component-button pink-and-retro-green" data-value="pink-and-retro-green"data-price="30">
-                            <span style="display: none;">Pink And Retro Green PBT Keycaps</span>
-                        </button>
+                         
 
                     </div>
                     
                 </div>
             </div>
  
+            <!---------------------------------------------------------------------------------------------------------------------->
+
             <div class="component step-5 required"> 
-                <h2>Laidas</h2>
+                <h2>Cable</h2>
                     <div class="grid">
-                        <button class="component-button black-button" data-value="cable-black" data-price="25" value="Juodas"><span style="display: none;">Juodas</span></button>
-                        <button class="component-button white-button" data-value="cable-white" data-price="25" value="Baltas"><span style="display: none;">Baltas</span></button>
-                        <button class="component-button blue-button" data-value="cable-blue" data-price="40" value="Mėlynas"><span style="display: none;">Mėlynas</span></button>
-                        <button class="component-button pink-button" data-value="cable-pink" data-price="40" value="Rožinė"><span style="display: none;">Rožinis</span></button>
+                        <button class="component-button black-button" data-value="cable-black" data-price="25" value="Black"><span style="display: none;">Black</span></button>
+                        <button class="component-button white-button" data-value="cable-white" data-price="25" value="White"><span style="display: none;">White</span></button>
+                        <button class="component-button blue-button" data-value="cable-sky-blue" data-price="40" value="Sky Blue"><span style="display: none;">Sky Blue</span></button>
+                        <button class="component-button pink-button" data-value="cable-pink" data-price="40" value="Pink"><span style="display: none;">Pink</span></button>
+                         <button class="component-button red-button" data-value="cable-red" data-price="25" value="Red"><span style="display: none;">Red</span></button>
+                        <button class="component-button purple-button" data-value="cable-purple" data-price="25" value="Purple"><span style="display: none;">Purple</span></button>
+                        <button class="component-button grey-button" data-value="cable-grey" data-price="40" value="Grey"><span style="display: none;">Grey</span></button>
+                        <button class="component-button green-button" data-value="cable-green" data-price="40" value="Green"><span style="display: none;">Green</span></button>
+                         <button class="component-button dark-blue-button" data-value="cable-blue" data-price="25" value="Blue"><span style="display: none;">Blue</span></button>
+                        <button class="component-button orange-button" data-value="cable-orange" data-price="25" value="Orange"><span style="display: none;">Orange</span></button>
+                        <button class="component-button brown-button" data-value="cable-brown" data-price="40" value="Brown"><span style="display: none;">Brown</span></button>
 
                     </div>
             </div>
             <div class="bottom-text-container">
-                <p class="bottom-text">Jei nepamatote norimų komponentų, galite susisiekti su mumis ir užsakyti asmeniškai pritaikytą klaviatūrą pagal jūsų pageidavimus.</p>
+                <p class="bottom-text">If you don’t see the components you want, you can contact us and order a custom keyboard tailored to your preferences.</p>
             </div>
         </div>
         
@@ -182,22 +291,22 @@
             <div class="keyboard-display">
                 <!-- Displayed keyboard goes here -->
             </div>
-            <p class="image-disclaimer">Prašome atkreipti dėmesį: Tikrasis produktas gali nedideliais skirtumais skirtis nuo vaizdo.</p>
+            <p class="image-disclaimer">Disclaimer: This 3D preview is for reference only. Minor differences may occur in the final product.</p>
 
             <div class="navigation">
-                <button class="btn prev-button">Ankstesnis</button>
-                <button class="btn next-button">Kitas</button>
+                <button class="btn prev-button">Previous</button>
+                <button class="btn next-button">Next</button>
             </div>
         </div>
 
 
         <div class="summary-window">
-            <h2>Santrauka</h2>
+            <h2>Summary</h2>
             <ul id="summary-list">
                 <!-- Summary items -->
             </ul>
             <div class="summary-footer">
-                <div id="total-price" class="total-price">Bendra kaina: 0.00 €</div>
+                <div id="total-price" class="total-price">Total Price: 0.00 €</div>
 
                 <form id="orderForm" action="order.php" method="post">
                    
@@ -222,15 +331,13 @@
                     <input type="hidden" name="stabilizersValue" id="stabilizersValue">
                     <input type="hidden" name="KeycapsValue" id="KeycapsValue">
                     <input type="hidden" name="CableColorValue" id="CableColorValue">
-
-                    <button type="submit" id="order-button" class="btn">Užsisakyti</button>
                 </form>
             </div>
 
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>Prieš užsakydami, prašome pasirinkti visus būtinus komponentus.</p>
+                    <p>Before placing your order, please select all required components.</p>
                 </div>
             </div>
 

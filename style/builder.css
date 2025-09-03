@@ -177,6 +177,10 @@ body {
     background-color: #44A9FF;
 }
 
+.dark-blue-button{
+    background-color: #033b6b;
+}
+
 .green-button{
     background-color: #12A81C;
 }
@@ -187,6 +191,24 @@ body {
 
 .pink-button{
     background-color: #DDA6B6;
+}
+
+.orange-button{
+    background-color: rgb(255, 95, 36);
+}
+
+
+.brown-button{
+    background-color: rgb(54, 28, 3);
+}
+
+.grey-button{
+    background-color: grey;
+}
+
+
+.red-button{
+    background-color: red;
 }
 
 
@@ -285,204 +307,6 @@ nav ul li a:hover {
     font-weight: bold;
     color: #333;
 }
-
-
-.Royal-Kludge-OEM-Tiffany-PBT-UK{
-    background: linear-gradient(
-    to right,
-    #6D6D69 0%,
-    #6D6D69 50%,
-    #A3D9D1 50%,
-    #A3D9D1 100%
-  );
-}
-
-
-.OEM-Dye-Sub-PBT-Iceberg {
-    background: linear-gradient(
-        to right,
-        #2AAC9C 0%,
-        #2AAC9C 40%,
-        #E6E8E9 40%,
-        #E6E8E9 60%,
-        #3B93C2 60%,
-        #3B93C2 100%
-      );
-}
-
-.Royal-Kludge-PBT-muse {
-    background: linear-gradient(
-        to right,
-        #444345 0%,
-        #444345 40%,
-        #6ABDCE 40%,
-        #6ABDCE 60%,
-        #D6E3E9 60%,
-        #D6E3E9 100%
-      );
-}
-
-.Royal-Kludge-RK68KC01-Double-Shot-PBT {
-    background: linear-gradient(
-        to right,
-        #8ECCD1 0%,
-        #8ECCD1 50%,
-        #9A77C3 50%,
-        #9A77C3 100%
-      );
-}
-
-.Royal-Kludge-PBT-XDA-15 {
-    background: linear-gradient(
-    to right,
-    #E9FBC8 0%,
-    #E9FBC8 50%,
-    #9FB570 50%,
-    #9FB570 100%
-  );
-}
-
-
-.Royal-Kludge-PBT-XDA-3 {
-    background: linear-gradient(
-    to right,
-    #626262 0%,
-    #626262 40%,
-    #E1AE6B 40%,
-    #E1AE6B 60%,
-    #F9F1ED 60%,
-    #F9F1ED 100%
-  );
-}
-
-
-.Royal-Kludge-PBT-XDA-28 {
-    background: linear-gradient(
-    to right,
-    #C9CFE1 0%,
-    #C9CFE1 40%,
-    #E89AAD 40%,
-    #E89AAD 60%,
-    #EFE1B8 60%,
-    #EFE1B8 100%
-  );
-}
-
-
-.Royal-Kludge-PBT-XDA-116 {
-    background: linear-gradient(
-    to right,
-    #1F1F1F 0%,
-    #1F1F1F 40%,
-    #AA463E 40%,
-    #AA463E 60%,
-    #D1C26B 60%,
-    #D1C26B 100%
-  );
-}
-
-
-.brown-milky-yellow {
-    background: linear-gradient(
-    to right,
-    #B59062 0%,
-    #B59062 50%,
-    #F7F7D6 50%,
-    #F7F7D6 100%
-  );
-}
-
-.retro-blue-and-white {
-    background: linear-gradient(
-    to right,
-    #FFFF 0%,
-    #FFFF 50%,
-    #2C3D7C 50%,
-    #2C3D7C 100%
-  );
-}
-
-.retro-white-and-orange {
-    background: linear-gradient(
-    to right,
-    #FFFF 0%,
-    #FFFF 50%,
-    #E7905C 50%,
-    #E7905C 100%
-  );
-}
-
-.pink-barbie {
-    background: linear-gradient(
-    to right,
-    #FEEEE5 0%,
-    #FEEEE5 50%,
-    #FFCECE 50%,
-    #FFCECE 100%
-  );
-}
-
-.sky-blue {
-    background: linear-gradient(
-    to right,
-    #FFFF 0%,
-    #fff 40%,
-    #EE9731 40%,
-    #EE9731 60%,
-    #3D4459 60%,
-    #3D4459 100%
-  );
-}
-
-.mojito {
-    background: linear-gradient(
-    to right,
-    #FFFF 0%,
-    #fff 50%,
-    #8AC19F 50%,
-    #8AC19F 100%
-  );
-}
-
-.pink-and-retro-green {
-    background: linear-gradient(
-    to right,
-    #FBE3EB 0%,
-    #FBE3EB 50%,
-    #D9FDFC 50%,
-    #D9FDFC 100%
-  );
-}
-
-.black-Sugar {
-    background: linear-gradient(
-    to right,
-    #262626 0%,
-    #262626 40%,
-    #EE9000 40%,
-    #EE9000 60%,
-    #3D4459 60%,
-    #3D4459 100%
-  );
-}
-
-
-.retro-dark-blue {
-    background: #415F7A;
-}
-
-.gradient-retro-purple {
-    background: linear-gradient(90deg, rgba(238,230,248,1) 0%, rgba(211,195,240,1) 50%, rgba(77,64,127,1) 100%);    
-}
-
-.retro-mixed-green {
-    background: linear-gradient(90deg, rgba(255,251,159,1) 0%, rgba(148,174,112,1) 50%, rgba(118,128,101,1) 100%);
-}
-
-.retro-dark-green {
-    background: #607469;
-}
-
 
 .non-display {
     display: none;
@@ -746,7 +570,8 @@ nav ul li a:hover {
 
 
 .color-options {
-    height: 350px; /* Set the height of the outer window */
+    height: 400px;
+    width: 100%; /* Set the height of the outer window */
     overflow: hidden; /* Hide content that overflows the outer window */
     position: relative; /* Establish positioning context */
     border-radius: 10px;
@@ -781,3 +606,298 @@ nav ul li a:hover {
     background: #f1f1f1; /* Set the color of the scrollbar track */
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.peach-pink{
+    background: linear-gradient(
+    to right,
+    #FFE0D8 0%,
+    #FFE0D8 50%,
+    #FBC3C1 50%,
+    #FBC3C1 100%
+  );
+}
+
+.jungle-green{
+    background: #263B36;
+}
+
+.mint-green-and-dark-blue{
+    background: linear-gradient(
+        to right,
+        #2C334E 0%,
+        #2C334E 50%,
+        #79E7CC 50%,
+        #79E7CC 100%
+      );
+}
+
+.mountain-blue{
+    background: #385772;
+}
+
+.blue-starry{
+    background: linear-gradient(
+    to right,
+    #586377 0%,
+    #586377 40%,
+    #FFC848 40%,
+    #FFC848 60%,
+    #FFFFFF 60%,
+    #FFFFFF 100%
+  );
+}
+
+
+.hhq-cherry{
+    background: linear-gradient(
+    to right,
+    #52525A 0%,
+    #52525A 40%,
+    #8BA7AF 40%,
+    #8BA7AF 60%,
+    #2B2C35 60%,
+    #2B2C35 100%
+  );
+}
+
+
+.orange-red{
+    background: #F9867E;
+}
+
+
+.mlv{
+    background: linear-gradient(
+    to right,
+    #234357 0%,
+    #234357 50%,
+    #4FC238 50%,
+    #4FC238 100%
+  );
+}
+
+.starfall{
+    background: linear-gradient(
+    to right,
+    #C1DCFA 0%,
+    #C1DCFA 40%,
+    #9B9DE1 40%,
+    #9B9DE1 60%,
+    #FFFFFF 60%,
+    #FFFFFF 100%
+  );
+}
+
+.british-racing{
+    background: linear-gradient(
+    to right,
+    #163C2F 0%,
+    #163C2F 40%,
+    #D5B184 40%,
+    #D5B184 60%,
+    #FEFAF6 60%,
+    #FEFAF6 100%
+  );
+}
+
+.gradient-green{
+    background: linear-gradient(to right, #89DBC8, #458873);
+}
+
+.retro-a{
+    background: linear-gradient(
+    to right,
+    #A9A39E 0%,
+    #A9A39E 40%,
+    #822A23 40%,
+    #822A23 60%,
+    #5D5C66 60%,
+    #5D5C66 100%
+  );
+}
+
+.retro-b{
+    background: linear-gradient(
+    to right,
+    #ECE8E1 0%,
+    #ECE8E1 40%,
+    #8F2721 40%,
+    #8F2721 60%,
+    #BEBBAE 60%,
+    #BEBBAE 100%
+  );
+}
+
+.bhh-backlit{
+    background: linear-gradient(
+    to right,
+    #FAFCFE 0%,
+    #FAFCFE 40%,
+    #2E3032 40%,
+    #2E3032 60%,
+    #B6B9B6 60%,
+    #B6B9B6 100%
+  );
+}
+
+.qkl-backlit{
+    background: linear-gradient(
+    to right,
+    #533E2C 0%,
+    #533E2C 40%,
+    #E0D3B6 40%,
+    #E0D3B6 60%,
+    #413932 60%,
+    #413932 100%
+  );
+}
+
+.gradient-purple{
+    background: linear-gradient(to right, #1C1A31, #8A70AD);
+}
+
+.blh{
+    background: linear-gradient(
+    to right,
+    #3A4E69 0%,
+    #3A4E69 40%,
+    #EEF0F2 40%,
+    #EEF0F2 60%,
+    #262A2E 60%,
+    #262A2E 100%
+  );
+}
+
+.ml-cherry{
+    background: linear-gradient(
+    to right,
+    #FEF7E2 0%,
+    #FEF7E2 40%,
+    #D32F29 40%,
+    #D32F29 60%,
+    #7799B4 60%,
+    #7799B4 100%
+  );
+}
+
+.bw-cherry{
+    background: linear-gradient(
+    to right,
+    #0A0A0A 0%,
+    #0A0A0A 50%,
+    #FDFDFD 50%,
+    #FDFDFD 100%
+  );
+}
+
+.huizong-cherry{
+    background: linear-gradient(
+    to right,
+    #504C4B 0%,
+    #504C4B 40%,
+    #EDDDC0 40%,
+    #EDDDC0 60%,
+    #998875 60%,
+    #998875 100%
+  );
+}
+
+.hxf-cherry{
+    background: linear-gradient(
+    to right,
+    #5E2635 0%,
+    #5E2635 40%,
+    #F65A6E 40%,
+    #F65A6E 60%,
+    #2C292C 60%,
+    #2C292C 100%
+  );
+}
+
+.matcha{
+    background: linear-gradient(
+    to right,
+    #CBCFAC 0%,
+    #CBCFAC 50%,
+    #677045 50%,
+    #677045 100%
+  );
+}
+
+.purple-green{
+    background: linear-gradient(
+    to right,
+    #ADCC0C 0%,
+    #ADCC0C 50%,
+    #A387C1 50%,
+    #A387C1 100%
+  );
+}
+
+.pink-white{
+    background: linear-gradient(
+    to right,
+    #EDA6A4 0%,
+    #EDA6A4 50%,
+    #FFFFFF 50%,
+    #FFFFFF 100%
+  );
+}
+
+.cyan{
+    background: #B2F8FF;
+}
+
+.light-blue{
+    background: #53C9D7;
+}
+
+.lemon-tree{
+    background: #FFFD60;
+}
+
+.blue{
+    background: #8ACCFE;
+}
+
+.brown{
+    background: #7C5F3F;
+}
+
+.berry{
+    background: #B99ACF;
+}
+
+.orange{
+    background: #FD7D44;
+}
+
+.red{
+    background: #B12C2F;
+}
+
+.pink{
+    background: #EEADBD;
+}

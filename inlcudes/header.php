@@ -2,12 +2,12 @@
 
 <header>
         <div class="logo">
-            <img src="./img/logo-no-background-2.png" alt="Your Logo">
+            <img src="./img/logo-no-background-2.png" alt="KeysOn">
         </div>
         <nav>
             <ul>
-                <li><a class="dropbtn" href="./">Pagr. puslapis</a></li>
-                <li><a class="dropbtn" href="contacts.php">Kontaktai</a></li>
+                <li><a class="dropbtn" href="./">Home</a></li>
+                <li><a class="dropbtn" href="contacts.php">Contacts</a></li>
             </ul>
         </nav>
 </header>

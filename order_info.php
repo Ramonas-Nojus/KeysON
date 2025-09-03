@@ -6,27 +6,27 @@ ini_set('display_errors', 1);  // Enable error display
 ?>
 
 <!DOCTYPE html>
-<html lang="lt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Užsakymo informacija</title>
+    <title>Order Information</title>
     <link rel="stylesheet" href="../style/order_info.css">
 </head>
 
-
 <header>
-        <div class="logo">
-            <img src="../img/logo-no-background-2.png" alt="Your Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a class="dropbtn" href="./">Pagr. puslapis</a></li>
-                <li><a class="dropbtn" href="../contacts.php">Kontaktai</a></li>
-            </ul>
-        </nav>
-</header><?php
+    <div class="logo">
+        <img src="../img/logo-no-background-2.png" alt="Your Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a class="dropbtn" href="./">Home</a></li>
+            <li><a class="dropbtn" href="../contacts.php">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
+<?php
 if(isset($_GET['order_number'])){
     $order_number = $_GET['order_number'];
 } else {
@@ -34,7 +34,6 @@ if(isset($_GET['order_number'])){
 }
 
 $orders = new Order;
-
 $order = $orders->getOrder($order_number);
 
 $name = $order['customer_name'];
@@ -44,49 +43,44 @@ $email = $order['email'];
 $date = $order['date'];
 $status = $order['status'];
 
-
 $components = explode(",", $order['components']);
 $component_images = explode(",", $order['component_images']);
-
 ?>
 
 <body>
-
-
     <div class="container">
-        <h1>Užsakymo informacija</h1>        
+        <h1>Order Information</h1>        
         <table>
             <tr>
-                <td>Data</td>
+                <td>Date</td>
                 <td class="center"><?php echo $date; ?></td>
             </tr>
             <tr>
-                <td>Užsakymo Numeris</td>
+                <td>Order Number</td>
                 <td class="center">#<?php echo $order_number ?></td>
             </tr>
             <tr>
-                <td>Bendra Kaina</td>
+                <td>Total Price</td>
                 <td class="center"><?php echo $price; ?> €</td>
             </tr>
         </table>
+
         <div class="status-bar">
-            <div class="status">Užsakytas</div>
+            <div class="status">Ordered</div>
             <div class="status-line"></div>
-            <div class="status">Gaunamos Detalės</div>
+            <div class="status">Components Received</div>
             <div class="status-line"></div>
-            <div class="status">Užsakymas Renkamas</div>
+            <div class="status">Being Assembled</div>
             <div class="status-line"></div>
-            <div class="status">Išsiųstas</div>
+            <div class="status">Shipped</div>
             <div class="status-line"></div>
-            <div class="status">Pristatytas</div>
+            <div class="status">Delivered</div>
         </div>
 
         <script>
             var status = "<?php echo $status; ?>";
-
             var statusElements = document.querySelectorAll('.status');
             var statusLineElements = document.querySelectorAll('.status-line');
-
             var statusIndex = -1;
 
             for (var i = 0; i < statusElements.length; i++) {
@@ -97,11 +91,8 @@ $component_images = explode(",", $order['component_images']);
             }
 
             if (statusIndex !== -1) {
-
                 for (var j = 0; j <= statusIndex; j++) {
-
                     statusElements[j].classList.add('active');
-
                     if (j > 0) {
                         statusLineElements[j - 1].classList.add('active');
                     }
@@ -109,30 +100,30 @@ $component_images = explode(",", $order['component_images']);
             }
         </script>
 
-        <h2>Klaviatūros komponentai</h2>
+        <h2>Keyboard Components</h2>
         <table>
             <tr>
-                <td>Klaviaturos dydis</td>
+                <td>Keyboard Size</td>
                 <td class="center"><?php echo $components[0]; ?>%</td>
             </tr>
             <tr>
-                <td>Klaviaturos spalva:</td>
+                <td>Keyboard Color</td>
                 <td class="center"><?php echo $components[1]; ?></td>
             </tr>
             <tr>
-                <td>Switch'ai:</td>
+                <td>Switches</td>
                 <td class="center"><?php echo $components[2]; ?></td>
             </tr>
             <tr>
-                <td>Stabilizatoriai:</td>
+                <td>Stabilizers</td>
                 <td class="center"><?php echo $components[3]; ?></td>
             </tr>
             <tr>
-                <td>Keycaps'ai:</td>
+                <td>Keycaps</td>
                 <td class="center"><?php echo $components[4]; ?></td>
             </tr>
             <tr>
-                <td>Laidas:</td>
+                <td>Cable</td>
                 <td class="center"><?php echo $components[5]; ?></td>
             </tr>
         </table>
@@ -145,7 +136,6 @@ $component_images = explode(",", $order['component_images']);
         </div>
 
         <script>
-
             window.addEventListener('load', function() {
                 document.getElementById('container').style.height = document.getElementById('image').height + 'px';
             });
@@ -155,29 +145,26 @@ $component_images = explode(",", $order['component_images']);
             });
         </script>
 
-        <h2>Vartotojo informacija</h2>
+        <h2>User Information</h2>
         <table>
             <tr>
-                <td>Vardas Pavardė</td>
+                <td>Name</td>
                 <td class="center"><?php echo $name; ?></td>
             </tr>
-
             <tr>
-                <td>El. Paštas</td>
+                <td>Email</td>
                 <td class="center"><?php echo $email; ?></td>
             </tr>
-
             <tr>
-                <td>Adresas</td>
+                <td>Address</td>
                 <td class="center"><?php echo $address; ?></td>
             </tr>
-
         </table>
     </div>
 
     <div class="footer">
-        &copy; 2024 KeyON
-        <p class="copyright">Visos teisės saugomos.</p>
+        &copy; 2025 KeysON Lab
+        <p class="copyright">All rights reserved.</p>
     </div>
 </body>
 </html>

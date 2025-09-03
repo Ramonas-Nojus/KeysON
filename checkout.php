@@ -27,6 +27,7 @@ if(isset($_POST['price'])){
     $firstName = $_POST['firstName'];
     $email = $_POST['email'];
     $lastName = $_POST['lastName'];
+    $country = $_POST['country'];
     $city = $_POST['city'];
     $address = $_POST['address'];
     $postal_code = $_POST['postal_code'];
@@ -48,6 +49,7 @@ $success_url =  'https://goldenrod-cheetah-195571.hostingersite.com/finish_order
                 '&CableColorValue=' . urlencode($CableColorValue) .
                 '&firstName=' . urlencode($firstName) .
                 '&lastName=' . urlencode($lastName) .
+                '&country=' . urlencode($country) .
                 '&city=' . urlencode($city) .
                 '&address=' . urlencode($address) .
                 '&postal_code=' . urlencode($postal_code) .
@@ -74,7 +76,7 @@ $checkout_session = \Stripe\Checkout\Session::create([
                 "currency" => "eur",
                 "unit_amount" => $price,
                 "product_data" => [
-                    "name" => "Klaviatura",
+                    "name" => "Keyboard",
                 ]
             ]
         ]

@@ -21,6 +21,7 @@ if(isset($_GET['KeyboardSizeValue'])){
 
     $firstName = $_GET['firstName'];
     $lastName = $_GET['lastName'];
+    $country = $_GET['country'];
     $city = $_GET['city'];
     $address = $_GET['address'];
     $postal_code = $_GET['postal_code'];
@@ -122,17 +123,17 @@ $html_content = "
                 <h1>Pirkinio Kvitas</h1>
             </div>
             <div class='receipt-details'>
-                <p>Sveiki,</p>
-                <p>Informuojame, kad gavome Jūsų užsakymą.</p>
+                <p>Hello,</p>
+                <p>We inform you that we have received your order.</p>
                 <br>
-                <p><strong>Užsakymo Numeris: </strong> #$order_number</p>
-                <p><strong>Data:</strong> $date</p>
-                <p><strong>Bendra Suma:</strong> $price €</p>
-                <p><strong>Pirkėjas:</strong> $firstName $lastName</p>
-                <p><strong>El. paštas:</strong> $email</p>
-                <p><strong>Pristatymas:</strong> kurjeriu į namus</p>
-                <p><strong>Adresas:</strong> $address, $city, Lietuva, $postal_code</p>
-                <p>Daugiau informacijos apie savo užsakymą galite pažiurėti paspaude <a href='https://goldenrod-cheetah-195571.hostingersite.com/order/$order_number'>šią nuorodą</a></p>
+                <p><strong>Order Number: </strong> #$order_number</p>
+                <p><strong>Date:</strong> $date</p>
+                <p><strong>Total Amount:</strong> $price €</p>
+                <p><strong>Buyer:</strong> $firstName $lastName</p>
+                <p><strong>Email:</strong> $email</p>
+                <p><strong>Delivery:</strong> courier to your home</p>
+                <p><strong>Address:</strong> $address, $city, $country, $postal_code</p>
+                <p>You can view more information about your order by clicking <a href='https://goldenrod-cheetah-195571.hostingersite.com/order/$order_number'>this link</a></p>
             </div>
         </div>
     </body>
@@ -156,11 +157,11 @@ try {
     $mail->CharSet    = 'UTF-8';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'keyon.customs@gmail.com';
+    $mail->Username   = 'keysonlab@gmail.com';
     $mail->Password   = GMAIL_APP_PASSWORD;
 
     // Recipients
-    $mail->setFrom('keyon.customs@gmail.com', 'KeyON');
+    $mail->setFrom('keysonlab@gmail.com', 'KeysON');
     $mail->addAddress($email, $firstName . " " . $lastName);
 
     // Content

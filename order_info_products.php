@@ -1,38 +1,8 @@
-<?php require 'includes/autoload.php'; ?>
+<?php require 'inlcudes/autoload.php'; ?>
 <?php include 'settings-core-7189.php'; ?>
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-if (!isset($_GET['order_id'])) {
-    header('Location: index.php');
-    exit;
-}
-
-$order_id = intval($_GET['order_id']);
-
-$orders = new Order;
-//$order = $orders->getOrderProducts($order_id); // <-- make this method fetch from orders_products
-
-if (!$order) {
-    die("Order not found.");
-}
-
-$name = $order['customer_name'];
-$address = $order['customer_address'];
-$price = $order['total_amount'];
-$email = $order['customer_email'];
-$date = $order['date'];
-$status = $order['status'];
-
-// fetch ordered items
-$db = $orders->connection();
-$stmt = $db->prepare("SELECT oi.*, p.name, p.image 
-                      FROM order_items oi 
-                      JOIN products p ON oi.product_id = p.id 
-                      WHERE oi.order_id = ?");
-$stmt->execute([$order_id]);
-$items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+error_reporting(E_ALL);  // Show all errors
+ini_set('display_errors', 1);  // Enable error display
 ?>
 
 <!DOCTYPE html>
@@ -45,20 +15,48 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <header>
-    <div class="logo">
-        <img src="../img/logo-no-background-2.png" alt="Your Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a class="dropbtn" href="./">Home</a></li>
-            <li><a class="dropbtn" href="../contacts.php">Contact</a></li>
-        </ul>
-    </nav>
+        <a href="<?php echo BASE_URL; ?>/">
+            <div class="logo">
+                <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+            </ul>
+        </nav>
 </header>
+
+<?php
+if(isset($_GET['order_number'])){
+    $order_number = $_GET['order_number'];
+
+    $orders = new Order;
+    $products = new Products;
+
+    $order = $orders->getProductOrder($order_number);
+
+    $name = $order['customer_name'];
+    $address = $order['address'];
+    $price = $order['price'];
+    $email = $order['email'];
+    $date = $order['date'];
+    $status = $order['status'];
+
+} else {
+    header('Location: index.php');
+}
+
+    $products_ids = explode(",", $order["products"]);
+
+
+?>
 
 <body>
     <div class="container">
-        <h1>Order Information</h1>
+        <h1>Order Information</h1>        
         <table>
             <tr>
                 <td>Date</td>
@@ -66,7 +64,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>
             <tr>
                 <td>Order Number</td>
-                <td class="center">#<?php echo $order_id; ?></td>
+                <td class="center">#<?php echo $order_number ?></td>
             </tr>
             <tr>
                 <td>Total Price</td>
@@ -74,15 +72,13 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         </table>
 
-        <!-- STATUS BAR -->
         <div class="status-bar">
             <div class="status">Ordered</div>
             <div class="status-line"></div>
-            <div class="status">Processing</div>
+            <div class="status">Being Prepared</div>
             <div class="status-line"></div>
             <div class="status">Shipped</div>
-            <div class="status-line"></div>
-            <div class="status">Delivered</div>
+
         </div>
 
         <script>
@@ -108,26 +104,22 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         </script>
 
-        <h2>Products</h2>
+        <h2>Keyboard Accesories</h2>
         <table>
-            <tr>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-            <?php foreach ($items as $item): ?>
-            <tr>
-                <td class="center">
-                    <img src="../img/products/<?php echo htmlspecialchars($item['image']); ?>" 
-                         alt="<?php echo htmlspecialchars($item['name']); ?>" 
-                         style="width: 80px; height: auto;">
-                </td>
-                <td class="center"><?php echo htmlspecialchars($item['name']); ?></td>
-                <td class="center"><?php echo $item['quantity']; ?></td>
-                <td class="center"><?php echo $item['price']; ?> €</td>
-            </tr>
-            <?php endforeach; ?>
+            
+
+                <?php 
+                
+                foreach($products_ids as $product_id){ 
+                    
+                    $product =  $products->getById($product_id);
+                    ?>
+                    <tr>
+                        <td><img style="width: 150px;" src="./img/products/<?php echo $product["image"] ?>"></td>
+                        <td><?php echo $product["name"] ?></td>
+                        <td><?php echo $product["price"] ?>€</td>
+                    </tr>
+               <?php } ?>
         </table>
 
         <h2>User Information</h2>

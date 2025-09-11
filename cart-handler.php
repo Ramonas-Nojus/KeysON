@@ -54,7 +54,7 @@ if(!empty($_SESSION['cart'])){
     <?php endforeach; ?>
     <div class="cart-summary">
         <p><strong>Total: $<?= number_format($total, 2) ?></strong></p>
-        <button class="checkout-btn">Checkout</button>
+        <a href="./order_products.php" class="checkout-btn">Checkout</a>
     </div>
 <?php
 } else {

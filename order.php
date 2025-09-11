@@ -240,7 +240,7 @@ tfoot td {
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" placeholder="you@example.com"
-                value="<?= isset($order['email']) ? htmlspecialchars($order['email']) : '' ?>" required>
+                value="<?= isset($user['email']) ? htmlspecialchars($user['email']) : '' ?>" required>
         </div>
 
         <div class="form-group">
@@ -250,7 +250,7 @@ tfoot td {
                 <?php
                 $countries = ["Austria","Belgium","Bulgaria","Croatia","Cyprus","Czech Republic","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Ireland","Italy","Latvia","Lithuania","Luxembourg","Malta","Netherlands","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden","United Kingdom"];
                 foreach ($countries as $c) {
-                    $selected = (isset($order['country']) && $order['country'] === $c) ? 'selected' : '';
+                    $selected = (isset($user['country']) && $user['country'] === $c) ? 'selected' : '';
                     echo "<option value='" . htmlspecialchars($c) . "' $selected>$c</option>";
                 }
                 ?>

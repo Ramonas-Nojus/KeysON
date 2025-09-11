@@ -15,15 +15,18 @@ ini_set('display_errors', 1);  // Enable error display
 </head>
 
 <header>
-    <div class="logo">
-        <img src="../img/logo-no-background-2.png" alt="Your Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a class="dropbtn" href="./">Home</a></li>
-            <li><a class="dropbtn" href="../contacts.php">Contact</a></li>
-        </ul>
-    </nav>
+        <a href="<?php echo BASE_URL; ?>/">
+            <div class="logo">
+                <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+            </ul>
+        </nav>
 </header>
 
 <?php

@@ -12,21 +12,23 @@ $stripe = new \Stripe\StripeClient($stripeSecretKey);
 $order = $_SESSION['order'];
 $user = $_SESSION['user'];
 
-
-if(isset($_POST['checkout'])){
-    $user['firstName']   = $_POST['firstName'];
-    $user['lastName']    = $_POST['lastName'];
-    $user['email']       = $_POST['email'];
-    $user['country']     = $_POST['country'];
-    $user['city']        = $_POST['city'];
-    $user['address']     = $_POST['address'];
-    $user['postal_code'] = $_POST['postal_code'];
-    $order['price'] = $_POST['total_price'] * 100;
-
-
-} else {
-    header('Location: index.php');
+if(!isset($_POST['checkout'])){
+    header('Location: '.BASE_URL);
+    exit;
 }
+
+// Save user data in session
+$_SESSION['user'] = [
+    'firstName'   => $_POST['firstName'],
+    'lastName'    => $_POST['lastName'],
+    'email'       => $_POST['email'],
+    'country'     => $_POST['country'],
+    'city'        => $_POST['city'],
+    'address'     => $_POST['address'],
+    'postal_code' => $_POST['postal_code'],
+];
+
+$order['price'] = $_POST['total_price'] * 100;
 
 
 

@@ -17,8 +17,31 @@ class Order extends Db{
         $sth->execute();
     }
 
+    public function addProductsOrder($customer_name, $email, $address, $products, $date, $price, $order_number){
+        
+        $sql = "INSERT INTO product_orders (customer_name, email, address, products, date, price, order_number, status) VALUES (:customer_name, :email, :address, :products, :date, :price, :order_number, 'Ordered')";
+        $sth = $this->connection()->prepare($sql);
+        $sth->bindValue(':customer_name', $customer_name, PDO::PARAM_STR);
+        $sth->bindValue(':email', $email, PDO::PARAM_STR);
+        $sth->bindValue(':address', $address, PDO::PARAM_STR);
+        $sth->bindValue(':products', $products, PDO::PARAM_STR);
+        $sth->bindValue(':date', $date, PDO::PARAM_STR);
+        $sth->bindValue(':price', $price, PDO::PARAM_STR);
+        $sth->bindValue(':order_number', $order_number, PDO::PARAM_STR);
+        $sth->execute();
+    }
+
     public function getOrder($order_number){
         $sql = "SELECT * FROM orders WHERE order_number = :order_number";
+        $sth = $this->connection()->prepare($sql);
+        $sth->bindValue(':order_number', $order_number, PDO::PARAM_STR);
+        $sth->execute();
+
+        return $sth->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function getProductOrder($order_number){
+        $sql = "SELECT * FROM product_orders WHERE order_number = :order_number";
         $sth = $this->connection()->prepare($sql);
         $sth->bindValue(':order_number', $order_number, PDO::PARAM_STR);
         $sth->execute();

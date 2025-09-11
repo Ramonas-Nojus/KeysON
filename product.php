@@ -34,16 +34,16 @@ if (!$product) {
 <body>
 
 <header>
-        <a href="./">
+        <a href="<?php echo BASE_URL; ?>/">
             <div class="logo">
-                <img src="./img/logo-no-background-2.png" alt="KeysOn">
+                <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
             </div>
         </a>
         <nav>
             <ul>
-                <li><a class="dropbtn" href="keyboard_builder.php">Builder</a></li>
-                <li><a class="dropbtn" href="products.php">Accessories</a></li>
-                <li><a class="dropbtn" href="contacts.php">Contacts</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
+                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
             </ul>
         </nav>
 </header>
@@ -259,7 +259,7 @@ if (!$product) {
                 <?php endforeach; ?>
                 <div class="cart-summary">
                     <p><strong>Total: $<?= number_format($total, 2) ?></strong></p>
-                    <button class="checkout-btn">Checkout</button>
+                    <a href="./order_products.php" class="checkout-btn">Checkout</a>
                 </div>
             <?php else: ?>
                 <p>Cart is empty</p>

@@ -44,6 +44,7 @@
                 <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/my_orders.php">My Assigned Orders</a></li>
                 <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/dashboard.php">Dashboard</a></li>
                 <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/logout.php">Logout</a></li>
+                <li><a class="dropbtn" href="./add_product.php">Add Product</a></li>
             </ul>
         </nav>
 </header>

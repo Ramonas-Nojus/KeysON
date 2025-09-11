@@ -1,8 +1,38 @@
-<?php require 'inlcudes/autoload.php'; ?>
+<?php require 'includes/autoload.php'; ?>
 <?php include 'settings-core-7189.php'; ?>
 <?php
-error_reporting(E_ALL);  // Show all errors
-ini_set('display_errors', 1);  // Enable error display
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if (!isset($_GET['order_id'])) {
+    header('Location: index.php');
+    exit;
+}
+
+$order_id = intval($_GET['order_id']);
+
+$orders = new Order;
+//$order = $orders->getOrderProducts($order_id); // <-- make this method fetch from orders_products
+
+if (!$order) {
+    die("Order not found.");
+}
+
+$name = $order['customer_name'];
+$address = $order['customer_address'];
+$price = $order['total_amount'];
+$email = $order['customer_email'];
+$date = $order['date'];
+$status = $order['status'];
+
+// fetch ordered items
+$db = $orders->connection();
+$stmt = $db->prepare("SELECT oi.*, p.name, p.image 
+                      FROM order_items oi 
+                      JOIN products p ON oi.product_id = p.id 
+                      WHERE oi.order_id = ?");
+$stmt->execute([$order_id]);
+$items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -26,32 +56,9 @@ ini_set('display_errors', 1);  // Enable error display
     </nav>
 </header>
 
-<?php
-if(isset($_GET['order_number'])){
-    $order_number = $_GET['order_number'];
-
-    $orders = new Order;
-    $order = $orders->getOrder($order_number);
-
-    $name = $order['customer_name'];
-    $address = $order['address'];
-    $price = $order['price'];
-    $email = $order['email'];
-    $date = $order['date'];
-    $status = $order['status'];
-
-    $components = explode(",", $order['components']);
-    $component_images = explode(",", $order['component_images']);
-
-} else {
-    header('Location: index.php');
-}
-
-?>
-
 <body>
     <div class="container">
-        <h1>Order Information</h1>        
+        <h1>Order Information</h1>
         <table>
             <tr>
                 <td>Date</td>
@@ -59,7 +66,7 @@ if(isset($_GET['order_number'])){
             </tr>
             <tr>
                 <td>Order Number</td>
-                <td class="center">#<?php echo $order_number ?></td>
+                <td class="center">#<?php echo $order_id; ?></td>
             </tr>
             <tr>
                 <td>Total Price</td>
@@ -67,12 +74,11 @@ if(isset($_GET['order_number'])){
             </tr>
         </table>
 
+        <!-- STATUS BAR -->
         <div class="status-bar">
             <div class="status">Ordered</div>
             <div class="status-line"></div>
-            <div class="status">Components Received</div>
-            <div class="status-line"></div>
-            <div class="status">Being Assembled</div>
+            <div class="status">Processing</div>
             <div class="status-line"></div>
             <div class="status">Shipped</div>
             <div class="status-line"></div>
@@ -102,46 +108,27 @@ if(isset($_GET['order_number'])){
             }
         </script>
 
-        <h2>Keyboard Components</h2>
+        <h2>Products</h2>
         <table>
             <tr>
-                <td>Keyboard Size</td>
-                <td class="center"><?php echo $components[0]; ?>%</td>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
             </tr>
+            <?php foreach ($items as $item): ?>
             <tr>
-                <td>Keyboard Color</td>
-                <td class="center"><?php echo $components[1]; ?></td>
+                <td class="center">
+                    <img src="../img/products/<?php echo htmlspecialchars($item['image']); ?>" 
+                         alt="<?php echo htmlspecialchars($item['name']); ?>" 
+                         style="width: 80px; height: auto;">
+                </td>
+                <td class="center"><?php echo htmlspecialchars($item['name']); ?></td>
+                <td class="center"><?php echo $item['quantity']; ?></td>
+                <td class="center"><?php echo $item['price']; ?> €</td>
             </tr>
-            <tr>
-                <td>Switches</td>
-                <td class="center"><?php echo $components[2]; ?></td>
-            </tr>
-            <tr>
-                <td>Keycaps</td>
-                <td class="center"><?php echo $components[3]; ?></td>
-            </tr>
-            <tr>
-                <td>Cable</td>
-                <td class="center"><?php echo $components[4]; ?></td>
-            </tr>
+            <?php endforeach; ?>
         </table>
-
-        <div id="container" style="width: 65%; margin: auto; border: 3px solid; border-radius: 10px; position: relative; overflow: hidden;">
-            <img id="image" src="../img/<?php echo $component_images[0].'/'.$component_images[1]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
-            <img src="../img/<?php echo $component_images[0].'/'.$component_images[2]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
-            <img src="../img/<?php echo $component_images[0].'/'.$component_images[3]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
-            <img src="../img/<?php echo $component_images[0].'/'.$component_images[4]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
-        </div>
-
-        <script>
-            window.addEventListener('load', function() {
-                document.getElementById('container').style.height = document.getElementById('image').height + 'px';
-            });
-
-            window.addEventListener('resize', function() {
-                document.getElementById('container').style.height = document.getElementById('image').height + 'px';
-            });
-        </script>
 
         <h2>User Information</h2>
         <table>

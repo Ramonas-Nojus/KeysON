@@ -313,14 +313,12 @@ button:hover {
                     <input type="hidden" name="selectedKeyboardSize" id="selectedKeyboardSize">
                     <input type="hidden" name="selectedKeyboardColor" id="selectedKeyboardColor">
                     <input type="hidden" name="selectedSwitchType" id="selectedSwitchType">
-                    <input type="hidden" name="stabilizers" id="stabilizers">
                     <input type="hidden" name="selectedKeycaps" id="selectedKeycaps">
                     <input type="hidden" name="selectedCableColor" id="selectedCableColor">
 
                     <input type="hidden" name="selectedKeyboardSizePrice" id="selectedKeyboardSizePrice">
                     <input type="hidden" name="selectedKeyboardColorPrice" id="selectedKeyboardColorPrice">
                     <input type="hidden" name="selectedSwitchTypePrice" id="selectedSwitchTypePrice">
-                    <input type="hidden" name="stabilizersPrice" id="stabilizersPrice">
                     <input type="hidden" name="selectedKeycapsPrice" id="selectedKeycapsPrice">
                     <input type="hidden" name="selectedCableColorPrice" id="selectedCableColorPrice">
                     <input type="hidden" name="pvm" id="pvm">
@@ -328,7 +326,6 @@ button:hover {
                     <input type="hidden" name="KeyboardSizeValue" id="KeyboardSizeValue">
                     <input type="hidden" name="KeyboardColorValue" id="KeyboardColorValue">
                     <input type="hidden" name="SwitchTypeValue" id="SwitchTypeValue">
-                    <input type="hidden" name="stabilizersValue" id="stabilizersValue">
                     <input type="hidden" name="KeycapsValue" id="KeycapsValue">
                     <input type="hidden" name="CableColorValue" id="CableColorValue">
                 </form>

@@ -348,11 +348,24 @@ nav ul li a:hover {
 }
 
 .dropbtn {
-    border-radius: 10px;
+    border-radius: 8px;                          /* slightly smaller for header */
+    background-color: rgba(0, 0, 0, 0.4);       /* semi-transparent for header */
+    color: #fff;                                /* white text */
+    font-size: 15px;                            
+    font-weight: 500;
+    padding: 8px 14px;                          /* smaller padding for header */
+    border: none;                               /* clean look */
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s;
+}
 
-    background-color: #0000003a;
-    color: white;
-    font-size: 16px;
-    padding: 10px; 
-    border: none;
-  }
+/* Hover effect */
+.dropbtn:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* subtle light overlay on hover */
+    transform: translateY(-1px);                 /* slight lift on hover */
+}
+
+/* Active / click effect */
+.dropbtn:active {
+    transform: translateY(0);
+}

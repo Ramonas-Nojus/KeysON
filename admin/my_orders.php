@@ -36,9 +36,11 @@ $orders = new Order;
                 <li><a class="dropbtn" href="./my_orders.php">My Assigned Orders</a></li>
                 <li><a class="dropbtn" href="./dashboard.php">Dashboard</a></li>
                 <li><a class="dropbtn" href="./logout.php">Logout</a></li>
+                <li><a class="dropbtn" href="./add_product.php">Add Product</a></li>
             </ul>
         </nav>
 </header>
+
 <div class="container">
         <section id="orders">
         <h2>My Assigned Orders</h2>

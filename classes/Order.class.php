@@ -4,7 +4,7 @@ class Order extends Db{
 
     public function addOrder($customer_name, $email, $address, $components, $date, $price, $order_number, $component_images){
         
-        $sql = "INSERT INTO orders (customer_name, email, address, components, date, price, order_number, status, component_images) VALUES (:customer_name, :email, :address, :components, :date, :price, :order_number, 'Užsakytas', :component_images)";
+        $sql = "INSERT INTO orders (customer_name, email, address, components, date, price, order_number, status, component_images) VALUES (:customer_name, :email, :address, :components, :date, :price, :order_number, 'Ordered', :component_images)";
         $sth = $this->connection()->prepare($sql);
         $sth->bindValue(':customer_name', $customer_name, PDO::PARAM_STR);
         $sth->bindValue(':email', $email, PDO::PARAM_STR);

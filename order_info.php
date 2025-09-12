@@ -173,4 +173,9 @@ if(isset($_GET['order_number'])){
         <p class="copyright">All rights reserved.</p>
     </div>
 </body>
+<script>
+  document.querySelector(".menu-toggle").addEventListener("click", () => {
+    document.querySelector("header nav").classList.toggle("show");
+  });
+</script>
 </html>

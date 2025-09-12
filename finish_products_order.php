@@ -15,7 +15,7 @@ if(isset($_GET['email'])){
     $city = $_GET['city'];
     $address = $_GET['address'];
     $postal_code = $_GET['postal_code'];
-    $price = $_GET['price'];
+    $price = $_GET['price']/100;
     $email = $_GET['email'];
 
     $date = date('Y/m/d');
@@ -41,7 +41,7 @@ $order->addProductsOrder(
     $full_address,
     $products_string,
     $date,
-    $price/100,
+    $price,
     $order_number
 );
 

@@ -15,95 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    color: #222;
-  }
-
-  .guides-section {
-    max-width: 1100px;
-    margin: 60px auto;
-    background: #fff;
-    padding: 50px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-  }
-
-  .guides-section h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-  }
-
-  .guides-section p {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 25px;
-  }
-
-  .guides-section h2 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 30px 0 15px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-left: 4px solid #6a11cb;
-    padding-left: 10px;
-  }
-
-  .guide-card {
-    background: #fafafa;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .guide-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  }
-
-  .guide-card h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  .guide-card p {
-    font-size: 0.9rem;
-    color: #555;
-  }
-
-  .guide-card a {
-    display: inline-block;
-    margin-top: 12px;
-    font-weight: 600;
-    color: #6a11cb;
-    text-decoration: none;
-  }
-
-  .future-posts .guide-card {
-    background: #f3f3f3;
-    color: #999;
-    text-align: center;
-    border: 2px dashed #ddd;
-    cursor: default;
-  }
-
-  .future-posts .guide-card h3 {
-    color: #666;
-    margin-bottom: 5px;
-  }
-
-  .future-posts .guide-card p {
-    color: #999;
-    font-size: 0.85rem;
-  }
+  
 </style>
 
 <div class="guides-section">
@@ -118,13 +30,13 @@
     <div class="guide-card">
       <h3>Keyboard Size</h3>
       <p>Popular sizes: Full (100%), TKL (80%), 75%, 65%, 60%. KeysON explains compatibility + ergonomics.</p>
-      <a href="#">Read: Best Keyboard Sizes 2025 →</a>
+      <a href="https://niterria.com/post/how-to-choose-the-best-keyboard-size-for-you-full-guide?p_id=500">Read: Best Keyboard Sizes 2025 →</a>
     </div>
 
     <div class="guide-card">
       <h3>Switches</h3>
       <p>Pick by feel, sound, and speed. Learn the difference between clicky, linear, and tactile.</p>
-      <a href="#">Read: Best Switches 2025 →</a>
+      <a href="https://niterria.com/post/clicky-linear-or-tactile-discover-the-best-mechanical-keyboard-switches-for-2025?p_id=491">Read: Best Switches 2025 →</a>
     </div>
 
     <div class="guide-card">

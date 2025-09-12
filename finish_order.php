@@ -158,11 +158,11 @@ try {
     $mail->CharSet    = 'UTF-8';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'keyon.customs@gmail.com';
+    $mail->Username   = GMAIL;
     $mail->Password   = GMAIL_APP_PASSWORD;
 
     // Recipients
-    $mail->setFrom('keyon.customs@gmail.com', 'KeysON');
+    $mail->setFrom(GMAIL, 'KeysON');
     $mail->addAddress($email, $firstName . " " . $lastName);
 
     // Content

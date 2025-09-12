@@ -35,11 +35,11 @@
                 $mail->CharSet    = 'UTF-8';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'keyon.customs@gmail.com';
-                $mail->Password   = getenv('GMAIL_APP_PASSWORD');
+                $mail->Username   = GMAIL;
+                $mail->Password   = GMAIL_APP_PASSWORD;
 
-                $mail->setFrom('keyon.customs@gmail.com', 'KeysON');
-                $mail->addAddress('keyon.customs@gmail.com', $name);
+                $mail->setFrom(GMAIL, 'KeysON');
+                $mail->addAddress(GMAIL, $name);
 
                 $mail->isHTML(true);
                 $mail->Subject = $subject;

@@ -34,19 +34,24 @@ if (!$product) {
 <body>
 
 <header>
-        <a href="<?php echo BASE_URL; ?>/">
-            <div class="logo">
-                <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
-            </div>
-        </a>
-        <nav>
-            <ul>
-                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
-                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
-                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
-            </ul>
-        </nav>
+  <a href="<?php echo BASE_URL; ?>/">
+    <div class="logo">
+      <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
+    </div>
+  </a>
+
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+  <nav>
+    <ul>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+    </ul>
+  </nav>
 </header>
+
 
 <style>
 /* =========================
@@ -65,7 +70,7 @@ if (!$product) {
    PRODUCT IMAGE GALLERY
    ========================= */
 .product-gallery {
-  flex: 1 1 400px;
+  flex: 1;
   justify-content: center;
   align-items: center;
 }
@@ -195,9 +200,6 @@ if (!$product) {
   }
 }
 
-/* =========================
-   SIDEBAR (optional reuse)
-   ========================= */
 .selection-panel {
   flex: 0.5;
 }

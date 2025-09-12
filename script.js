@@ -366,3 +366,7 @@ function playSound(id){
     document.querySelectorAll('audio').forEach(a=>{ a.pause(); a.currentTime=0; });
     document.getElementById(id).play();
 }
+
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+    document.querySelector("header nav").classList.toggle("show");
+  });

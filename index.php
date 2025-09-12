@@ -78,5 +78,9 @@
     </div>
 </body>
 
-<script type="module" src="script.js"></script>
+<script>
+  document.querySelector(".menu-toggle").addEventListener("click", () => {
+    document.querySelector("header nav").classList.toggle("show");
+  });
+</script>
 </html>

@@ -24,3 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+    document.querySelector("header nav").classList.toggle("show");
+  });

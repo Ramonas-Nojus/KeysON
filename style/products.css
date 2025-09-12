@@ -1,15 +1,8 @@
 button:hover {
   transform: scale(1.2);
 }
-/* Simple card grid styling */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;  /* centers your grid */
-    margin: 0 auto;     /* keeps it in the middle */
-}
+
+
 
 .card img {
     width: 100%;   /* make image scale with card */
@@ -206,3 +199,209 @@ a {
     border-radius: 5px;
     margin-right: 5px;
 }
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+
+
+
+/* ---------- CARDS ---------- */
+.card {
+    padding: 15px;
+    font-size: 16px;
+}
+
+.card h3 {
+    font-size: 18px;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+/* ---------- BUTTONS ---------- */
+button,
+.checkout-btn {
+    padding: 10px 18px;
+    font-size: 16px;
+    width: auto;
+}
+
+/* ---------- SELECTION PANEL ---------- */
+.selection-panel {
+    position: sticky;
+    top: 20px;
+    width: 200px;
+    margin: 0;
+    padding: 20px;
+}
+
+.category-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.category-selection a {
+    flex: 1 1 auto;
+    padding: 10px;
+}
+
+/* ---------- CART ITEMS ---------- */
+.cart-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-item img {
+    width: 75px;
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    width: auto;
+}
+
+.price-input {
+    width: 80px;
+}
+
+
+    /* ---------- GRID ---------- */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    /* ---------- HAMBURGER / HEADER ---------- */
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        z-index: 1001;
+        color: inherit;
+    }
+
+    header nav {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background: inherit;
+        text-align: center;
+        z-index: 1000;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, border-bottom 0.3s ease;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-bottom: none;
+    }
+
+    header nav.show {
+        max-height: 500px;
+        border-bottom: 3px solid #000;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    header .logo img {
+        max-height: 45px;
+        width: auto;
+        height: auto;
+    }
+
+    /* ---------- CARDS ---------- */
+    .card {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .card h3 {
+        font-size: 16px;
+    }
+
+    .card p {
+        font-size: 13px;
+    }
+
+    /* ---------- BUTTONS ---------- */
+    button:not(.menu-toggle),
+    .checkout-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    /* ---------- SELECTION PANEL ---------- */
+    .selection-panel {
+        position: relative;
+        width: 95%;
+        max-width: 400px;
+        margin: 0 auto 20px auto;
+        padding: 10px;
+        top: unset;
+        box-sizing: border-box;
+    }
+
+    .category-selection {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .category-selection a {
+        flex: 1 1 40%;
+        font-size: 14px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    /* ---------- CART ITEMS ---------- */
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+
+    .cart-item img {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 10px;
+    }
+
+    .cart-item-details {
+        width: 100%;
+    }
+
+    .price-input {
+        width: 100%;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+}
+

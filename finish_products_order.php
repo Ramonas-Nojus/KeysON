@@ -34,6 +34,9 @@ $product_ids = array_column($_SESSION['cart'], 'id');
 
 $products_string = implode(",", $product_ids);
 
+$privacy_policy_consent = "Accepted Privacy Policy (v1.0) on ". $date;
+
+
 $order = new Order;
 $order->addProductsOrder(
     $firstName . ' ' . $lastName,
@@ -42,7 +45,8 @@ $order->addProductsOrder(
     $products_string,
     $date,
     $price,
-    $order_number
+    $order_number,
+    $privacy_policy_consent
 );
 
 $_SESSION['cart'] = [];
@@ -164,7 +168,7 @@ try {
     $mail->Password   = GMAIL_APP_PASSWORD;
 
     // Recipients
-    $mail->setFrom(GMAIL, 'KeysON');
+    $mail->setFrom(GMAIL, 'KeysON Lab');
     $mail->addAddress($email, $firstName . " " . $lastName);
 
     // Content
@@ -174,7 +178,7 @@ try {
 
     $mail->send();
 
-    header('Location: index.php');
+    header('Location: thank_you.php');
 } catch (Exception $e) {
     echo "Error sending email: {$mail->ErrorInfo}";
 }

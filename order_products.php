@@ -261,7 +261,35 @@ tfoot td {
 
 
 
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
 
+  .form-check input[type="checkbox"] {
+    margin-right: 10px;
+    margin-top: 2px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  .form-check label {
+    cursor: pointer;
+    color: #333;
+  }
+
+  .form-check a {
+    color: #4B18D2;
+    text-decoration: none;
+  }
+
+  .form-check a:hover {
+    text-decoration: underline;
+  }
 
 </style>
 </head>
@@ -351,6 +379,20 @@ tfoot td {
                value="<?= isset($user['postal_code']) ? htmlspecialchars($user['postal_code']) : '' ?>" required>
     </div>
 
+    <div class="form-check">
+    <input type="checkbox" id="privacy" name="privacy" required>
+    <label for="privacy">
+        I agree to the <a href="<?php echo BASE_URL ?>/privacy_policy.php" target="_blank">Privacy Policy</a>.
+    </label>
+    </div>
+
+    <div class="form-check">
+    <input type="checkbox" id="preorder" name="preorder" required>
+    <label for="preorder">
+            I acknowledge that this is a <strong>preorder</strong>. My order will be assembled and shipped only once all parts are available, and delivery times may vary.
+    </label>
+    </div>
+
     <!-- Hidden total -->
     <input type="hidden" name="total_price" value="<?= isset($total_price) ? $total_price : 0 ?>">
 
@@ -358,9 +400,11 @@ tfoot td {
 </form>
 </div>
 
-<div class="footer">
-    &copy; 2025 KeysON
-</div>
+    <div style="text-align:center; padding:20px; font-size:14px; color: white;">
+        &copy; 2025 KeysON Lab | 
+        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
+        <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
+    </div>
 <script>
   document.querySelector(".menu-toggle").addEventListener("click", () => {
     document.querySelector("header nav").classList.toggle("show");

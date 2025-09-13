@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Keyboard Building Guide</title>
+    <title>Guides | KeysON Lab</title>
     <link rel="stylesheet" href="./style/guide.css"> <!-- Make sure to link your CSS file -->
 </head>
 <body>
@@ -101,9 +101,10 @@
 
 
     </div>
-    <div class="footer">
-        &copy; 2024 KeyON
-        <p class="copyright">All rights reserved.</p>
+   <div style="text-align:center; padding:20px; font-size:14px; color: white;">
+        &copy; 2025 KeysON Lab | 
+        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
+        <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
     </div>
 </body>
 <script>

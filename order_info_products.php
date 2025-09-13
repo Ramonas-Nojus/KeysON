@@ -144,11 +144,11 @@ if(isset($_GET['order_number'])){
         </table>
     </div>
 
-    <div class="footer">
-        &copy; 2025 KeysON Lab
-        <p class="copyright">All rights reserved.</p>
+    <div style="text-align:center; padding:20px; font-size:14px; color: white;">
+        &copy; 2025 KeysON Lab | 
+        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
+        <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
     </div>
-</body>
 <script>
   document.querySelector(".menu-toggle").addEventListener("click", () => {
     document.querySelector("header nav").classList.toggle("show");

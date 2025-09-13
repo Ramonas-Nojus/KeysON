@@ -37,13 +37,14 @@ if(isset($_GET['KeyboardSize'])){
 $components = $KeyboardSize.','.$KeyboardColor.','.$SwitchType.','.$Keycaps.','.$CableColor;
 $component_images = $KeyboardSizeValue.','.$KeyboardColorValue.','.$SwitchTypeValue.','.$KeycapsValue.','.$CableColorValue;
 
+$privacy_policy_consent = "Accepted Privacy Policy (v1.0) on ". $date;
 
 $order_number = date('Ymd') . uniqid();
 
 $full_address = $country.', '. $city. ', '.$address.', '.$postal_code;
 
 $order = new Order;
-$order->addOrder($firstName.' '.$lastName, $email, $full_address, $components, $date, $price, $order_number, $component_images);
+$order->addOrder($firstName.' '.$lastName, $email, $full_address, $components, $date, $price, $order_number, $component_images, $privacy_policy_consent);
 
 $html_content = "
 
@@ -162,7 +163,7 @@ try {
     $mail->Password   = GMAIL_APP_PASSWORD;
 
     // Recipients
-    $mail->setFrom(GMAIL, 'KeysON');
+    $mail->setFrom(GMAIL, 'KeysON Lab');
     $mail->addAddress($email, $firstName . " " . $lastName);
 
     // Content
@@ -172,7 +173,7 @@ try {
 
     $mail->send();
 
-    header('Location: index.php');
+    header('Location: thank_you.php');
 } catch (Exception $e) {
     echo "Error sending email: {$mail->ErrorInfo}";
 }

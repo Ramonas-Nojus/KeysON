@@ -2,9 +2,9 @@
 
 class Order extends Db{
 
-    public function addOrder($customer_name, $email, $address, $components, $date, $price, $order_number, $component_images){
+    public function addOrder($customer_name, $email, $address, $components, $date, $price, $order_number, $component_images, $privacy_policy_consent){
         
-        $sql = "INSERT INTO orders (customer_name, email, address, components, date, price, order_number, status, component_images) VALUES (:customer_name, :email, :address, :components, :date, :price, :order_number, 'Ordered', :component_images)";
+        $sql = "INSERT INTO orders (customer_name, email, address, components, date, price, order_number, status, component_images, privacy_policy_consent) VALUES (:customer_name, :email, :address, :components, :date, :price, :order_number, 'Ordered', :component_images, :privacy_policy_consent)";
         $sth = $this->connection()->prepare($sql);
         $sth->bindValue(':customer_name', $customer_name, PDO::PARAM_STR);
         $sth->bindValue(':email', $email, PDO::PARAM_STR);
@@ -14,12 +14,14 @@ class Order extends Db{
         $sth->bindValue(':price', $price, PDO::PARAM_STR);
         $sth->bindValue(':order_number', $order_number, PDO::PARAM_STR);
         $sth->bindValue(':component_images', $component_images, PDO::PARAM_STR);
+        $sth->bindValue(':privacy_policy_consent', $privacy_policy_consent, PDO::PARAM_STR);
+
         $sth->execute();
     }
 
-    public function addProductsOrder($customer_name, $email, $address, $products, $date, $price, $order_number){
+    public function addProductsOrder($customer_name, $email, $address, $products, $date, $price, $order_number, $privacy_policy_consent){
         
-        $sql = "INSERT INTO product_orders (customer_name, email, address, products, date, price, order_number, status) VALUES (:customer_name, :email, :address, :products, :date, :price, :order_number, 'Ordered')";
+        $sql = "INSERT INTO product_orders (customer_name, email, address, products, date, price, order_number, status, privacy_policy_consent) VALUES (:customer_name, :email, :address, :products, :date, :price, :order_number, 'Ordered', :privacy_policy_consent)";
         $sth = $this->connection()->prepare($sql);
         $sth->bindValue(':customer_name', $customer_name, PDO::PARAM_STR);
         $sth->bindValue(':email', $email, PDO::PARAM_STR);
@@ -28,6 +30,8 @@ class Order extends Db{
         $sth->bindValue(':date', $date, PDO::PARAM_STR);
         $sth->bindValue(':price', $price, PDO::PARAM_STR);
         $sth->bindValue(':order_number', $order_number, PDO::PARAM_STR);
+        $sth->bindValue(':privacy_policy_consent', $privacy_policy_consent, PDO::PARAM_STR);
+
         $sth->execute();
     }
 

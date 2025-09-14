@@ -13,7 +13,7 @@
      <style>
 
 
-        .thank-you-container {
+        .container {
         text-align: center;
         background: #fff;
         padding: 40px;
@@ -49,11 +49,9 @@
 
     <div class="container">
 
-        <div class="thank-you-container">
             <h1>Thank You!</h1>
             <p>Your order has been received and is being processed. You will receive an email confirmation shortly with your order details.</p>
             <a href="<?php echo BASE_URL ?>" class="button">Return to Home</a>
-        </div>
 
     </div>
 

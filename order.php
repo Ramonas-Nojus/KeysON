@@ -221,6 +221,96 @@ tfoot td {
     text-decoration: underline;
   }
 
+
+
+  /* Hide hamburger by default */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+}@media (max-width: 768px) {
+  /* Show hamburger on phones */
+  .menu-toggle {
+    display: block;
+    color: inherit;
+    position: relative;
+    z-index: 1001; /* stays above everything */
+  }
+
+  /* Nav dropdown hidden by default */
+  header nav {
+    position: absolute;
+    top: 70px;       /* adjust for header height */
+    right: 0;
+    width: 100%;
+    background: inherit;
+    text-align: center;
+    z-index: 1000;
+
+    /* Smooth dropdown animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, box-shadow 0.3s ease;
+    border-radius: 0 0 12px 12px;  /* rounded bottom corners */
+
+  }
+
+  /* Stack menu items vertically */
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 0;
+  }
+
+  /* Show menu when toggled */
+  header nav.show {
+    max-height: 300px; /* adjust if menu is taller */
+  }
+
+  /* Logo fix */
+  header .logo img {
+    max-height: 45px;
+    height: auto;
+    width: auto;
+  }
+}
+
+
+@media (max-width: 768px) {
+  header nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background: inherit;
+    text-align: center;
+    z-index: 1000;
+
+    /* animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    border-radius: 0 0 12px 12px;
+
+    /* ❌ no border here */
+    border-bottom: none;
+  }
+
+  header nav.show {
+    max-height: 300px; /* adjust if menu is taller */
+
+    /* ✅ border only when open */
+    border-bottom: 3px solid #000;
+  }
+}
+
+
+
+
+
 </style>
 </head>
 <body>

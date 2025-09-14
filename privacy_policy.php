@@ -9,8 +9,6 @@
 <body>
     <?php include './inlcudes/header.php'; ?>
 
-    <div class="container">
-
         <!-- Guides section: KeysON core + integrated Niterria posts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -66,7 +64,7 @@
     }
   </style>
 
-<div class="container">
+<div class="guides-section">
  <main>
     <h1>Privacy Policy</h1>
     <p class="last-updated"><strong>Last updated:</strong> 13 September 2025</p>
@@ -133,15 +131,14 @@
       Address: <strong>Aviles Spain</strong>
     </p>
   </main>
-
 </div>
 
-    <div style="text-align:center; padding:20px; font-size:14px; color: grey;">
+
+    <div style="text-align:center; padding:20px; font-size:14px; color: white;">
         &copy; 2025 KeysON Lab | 
         <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
         <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
     </div>
-
 </body>
 <script>
   document.querySelector(".menu-toggle").addEventListener("click", () => {

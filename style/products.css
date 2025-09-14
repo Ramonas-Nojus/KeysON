@@ -301,7 +301,7 @@ button,
 
     header nav {
         position: absolute;
-        top: 60px;
+        top: 70px;
         right: 0;
         width: 100%;
         background: inherit;
@@ -311,7 +311,6 @@ button,
         overflow: hidden;
         transition: max-height 0.35s ease, border-bottom 0.3s ease;
         border-radius: 0 0 12px 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         border-bottom: none;
     }
 

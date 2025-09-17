@@ -37,8 +37,8 @@ if(!empty($_SESSION['cart'])){
     foreach($_SESSION['cart'] as $product):
         $total += $product['price']; ?>
         <div class="cart-item">
-            <a style="color: black;" href="./product.php?p_id=<?= $product['id'] ?>">
-                <img src="img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+            <a style="color: black;" href="<?php echo BASE_URL ?>/product/<?= $product['id'] ?>">
+                <img src="<?php echo BASE_URL ?>/img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                 <div class="cart-item-details">
                     <h3><?= htmlspecialchars($product['name']) ?></h3>
                     <p><strong><?= htmlspecialchars($product['price']) ?>€</strong></p>
@@ -54,7 +54,7 @@ if(!empty($_SESSION['cart'])){
     <?php endforeach; ?>
     <div class="cart-summary">
         <p><strong>Total: <?= number_format($total, 2) ?>€</strong></p>
-        <a href="./order_products.php" class="checkout-btn">Checkout</a>
+        <a href="<?php echo BASE_URL ?>/order_products" class="checkout-btn">Checkout</a>
     </div>
 <?php
 } else {

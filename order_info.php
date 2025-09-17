@@ -11,8 +11,8 @@ ini_set('display_errors', 1);  // Enable error display
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Information | KeysON Lab</title>
-    <link rel="icon" type="image/png" href="./img/favicon.png">
-    <link rel="stylesheet" href="./style/order_info.css">
+    <link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/order_info.css">
 </head>
 
 <header>
@@ -27,9 +27,9 @@ ini_set('display_errors', 1);  // Enable error display
 
   <nav>
     <ul>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts">Contacts</a></li>
     </ul>
   </nav>
 </header>
@@ -136,10 +136,10 @@ if(isset($_GET['order_number'])){
         </table>
 
         <div id="container" style="width: 65%; margin: auto; border: 1px solid; border-radius: 10px; position: relative; overflow: hidden;">
-            <img id="image" src="../img/<?php echo $component_images[0].'/'.$component_images[1]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
-            <img src="../img/<?php echo $component_images[0].'/'.$component_images[2]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
-            <img src="../img/<?php echo $component_images[0].'/'.$component_images[3]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
-            <img src="../img/<?php echo $component_images[0].'/'.$component_images[4]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
+            <img id="image" src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[1]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
+            <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[2]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
+            <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[3]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
+            <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[4]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
         </div>
 
         <script>

@@ -15,6 +15,7 @@ if(isset($_POST['checkout'])){
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
+    $phone = $_POST['phone'];
     $country = $_POST['country'];
     $city = $_POST['city'];
     $address = $_POST['address'];
@@ -26,12 +27,26 @@ if(isset($_POST['checkout'])){
 }
 
 
+// Save user data in session
+$_SESSION['user'] = [
+    'firstName'   => $_POST['firstName'],
+    'lastName'    => $_POST['lastName'],
+    'email'       => $_POST['email'],
+    'phone'       => $_POST['phone'],
+    'country'     => $_POST['country'],
+    'city'        => $_POST['city'],
+    'address'     => $_POST['address'],
+    'postal_code' => $_POST['postal_code'],
+];
+
+
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 
 $success_url =  BASE_URL. '/finish_products_order.php?' .
                 'firstName=' . urlencode($firstName) .
                 '&lastName=' . urlencode($lastName) .
                 '&email=' . urlencode($email).
+                '&phone=' . urlencode($phone).
                 '&country=' . urlencode($country) .
                 '&city=' . urlencode($city) .
                 '&address=' . urlencode($address) .

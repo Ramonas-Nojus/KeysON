@@ -29,16 +29,16 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
     <title>Accesories | KeysON Lab</title>
-    <link rel="icon" type="image/png" href="./img/favicon.png">
-    <link rel="stylesheet" href="./style/builder.css">
-    <link rel="stylesheet" href="./style/products.css">
+    <link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/builder.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/products.css">
 
 </head>
 <body>
 
 
 <header>
-  <a href="<?php echo BASE_URL; ?>/">
+  <a href="<?php echo BASE_URL; ?>">
     <div class="logo">
       <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
     </div>
@@ -49,9 +49,9 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
 
   <nav>
     <ul>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts">Contacts</a></li>
     </ul>
   </nav>
 </header>
@@ -102,8 +102,8 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
             <div class="products-grid">
                 <?php foreach($accessories as $product): ?>
                     <div class="card">
-                        <a style="color: black;" href="./product.php?p_id=<?= $product['id'] ?>">
-                            <img src="img/products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
+                        <a style="color: black;" href="<?php echo BASE_URL ?>/product/<?= $product['id'] ?>">
+                            <img src="<?php echo BASE_URL ?>/img/products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
                             <h3><?= $product['name'] ?></h3>
                             <p><strong><?= $product['price'] ?>€</strong></p>
                         </a>
@@ -127,8 +127,8 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
                 foreach($_SESSION['cart'] as $product):
                     $total += $product['price']; ?>
                     <div class="cart-item">
-                        <a style="color: black;" href="./product.php?p_id=<?= $product['id'] ?>">
-                            <img src="img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                        <a style="color: black;" href="<?php echo BASE_URL ?>/product/<?= $product['id'] ?>">
+                            <img src="<?php echo BASE_URL ?>/img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                             <div class="cart-item-details">
                                 <h3><?= htmlspecialchars($product['name']) ?></h3>
                                 <p><strong><?= htmlspecialchars($product['price']) ?>€</strong></p>
@@ -144,7 +144,7 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
                 <?php endforeach; ?>
                 <div class="cart-summary">
                     <p><strong>Total: <?= number_format($total, 2) ?>€</strong></p>
-                    <a href="./order_products.php" class="checkout-btn">Checkout</a>
+                    <a href="<?php echo BASE_URL ?>/order_products" class="checkout-btn">Checkout</a>
                 </div>
             <?php else: ?>
                 <p>Cart is empty</p>
@@ -159,10 +159,10 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
 
     <div style="text-align:center; padding:20px; font-size:14px; color: white;">
         &copy; 2025 KeysON Lab | 
-        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
+        <a href="<?php echo BASE_URL ?>/privacy_policy" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
         <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
     </div>
 
-    <script src="products.js"></script>
+    <script src="<?php echo BASE_URL ?>/products.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<?php include 'settings-core-7189.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,25 @@
 </head>
 <body>
 
-<?php include "./inlcudes/header.php"; ?>
+
+<header>
+  <a href="<?php echo BASE_URL; ?>/">
+    <div class="logo">
+      <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
+    </div>
+  </a>
+
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+  <nav>
+    <ul>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+    </ul>
+  </nav>
+</header>
 
     <div class="hero">
         <div>
@@ -62,7 +81,7 @@
             <div class="centered">
                 <p>
                     We understand that choosing the right keyboard components can raise many questions.
-                    That’s why we created the "<a href="/guide.php">Guides</a>" section, where you’ll find detailed information and tips on selecting the best components for your keyboard. This will help you make informed decisions and build a keyboard that meets your needs and expectations. Learn more about switches, keycap options, layouts, and other important factors to create a unique, high-quality keyboard.
+                    That’s why we created the "<a href="./guide">Guides</a>" section, where you’ll find detailed information and tips on selecting the best components for your keyboard. This will help you make informed decisions and build a keyboard that meets your needs and expectations. Learn more about switches, keycap options, layouts, and other important factors to create a unique, high-quality keyboard.
                 </p>
             </div>
         </div>
@@ -75,7 +94,7 @@
 
     <div style="text-align:center; padding:20px; font-size:14px; color: grey;">
         &copy; 2025 KeysON Lab | 
-        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
+        <a href="<?php echo BASE_URL ?>/privacy_policy" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
         <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
     </div>
 </body>

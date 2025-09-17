@@ -17,6 +17,7 @@ if(isset($_GET['email'])){
     $postal_code = $_GET['postal_code'];
     $price = $_GET['price']/100;
     $email = $_GET['email'];
+    $phone = $_GET['phone'];
 
     $date = date('Y/m/d');
 
@@ -41,6 +42,7 @@ $order = new Order;
 $order->addProductsOrder(
     $firstName . ' ' . $lastName,
     $email,
+    $phone,
     $full_address,
     $products_string,
     $date,
@@ -52,98 +54,59 @@ $order->addProductsOrder(
 $_SESSION['cart'] = [];
 
 $html_content = "
-
 <!DOCTYPE html>
-<html lang='lt'>
-    <head>
-        <meta charset='UTF-8'>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <title>Kvitas</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                margin: 0;
-                padding: 0;
-                background: linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);
-            }
+<html lang='en'>
+  <body style='margin:0; padding:40px 0; border-radius:20px; font-family:Arial, sans-serif; background:linear-gradient(90deg, rgba(75,24,210,1) 0%, rgba(125,17,185,1) 50%, rgba(58,7,101,1) 100%);'>
+    
+    <!-- Outer wrapper for spacing -->
+    <div style='padding:0 10px;'>
 
-            .container {
-                max-width: 600px;
-                margin: 20px auto;
-                background: #fff;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-
-            h1,
-            h2,
-            p {
-                margin: 0;
-            }
-
-            .receipt-header {
-                text-align: center;
-                padding-bottom: 20px;
-                border-bottom: 1px solid #ccc;
-                margin-bottom: 20px;
-            }
-
-
-            .receipt-details {
-                padding: 20px;
-                background: #f9f9f9;
-                border-radius: 6px;
-                margin-bottom: 20px;
-            }
-
-            .receipt-details p {
-                margin-bottom: 10px;
-            }
-
-            .item {
-                padding: 10px;
-                background: #f2f2f2;
-                border-radius: 6px;
-                margin-bottom: 10px;
-            }
-
-            .item:last-child {
-                margin-bottom: 0;
-            }
-
-            .tracking-link {
-                margin: 20px;
-                text-align: center;
-            }
-
-            .tracking-link a {
-                color: #007bff;
-                text-decoration: none;
-            }
-        </style>
-    </head>
-    <body>
-        <div class='container'>
-            <div class='receipt-header'>
-                <h1>Purchase Receipt</h1>
-            </div>
-            <div class='receipt-details'>
-                <p>Hello,</p>
-                <p>We inform you that we have received your order.</p>
-                <br>
-                <p><strong>Order Number: </strong> #$order_number</p>
-                <p><strong>Date:</strong> $date</p>
-                <p><strong>Total Amount:</strong> $price €</p>
-                <p><strong>Buyer:</strong> $firstName $lastName</p>
-                <p><strong>Email:</strong> $email</p>
-                <p><strong>Delivery:</strong> courier to your home</p>
-                <p><strong>Address:</strong> $address, $city, $country, $postal_code</p>
-                <p>You can view more information about your order by clicking <a href='".BASE_URL."/order_info_products.php?order_number=$order_number'>this link</a></p>
-            </div>
+      <!-- Container -->
+      <div style='max-width:600px; margin:0 auto; background:#fff; padding:30px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.2);'>
+        
+        <!-- Logo -->
+        <div style='text-align:center; margin-bottom:25px;'>
+          <img src='https://keysonlab.com/img/logo-no-background-color.png' alt='KeysON Lab Logo' style='max-width:150px; height:auto; display:block; margin:0 auto;'>
         </div>
-    </body>
+        <hr>
+        <!-- Header -->
+        <div style='text-align:center;  padding-bottom:15px; margin-bottom:25px;'>
+          <h1 style='margin:0; color: black; font-size:24px;'>Purchase Receipt</h1>
+        </div>
+
+        <!-- Greeting -->
+        <p style='margin:0 0 15px 0; color:#333; font-size:15px;'>Hello,</p>
+        <p style='margin:0 0 15px 0; color:#333; font-size:15px;'>We inform you that we have received your order.</p>
+
+        <!-- Order Details -->
+        <div style='background:#f9f9f9; padding:20px; border-radius:12px; margin:20px 0;'>
+          <p style='margin:0 0 8px 0;'><strong>Order Number:</strong> #$order_number</p>
+          <p style='margin:0 0 8px 0;'><strong>Date:</strong> $date</p>
+          <p style='margin:0 0 8px 0;'><strong>Total Amount:</strong> $price €</p>
+          <p style='margin:0 0 8px 0;'><strong>Buyer:</strong> $firstName $lastName</p>
+          <p style='margin:0 0 8px 0;'><strong>Email:</strong> $email</p>
+          <p style='margin:0 0 8px 0;'><strong>Phone Numberº:</strong> $phone</p>
+          <p style='margin:0 0 8px 0;'><strong>Delivery:</strong> courier to your home</p>
+          <p style='margin:0;'><strong>Address:</strong> $address, $city, $country, $postal_code</p>
+        </div>
+
+        <!-- View Order Button -->
+        <div style='text-align:center; margin:30px 0 15px 0;'>
+          <a href='".BASE_URL."/accesorie_order/$order_number' 
+             style='display:inline-block; background:#4b18d2; color:#fff; padding:14px 28px; border-radius:12px; text-decoration:none; font-weight:bold;'>
+             View Order
+          </a>
+        </div>
+
+        <!-- Footer -->
+        <p style='font-size:12px; color:#777; text-align:center; margin-top:20px;'>
+          Thank you for choosing <strong>KeysON Lab</strong>!
+        </p>
+
+      </div>
+
+    </div>
+  </body>
 </html>";
 
 

@@ -19,9 +19,9 @@ class Order extends Db{
         $sth->execute();
     }
 
-    public function addProductsOrder($customer_name, $email, $address, $products, $date, $price, $order_number, $privacy_policy_consent){
+    public function addProductsOrder($customer_name, $email, $phone, $address, $products, $date, $price, $order_number, $privacy_policy_consent){
         
-        $sql = "INSERT INTO product_orders (customer_name, email, address, products, date, price, order_number, status, privacy_policy_consent) VALUES (:customer_name, :email, :address, :products, :date, :price, :order_number, 'Ordered', :privacy_policy_consent)";
+        $sql = "INSERT INTO product_orders (customer_name, email, address, products, date, price, order_number, status, privacy_policy_consent, phone) VALUES (:customer_name, :email, :address, :products, :date, :price, :order_number, 'Ordered', :privacy_policy_consent, :phone)";
         $sth = $this->connection()->prepare($sql);
         $sth->bindValue(':customer_name', $customer_name, PDO::PARAM_STR);
         $sth->bindValue(':email', $email, PDO::PARAM_STR);
@@ -31,6 +31,7 @@ class Order extends Db{
         $sth->bindValue(':price', $price, PDO::PARAM_STR);
         $sth->bindValue(':order_number', $order_number, PDO::PARAM_STR);
         $sth->bindValue(':privacy_policy_consent', $privacy_policy_consent, PDO::PARAM_STR);
+        $sth->bindValue(':phone', $phone, PDO::PARAM_STR);
 
         $sth->execute();
     }

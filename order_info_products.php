@@ -11,8 +11,8 @@ ini_set('display_errors', 1);  // Enable error display
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Information | KeysON Lab</title>
-    <link rel="icon" type="image/png" href="./img/favicon.png">
-    <link rel="stylesheet" href="./style/order_info.css">
+    <link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/order_info.css">
 </head>
 
 <header>
@@ -27,9 +27,9 @@ ini_set('display_errors', 1);  // Enable error display
 
   <nav>
     <ul>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts">Contacts</a></li>
     </ul>
   </nav>
 </header>
@@ -121,7 +121,7 @@ if(isset($_GET['order_number'])){
                     $product =  $products->getById($product_id);
                     ?>
                     <tr>
-                        <td><img style="width: 150px;" src="./img/products/<?php echo $product["image"] ?>"></td>
+                        <td><img style="width: 150px;" src="<?php echo BASE_URL ?>/img/products/<?php echo $product["image"] ?>"></td>
                         <td><?php echo $product["name"] ?></td>
                         <td><?php echo $product["price"] ?>€</td>
                     </tr>

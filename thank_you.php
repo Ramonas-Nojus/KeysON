@@ -1,11 +1,13 @@
+<?php include 'settings-core-7189.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You | KeysON Lab</title>
-    <link rel="icon" type="image/png" href="./img/favicon.png">
-    <link rel="stylesheet" href="./style/guide.css"> <!-- Your external CSS -->
+    <link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/guide.css"> <!-- Your external CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* =======================
@@ -122,7 +124,25 @@
     </style>
 </head>
 <body>
-    <?php include './inlcudes/header.php'; ?>
+
+<header>
+  <a href="<?php echo BASE_URL; ?>/">
+    <div class="logo">
+      <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
+    </div>
+  </a>
+
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+  <nav>
+    <ul>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+    </ul>
+  </nav>
+</header>
 
     <main class="container">
         <h1>Thank You!</h1>

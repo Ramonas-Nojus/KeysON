@@ -1,3 +1,4 @@
+<?php include 'settings-core-7189.php'; ?>
 <?php
 session_start();
 
@@ -26,8 +27,8 @@ foreach($cart as $item) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkout | KeysON Lab</title>
-<link rel="icon" type="image/png" href="./img/favicon.png">
-<link rel="stylesheet" href="./style/order.css">
+<link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
+<link rel="stylesheet" href="<?php echo BASE_URL ?>/style/order.css">
 <style>
 /* Body & Container */
 body {
@@ -296,7 +297,25 @@ tfoot td {
 </head>
 <body>
 
-<?php include "./inlcudes/header.php"; ?>
+
+<header>
+  <a href="<?php echo BASE_URL; ?>/">
+    <div class="logo">
+      <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
+    </div>
+  </a>
+
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+  <nav>
+    <ul>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+    </ul>
+  </nav>
+</header>
 
 <div class="container">
     <h1>Your Cart</h1>
@@ -314,7 +333,7 @@ tfoot td {
             <?php foreach($cart as $item): ?>
             <tr>
                 <td><?php echo htmlspecialchars($item['name']); ?></td>
-                <td><img src="./img/products/<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="order-img"></td>
+                <td><img src="<?php echo BASE_URL ?>/img/products/<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="order-img"></td>
                 <td><?php echo $item['price']; ?>€</td>
             </tr>
             <?php endforeach; ?>
@@ -334,6 +353,12 @@ tfoot td {
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" placeholder="you@example.com"
                value="<?= isset($user['email']) ? htmlspecialchars($user['email']) : '' ?>" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Phone Number:</label>
+        <input type="text" id="phone" name="phone" placeholder="Phone Number"
+               value="<?= isset($user['phone']) ? htmlspecialchars($user['phone']) : '' ?>" required>
     </div>
 
     <div class="form-group">

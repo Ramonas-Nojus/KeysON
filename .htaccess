@@ -2,5 +2,8 @@
 RewriteEngine On
 
 # Custom URL Rewriting Rules
-RewriteRule ^(index|contact|keyboard_builder|guide)$ $1.php [NC,L]
+RewriteRule ^(index|contacts|keyboard_builder|guide|checkout|order_products|products|order|privacy_policy)$ $1.php [NC,L]
 RewriteRule ^order/([^/]*)$ order_info.php?order_number=$1 [L]
+RewriteRule ^accesorie_order/([^/]*)$ order_info_products.php?order_number=$1 [L]
+RewriteRule ^product/([^/]*)$ product.php?p_id=$1 [L]
+

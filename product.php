@@ -27,9 +27,9 @@ if (!$product) {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
     <title><?php echo $product['name'] ?> | KeysON Lab</title>
-    <link rel="icon" type="image/png" href="./img/favicon.png">
-    <link rel="stylesheet" href="./style/builder.css">
-    <link rel="stylesheet" href="./style/products.css">
+    <link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/builder.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/products.css">
 
 </head>
 <body>
@@ -46,9 +46,9 @@ if (!$product) {
 
   <nav>
     <ul>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts">Contacts</a></li>
     </ul>
   </nav>
 </header>
@@ -240,7 +240,7 @@ if (!$product) {
         <div class="product-page">
         <!-- Product Images -->
             <div class="product-gallery">
-                <img src="img/products/<?= htmlspecialchars($product['image']) ?>" 
+                <img src="<?php echo BASE_URL ?>/img/products/<?= htmlspecialchars($product['image']) ?>" 
                     alt="<?= htmlspecialchars($product['name']) ?>" 
                     class="main-image">
             </div>
@@ -257,7 +257,7 @@ if (!$product) {
                 <form method="post" class="cart-form">
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                     <input type="hidden" name="action" value="add">
-                    <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                    <button type="submit">Add to Cart</button>
                 </form>
 
                 <p class="long-desc"><?= $product['description'] ?></p>
@@ -275,8 +275,8 @@ if (!$product) {
                 foreach($_SESSION['cart'] as $product):
                     $total += $product['price']; ?>
                     <div class="cart-item">
-                        <a style="color: black;" href="./product.php?p_id=<?= $product['id'] ?>">
-                            <img src="img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                        <a style="color: black;" href="<?php echo BASE_URL ?>/product/<?= $product['id'] ?>">
+                            <img src="<?php echo BASE_URL ?>/img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                             <div class="cart-item-details">
                                 <h3><?= htmlspecialchars($product['name']) ?></h3>
                                 <p><strong><?= htmlspecialchars($product['price']) ?>€</strong></p>
@@ -292,7 +292,7 @@ if (!$product) {
                 <?php endforeach; ?>
                 <div class="cart-summary">
                     <p><strong>Total: <?= number_format($total, 2) ?>€</strong></p>
-                    <a href="./order_products.php" class="checkout-btn">Checkout</a>
+                    <a href="<?php echo BASE_URL ?>/order_products" class="checkout-btn">Checkout</a>
                 </div>
             <?php else: ?>
                 <p>Cart is empty</p>
@@ -310,8 +310,8 @@ if (!$product) {
         <div class="related-products">
           <?php foreach ($related as $r): ?>
               <div class="related-item">
-                  <a href="product.php?p_id=<?= $r['id'] ?>">
-                      <img src="img/products/<?= htmlspecialchars($r['image']) ?>" 
+                  <a href="<?php echo BASE_URL ?>/product/<?= $r['id'] ?>">
+                      <img src="<?php echo BASE_URL ?>/img/products/<?= htmlspecialchars($r['image']) ?>" 
                           alt="<?= htmlspecialchars($r['name']) ?>">
                       <p><?= htmlspecialchars($r['name']) ?></p>
                   </a>
@@ -322,9 +322,47 @@ if (!$product) {
 </div>
     <div style="text-align:center; padding:20px; font-size:14px; color: white;">
         &copy; 2025 KeysON Lab | 
-        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
+        <a href="<?php echo BASE_URL ?>/privacy_policy" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
         <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
     </div>
-<script src="products.js"></script>
+
+
+
+
+<script >
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cartItems = document.querySelector(".cart-panel .cart-items");
+  if (!cartItems) {
+    console.error("Cart panel not found (.cart-panel .cart-items)");
+    return;
+  }
+
+  document.body.addEventListener("submit", async (e) => {
+    const form = e.target;
+    if (!form.classList.contains("cart-form")) return; // only our cart forms
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("<?php echo BASE_URL ?>/cart-handler.php", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      cartItems.innerHTML = data.cart;
+    } catch (err) {
+      console.error("Cart update failed:", err);
+    }
+  });
+});
+
+
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+    document.querySelector("header nav").classList.toggle("show");
+  });
+
+</script>
 </body>
 </html>

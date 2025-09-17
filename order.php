@@ -1,8 +1,9 @@
+<?php include 'settings-core-7189.php'; ?>
 <?php
 session_start();
 
 if(!isset($_POST['selectedKeyboardSize'])) {
-    header('Location: index.php');
+    header('Location: '.BASE_URL);
     exit;
 }
 
@@ -41,8 +42,8 @@ $order['totalPrice'] = $total_price;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkout | KeysON Lab</title>
-<link rel="icon" type="image/png" href="./img/favicon.png">
-<link rel="stylesheet" href="./style/order.css">
+<link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
+<link rel="stylesheet" href="<?php echo BASE_URL ?>/style/order.css">
 <style>
 /* Container */
 .container {
@@ -316,7 +317,25 @@ tfoot td {
 </head>
 <body>
 
-<?php include "./inlcudes/header.php"; ?>
+
+<header>
+  <a href="<?php echo BASE_URL; ?>/">
+    <div class="logo">
+      <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
+    </div>
+  </a>
+
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+  <nav>
+    <ul>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+    </ul>
+  </nav>
+</header>
 
 <div class="container">
     <h1>Checkout</h1>
@@ -349,15 +368,15 @@ tfoot td {
 
     <!-- Keyboard Preview -->
     <div class="keyboard-preview" style="padding-top:40%;">
-        <img src="./img/<?php echo $order['KeyboardSizeValue'].'/'.$order['KeyboardColorValue']; ?>.png" style="z-index:0;">
-        <img src="./img/<?php echo $order['KeyboardSizeValue'].'/'.$order['SwitchTypeValue']; ?>.png" style="z-index:1;">
-        <img src="./img/<?php echo $order['KeyboardSizeValue'].'/'.$order['KeycapsValue']; ?>.png" style="z-index:2;">
-        <img src="./img/<?php echo $order['KeyboardSizeValue'].'/'.$order['CableColorValue']; ?>.png" style="z-index:0;">
+        <img src="<?php echo BASE_URL ?>/img/<?php echo $order['KeyboardSizeValue'].'/'.$order['KeyboardColorValue']; ?>.png" style="z-index:0;">
+        <img src="<?php echo BASE_URL ?>/img/<?php echo $order['KeyboardSizeValue'].'/'.$order['SwitchTypeValue']; ?>.png" style="z-index:1;">
+        <img src="<?php echo BASE_URL ?>/img/<?php echo $order['KeyboardSizeValue'].'/'.$order['KeycapsValue']; ?>.png" style="z-index:2;">
+        <img src="<?php echo BASE_URL ?>/img/<?php echo $order['KeyboardSizeValue'].'/'.$order['CableColorValue']; ?>.png" style="z-index:0;">
     </div>
 
     <!-- Shipping Form -->
     <h2>Shipping Information</h2>
-    <form action="./checkout.php" method="post">
+    <form action="<?php echo BASE_URL ?>/checkout" method="post">
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" placeholder="you@example.com"

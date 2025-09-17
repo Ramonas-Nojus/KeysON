@@ -10,8 +10,9 @@ ini_set('display_errors', 1);  // Enable error display
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Information</title>
-    <link rel="stylesheet" href="../style/order_info.css">
+    <title>Order Information | KeysON Lab</title>
+    <link rel="icon" type="image/png" href="./img/favicon.png">
+    <link rel="stylesheet" href="./style/order_info.css">
 </head>
 
 <header>
@@ -134,7 +135,7 @@ if(isset($_GET['order_number'])){
             </tr>
         </table>
 
-        <div id="container" style="width: 65%; margin: auto; border: 3px solid; border-radius: 10px; position: relative; overflow: hidden;">
+        <div id="container" style="width: 65%; margin: auto; border: 1px solid; border-radius: 10px; position: relative; overflow: hidden;">
             <img id="image" src="../img/<?php echo $component_images[0].'/'.$component_images[1]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
             <img src="../img/<?php echo $component_images[0].'/'.$component_images[2]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
             <img src="../img/<?php echo $component_images[0].'/'.$component_images[3]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">

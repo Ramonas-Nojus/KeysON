@@ -41,7 +41,7 @@ if(!empty($_SESSION['cart'])){
                 <img src="img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                 <div class="cart-item-details">
                     <h3><?= htmlspecialchars($product['name']) ?></h3>
-                    <p><strong>$<?= htmlspecialchars($product['price']) ?></strong></p>
+                    <p><strong><?= htmlspecialchars($product['price']) ?>€</strong></p>
             </a>
                     <form method="post" class="cart-form">
                         <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
@@ -53,7 +53,7 @@ if(!empty($_SESSION['cart'])){
         </div>
     <?php endforeach; ?>
     <div class="cart-summary">
-        <p><strong>Total: $<?= number_format($total, 2) ?></strong></p>
+        <p><strong>Total: <?= number_format($total, 2) ?>€</strong></p>
         <a href="./order_products.php" class="checkout-btn">Checkout</a>
     </div>
 <?php

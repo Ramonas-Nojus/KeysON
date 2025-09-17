@@ -3,7 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-    <title>Custom Keyboard Builder | KeysON</title>
+    <title>Custom Keyboard Builder | KeysON Lab</title>
+    <link rel="icon" type="image/png" href="./img/favicon.png">
     <link rel="stylesheet" href="./style/builder.css">
 </head>
 <body>
@@ -35,19 +36,19 @@ button:hover {
                 <h2>Keyboard’s Size</h2>
                 <br>
                 <div class="grid">
-                    <button class="component-button" data-price="109.99" data-value="100" value="100%">
+                    <button class="component-button" data-price="119.99" data-value="100" value="100%">
                         <p>100%</p>
                     </button>
-                    <button class="component-button" data-price="99.99" data-value="80" value="80%">
+                    <button class="component-button" data-price="109.99" data-value="80" value="80%">
                         <p>80%</p>
                     </button>
-                    <button class="component-button" data-price="99.99" data-value="75" value="75%">
+                    <button class="component-button" data-price="109.99" data-value="75" value="75%">
                         <p>75%</p>
                     </button>
-                    <button class="component-button" data-price="89.99" data-value="65" value="65%">
+                    <button class="component-button" data-price="99.99" data-value="65" value="65%">
                         <p>65%</p>
                     </button>
-                    <button class="component-button" data-price="79.99" data-value="60" value="60%">
+                    <button class="component-button" data-price="89.99" data-value="60" value="60%">
                         <p>60%</p>
                     </button>
 
@@ -57,8 +58,8 @@ button:hover {
                 <h2>Keyboard’s Colour</h2>
                 <br>
                 <div class="grid">
-                    <button id="whitebutton" class="component-button white-button" data-value="case-white" data-price="10" value="Balta"><span style="display: none;">Balta</span></button>
-                    <button class="component-button black-button selected" data-value="case-black" data-price="0" value="Juoda"><span style="display: none;">Juoda</span></button>
+                    <button id="whitebutton" class="component-button white-button" data-value="case-white" data-price="10" value="White"><span style="display: none;">White</span></button>
+                    <button class="component-button black-button selected" data-value="case-black" data-price="0" value="Black"><span style="display: none;">Black</span></button>
                     <!-- <button id="pinkButton" class="component-button pink-button" data-price="20" data-value="case-pink" value="Rožinė"><span style="display: none;">Rožinė</span></button> -->
                 </div>
             </div>
@@ -105,7 +106,6 @@ button:hover {
 
                             <button class="component-button" data-value="switch-brown-2" data-price="40" value="cherry-mx-brown"><p>Cherry MX Brown</p><img src="/img/swithes/brown-2.png"></button>
                             <button class="component-button" data-value="switch-brown-2" data-price="40" value="gateron-brown"><p>Gateron Brown</p><img src="/img/swithes/brown-2.png"></button>
-                            <button class="component-button" data-value="switch-purple-2" data-price="40" value="zealios-v2"><p>Zealios V2 (ZealPC)</p><img src="/img/swithes/purple-2.png"></button>
                             <button class="component-button" data-value="switch-yellow-2" data-price="40" value="panda-mx"><p>Panda MX</p><img src="/img/swithes/yellow-2.png"></button>
                             <button class="component-button" data-value="switch-yellow" data-price="40" value="gazzew-boba"><p>GAZZEW Boba U4T</p><img src="/img/swithes/yellow.png"></button>
 
@@ -151,22 +151,22 @@ button:hover {
                             <span style="display: none;">Gradient Purple Keycaps</span>
                         </button>
                         -->
-                        <button class="component-button  purple-green" data-value="purple-green"data-price="25">
+                        <button class="component-button  purple-green" data-value="purple-green"data-price="35">
                             <span style="display: none;">Purple and Green Keycaps</span>
                         </button>
-                        <button class="component-button  pink-white" data-value="pink-white"data-price="25">
+                        <button class="component-button  pink-white" data-value="pink-white"data-price="35">
                             <span style="display: none;">Pink and White Keycaps</span>
                         </button>
 
-                        <button class="component-button  matcha" data-value="matcha"data-price="25">
+                        <button class="component-button  matcha" data-value="matcha"data-price="35">
                             <span style="display: none;">Matcha Keycaps</span>
                         </button>
 
-                        <button class="component-button peach-pink" data-value="peach-pink"data-price="30">
+                        <button class="component-button peach-pink" data-value="peach-pink"data-price="35">
                             <span style="display: none;">Peach Pink Keycaps</span>
                         </button>
                         
-                        <button class="component-button mint-green-and-dark-blue" data-price="30" data-value="mint-green-and-dark-blue">
+                        <button class="component-button mint-green-and-dark-blue" data-price="35" data-value="mint-green-and-dark-blue">
                             <span style="display: none;">Mint green and Dark blue Keycaps</span>
                         </button>
                         
@@ -178,81 +178,81 @@ button:hover {
                             <span style="display: none;">HHQ-Cherry Keycaps</span>
                         </button>
                         
-                        <button class="component-button mlv" data-value="mlv"data-price="25">
+                        <button class="component-button mlv" data-value="mlv"data-price="35">
                             <span style="display: none;">MLV Keycaps</span>
                         </button>
-                        <button class="component-button starfall" data-value="starfall"data-price="30">
+                        <button class="component-button starfall" data-value="starfall"data-price="35">
                             <span style="display: none;">Starfall Keycaps</span>
                         </button>
-                        <button class="component-button british-racing" data-value="british-racing"data-price="30">
+                        <button class="component-button british-racing" data-value="british-racing"data-price="35">
                             <span style="display: none;">British Racing Keycaps</span>
                         </button>
                         
-                        <button class="component-button retro-a" data-value="retro-a"data-price="30">
+                        <button class="component-button retro-a" data-value="retro-a"data-price="35">
                             <span style="display: none;">Retro A Keycaps</span>
                         </button>
-                        <button class="component-button retro-b" data-value="retro-b"data-price="30">
+                        <button class="component-button retro-b" data-value="retro-b"data-price="35">
                             <span style="display: none;">Retro B Keycaps</span>
                         </button>
-                        <button class="component-button bhh-backlit" data-value="bhh-backlit"data-price="30">
+                        <button class="component-button bhh-backlit" data-value="bhh-backlit"data-price="35">
                             <span style="display: none;">BHH Backlit Keycaps</span>
                         </button>
-                         <button class="component-button qkl-backlit" data-value="qkl-backlit"data-price="30">
+                         <button class="component-button qkl-backlit" data-value="qkl-backlit"data-price="35">
                             <span style="display: none;">QKL Backlit Keycaps</span>
                         </button>
                          
-                        <button class="component-button  blh" data-value="blh"data-price="25">
+                        <button class="component-button  blh" data-value="blh"data-price="35">
                             <span style="display: none;">BLH Keycaps</span>
                         </button>
-                         <button class="component-button  ml-cherry" data-value="ml-cherry"data-price="25">
+                         <button class="component-button  ml-cherry" data-value="ml-cherry"data-price="35">
                             <span style="display: none;">ML-cherry Keycaps</span>
                         </button>
-                         <button class="component-button  bw-cherry" data-value="bw-cherry"data-price="25">
+                         <button class="component-button  bw-cherry" data-value="bw-cherry"data-price="35">
                             <span style="display: none;">BW-cherry Keycaps</span>
                         </button>
-                         <button class="component-button  huizong-cherry" data-value="huizong-cherry"data-price="25">
+                         <button class="component-button  huizong-cherry" data-value="huizong-cherry"data-price="35">
                             <span style="display: none;">Huizong Cherry Keycaps</span>
                         </button>
-                         <button class="component-button  hxf-cherry" data-value="hxf-cherry"data-price="25">
+                         <button class="component-button  hxf-cherry" data-value="hxf-cherry"data-price="35">
                             <span style="display: none;">HXF-Cherry Keycaps</span>
                         </button>
 
 
-                        <button class="component-button jungle-green" data-value="jungle-green"data-price="30">
+                        <button class="component-button jungle-green" data-value="jungle-green"data-price="35">
                             <span style="display: none;">Jungle Green Keycaps</span>
                         </button>
                         <button class="component-button orange-red" data-value="orange-red"data-price="35">
                             <span style="display: none;">Orange Red Keycaps</span>
                         </button>
-                        <button class="component-button mountain-blue" data-price="50" data-value="mountain-blue">
+                        <button class="component-button mountain-blue" data-price="35" data-value="mountain-blue">
                             <span style="display: none;">Mountain Blue Keycaps</span>
                         </button>
-                        <button class="component-button  cyan" data-value="cyan"data-price="25">
+                        <button class="component-button  cyan" data-value="cyan"data-price="35">
                             <span style="display: none;">Cyan Keycaps</span>
                         </button>
-                        <button class="component-button  light-blue" data-value="light-blue"data-price="25">
+                        <button class="component-button  light-blue" data-value="light-blue"data-price="35">
                             <span style="display: none;">Light Blue Keycaps</span>
                         </button>
-                        <button class="component-button  lemon-tree" data-value="lemon-tree"data-price="25">
+                        <button class="component-button  lemon-tree" data-value="lemon-tree"data-price="35">
                             <span style="display: none;">Lemon Tree Keycaps</span>
                         </button>
 
-                        <button class="component-button  blue" data-value="blue"data-price="25">
+                        <button class="component-button  blue" data-value="blue"data-price="35">
                             <span style="display: none;">Blue Keycaps</span>
                         </button>
-                        <button class="component-button  brown" data-value="brown"data-price="25">
+                        <button class="component-button  brown" data-value="brown"data-price="35">
                             <span style="display: none;">Brown Keycaps</span>
                         </button>
-                        <button class="component-button  berry" data-value="berry"data-price="25">
+                        <button class="component-button  berry" data-value="berry"data-price="35">
                             <span style="display: none;">Berry Keycaps</span>
                         </button>
-                        <button class="component-button  orange" data-value="orange"data-price="25">
+                        <button class="component-button  orange" data-value="orange"data-price="35">
                             <span style="display: none;">Orange Keycaps</span>
                         </button>
-                        <button class="component-button  red" data-value="red"data-price="25">
+                        <button class="component-button  red" data-value="red"data-price="35">
                             <span style="display: none;">Red Keycaps</span>
                         </button>
-                        <button class="component-button  pink" data-value="pink"data-price="25">
+                        <button class="component-button  pink" data-value="pink"data-price="35">
                             <span style="display: none;">Pink Keycaps</span>
                         </button>
 
@@ -268,17 +268,17 @@ button:hover {
             <div class="component step-5 required"> 
                 <h2>Cable</h2>
                     <div class="grid">
-                        <button class="component-button black-button" data-value="cable-black" data-price="25" value="Black"><span style="display: none;">Black</span></button>
-                        <button class="component-button white-button" data-value="cable-white" data-price="25" value="White"><span style="display: none;">White</span></button>
-                        <button class="component-button blue-button" data-value="cable-sky-blue" data-price="40" value="Sky Blue"><span style="display: none;">Sky Blue</span></button>
-                        <button class="component-button pink-button" data-value="cable-pink" data-price="40" value="Pink"><span style="display: none;">Pink</span></button>
-                         <button class="component-button red-button" data-value="cable-red" data-price="25" value="Red"><span style="display: none;">Red</span></button>
-                        <button class="component-button purple-button" data-value="cable-purple" data-price="25" value="Purple"><span style="display: none;">Purple</span></button>
-                        <button class="component-button grey-button" data-value="cable-grey" data-price="40" value="Grey"><span style="display: none;">Grey</span></button>
-                        <button class="component-button green-button" data-value="cable-green" data-price="40" value="Green"><span style="display: none;">Green</span></button>
-                         <button class="component-button dark-blue-button" data-value="cable-blue" data-price="25" value="Blue"><span style="display: none;">Blue</span></button>
-                        <button class="component-button orange-button" data-value="cable-orange" data-price="25" value="Orange"><span style="display: none;">Orange</span></button>
-                        <button class="component-button brown-button" data-value="cable-brown" data-price="40" value="Brown"><span style="display: none;">Brown</span></button>
+                        <button class="component-button black-button" data-value="cable-black" data-price="30" value="Black"><span style="display: none;">Black</span></button>
+                        <button class="component-button white-button" data-value="cable-white" data-price="30" value="White"><span style="display: none;">White</span></button>
+                        <button class="component-button blue-button" data-value="cable-sky-blue" data-price="30" value="Sky Blue"><span style="display: none;">Sky Blue</span></button>
+                        <button class="component-button pink-button" data-value="cable-pink" data-price="30" value="Pink"><span style="display: none;">Pink</span></button>
+                         <button class="component-button red-button" data-value="cable-red" data-price="30" value="Red"><span style="display: none;">Red</span></button>
+                        <button class="component-button purple-button" data-value="cable-purple" data-price="30" value="Purple"><span style="display: none;">Purple</span></button>
+                        <button class="component-button grey-button" data-value="cable-grey" data-price="30" value="Grey"><span style="display: none;">Grey</span></button>
+                        <button class="component-button green-button" data-value="cable-green" data-price="30" value="Green"><span style="display: none;">Green</span></button>
+                         <button class="component-button dark-blue-button" data-value="cable-blue" data-price="30" value="Blue"><span style="display: none;">Blue</span></button>
+                        <button class="component-button orange-button" data-value="cable-orange" data-price="30" value="Orange"><span style="display: none;">Orange</span></button>
+                        <button class="component-button brown-button" data-value="cable-brown" data-price="30" value="Brown"><span style="display: none;">Brown</span></button>
 
                     </div>
             </div>

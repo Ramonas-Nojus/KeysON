@@ -28,7 +28,8 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-    <title>Custom Keyboard Builder | KeysON</title>
+    <title>Accesories | KeysON Lab</title>
+    <link rel="icon" type="image/png" href="./img/favicon.png">
     <link rel="stylesheet" href="./style/builder.css">
     <link rel="stylesheet" href="./style/products.css">
 
@@ -104,7 +105,7 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
                         <a style="color: black;" href="./product.php?p_id=<?= $product['id'] ?>">
                             <img src="img/products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
                             <h3><?= $product['name'] ?></h3>
-                            <p><strong>$<?= $product['price'] ?></strong></p>
+                            <p><strong><?= $product['price'] ?>€</strong></p>
                         </a>
 
                         <form method="post" class="cart-form">
@@ -130,7 +131,7 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
                             <img src="img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                             <div class="cart-item-details">
                                 <h3><?= htmlspecialchars($product['name']) ?></h3>
-                                <p><strong>$<?= htmlspecialchars($product['price']) ?></strong></p>
+                                <p><strong><?= htmlspecialchars($product['price']) ?>€</strong></p>
                         </a>
                                 <form method="post" class="cart-form">
                                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
@@ -142,7 +143,7 @@ $accessories = $products->getFilteredProducts($search, $category, $from, $to);
                     </div>
                 <?php endforeach; ?>
                 <div class="cart-summary">
-                    <p><strong>Total: $<?= number_format($total, 2) ?></strong></p>
+                    <p><strong>Total: <?= number_format($total, 2) ?>€</strong></p>
                     <a href="./order_products.php" class="checkout-btn">Checkout</a>
                 </div>
             <?php else: ?>

@@ -16,89 +16,84 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const switchPrices = {
         '60': {
-        'gateron-oil-king': 50,   // ~$0.82 × 61
-        'cherry-mx-black': 28,    // ~$0.46 × 61
-        'kailh-box-red': 25,      // ~$0.35 × 61
-        'gateron-yellow': 20,     // ~$0.30 × 61
-        'gateron-red-pro': 20,
+        'gateron-oil-king': 80,   
+        'cherry-mx-black': 70,    
+        'kailh-box-red': 30,      
+        'gateron-yellow': 40,     
+        'gateron-red-pro': 40,
         'cherry-mx-red': 60,
-        'gazzew-boba': 67,        // ~$1.00 × 61
-        'panda-mx': 80,           // ~$1.05 × 61
-        'zealios-v2': 61,         // ~$1.00 × 61
-        'gateron-brown': 18,
-        'cherry-mx-brown': 28,
-        'cherry-mx-green': 34,    // ~$0.55 × 61
-        'kailh-box-navy': 27,     // ~$0.45 × 61
-        'kailh-box-white': 24,    // ~$0.40 × 61
-        'cherry-mx-blue': 28
+        'gazzew-boba': 70,        
+        'panda-mx': 80,           
+        'gateron-brown': 35,
+        'cherry-mx-brown': 45,
+        'cherry-mx-green': 50,    
+        'kailh-box-navy': 30,     
+        'kailh-box-white': 30,    
+        'cherry-mx-blue': 50
     },
     '65': {
-        'gateron-oil-king': 55,
-        'cherry-mx-black': 31,
-        'kailh-box-red': 25,
-        'gateron-yellow': 20,
-        'gateron-red-pro': 20,
+        'gateron-oil-king': 80,
+        'cherry-mx-black': 70,
+        'kailh-box-red': 30,
+        'gateron-yellow': 40,
+        'gateron-red-pro': 40,
         'cherry-mx-red': 60,
-        'gazzew-boba': 67,
+        'gazzew-boba': 70,
         'panda-mx': 80,
-        'zealios-v2': 67,
-        'gateron-brown': 20,
-        'cherry-mx-brown': 31,
-        'cherry-mx-green': 37,
+        'gateron-brown': 35,
+        'cherry-mx-brown': 45,
+        'cherry-mx-green': 50,
         'kailh-box-navy': 30,
-        'kailh-box-white': 27,
-        'cherry-mx-blue': 31
+        'kailh-box-white': 30,
+        'cherry-mx-blue': 50
     },
     '75': {
-        'gateron-oil-king': 69,
-        'cherry-mx-black': 39,
-        'kailh-box-red': 30,
-        'gateron-yellow': 25,
-        'gateron-red-pro': 25,
+        'gateron-oil-king': 80,
+        'cherry-mx-black': 90,
+        'kailh-box-red': 40,
+        'gateron-yellow': 40,
+        'gateron-red-pro': 40,
         'cherry-mx-red': 60,
-        'gazzew-boba': 85,
+        'gazzew-boba': 90,
         'panda-mx': 120,
-        'zealios-v2': 84,
-        'gateron-brown': 25,
-        'cherry-mx-brown': 39,
-        'cherry-mx-green': 46,
-        'kailh-box-navy': 38,
-        'kailh-box-white': 34,
-        'cherry-mx-blue': 39
+        'gateron-brown': 30,
+        'cherry-mx-brown': 60,
+        'cherry-mx-green': 65,
+        'kailh-box-navy': 40,
+        'kailh-box-white': 35,
+        'cherry-mx-blue': 65
     },
     '80': {
-        'gateron-oil-king': 71,
-        'cherry-mx-black': 40,
-        'kailh-box-red': 30,
-        'gateron-yellow': 25,
-        'gateron-red-pro': 25,
+        'gateron-oil-king': 80,
+        'cherry-mx-black': 90,
+        'kailh-box-red': 40,
+        'gateron-yellow': 40,
+        'gateron-red-pro': 40,
         'cherry-mx-red': 60,
-        'gazzew-boba': 85,
+        'gazzew-boba': 90,
         'panda-mx': 120,
-        'zealios-v2': 87,
-        'gateron-brown': 26,
-        'cherry-mx-brown': 40,
-        'cherry-mx-green': 48,
-        'kailh-box-navy': 39,
+        'gateron-brown': 30,
+        'cherry-mx-brown': 60,
+        'cherry-mx-green': 65,
+        'kailh-box-navy': 40,
         'kailh-box-white': 35,
-        'cherry-mx-blue': 40
+        'cherry-mx-blue': 65
     },
     '100': {
-        'gateron-oil-king': 75,
-        'cherry-mx-black': 70,
-        'kailh-box-red': 35,
-        'gateron-yellow': 30,
-        'gateron-red-pro': 30,
+        'gateron-oil-king': 80,
+        'cherry-mx-black': 110,
+        'kailh-box-red': 45,
+        'gateron-yellow': 40,
+        'gateron-red-pro': 40,
         'cherry-mx-red': 60,
-        'gazzew-boba': 104,
+        'gazzew-boba': 110,
         'panda-mx': 120,
-        'zealios-v2': 104,
-        'gateron-brown': 31,
-        'cherry-mx-brown': 48,
-        'cherry-mx-green': 57,
-        'kailh-box-navy': 47,
-        'kailh-box-white': 42,
-        'cherry-mx-blue': 48
+        'gateron-brown': 35,
+        'cherry-mx-brown': 75,
+        'cherry-mx-green': 90,
+        'kailh-box-navy': 50,
+        'kailh-box-white': 45,
+        'cherry-mx-blue': 80
     }
     };
 

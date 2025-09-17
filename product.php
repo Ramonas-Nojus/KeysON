@@ -26,7 +26,8 @@ if (!$product) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-    <title>Custom Keyboard Builder | KeysON</title>
+    <title><?php echo $product['name'] ?> | KeysON Lab</title>
+    <link rel="icon" type="image/png" href="./img/favicon.png">
     <link rel="stylesheet" href="./style/builder.css">
     <link rel="stylesheet" href="./style/products.css">
 
@@ -204,6 +205,31 @@ if (!$product) {
   flex: 0.5;
 }
 
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price .old-price {
+  font-size: 20px;
+  color: red;
+  text-decoration: line-through;
+}
+.price .new-price {
+  font-size: 26px;
+  font-weight: 700;
+  color: #6a11cb;
+}
+
+.vat-note {
+  font-size: 13px;
+  color: #555;
+  margin-top: -10px;
+}
+
+
 </style>
 
 <body>
@@ -221,7 +247,12 @@ if (!$product) {
 
             <div class="product-details">
                 <h1><?= htmlspecialchars($product['name']) ?></h1>
-                <p class="price">$<?= number_format($product['price'], 2) ?></p>
+
+                <p class="price">
+                  <span class="old-price"><?= number_format($product['price'] * 2, 2) ?>€</span>
+                  <span class="new-price"><?= number_format($product['price'], 2) ?>€</span>
+                </p>
+                <p class="vat-note">Price includes VAT</p>
 
                 <form method="post" class="cart-form">
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
@@ -230,8 +261,8 @@ if (!$product) {
                 </form>
 
                 <p class="long-desc"><?= $product['description'] ?></p>
-    
             </div>
+
         </div>
     </div>
 
@@ -248,7 +279,7 @@ if (!$product) {
                             <img src="img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                             <div class="cart-item-details">
                                 <h3><?= htmlspecialchars($product['name']) ?></h3>
-                                <p><strong>$<?= htmlspecialchars($product['price']) ?></strong></p>
+                                <p><strong><?= htmlspecialchars($product['price']) ?>€</strong></p>
                         </a>
                                 <form method="post" class="cart-form">
                                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
@@ -260,7 +291,7 @@ if (!$product) {
                     </div>
                 <?php endforeach; ?>
                 <div class="cart-summary">
-                    <p><strong>Total: $<?= number_format($total, 2) ?></strong></p>
+                    <p><strong>Total: <?= number_format($total, 2) ?>€</strong></p>
                     <a href="./order_products.php" class="checkout-btn">Checkout</a>
                 </div>
             <?php else: ?>

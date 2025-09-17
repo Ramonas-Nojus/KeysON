@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeysOn Lab</title>
+    <title>KeysON Lab</title>
+    <link rel="icon" type="image/png" href="./img/favicon.png">
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
@@ -23,7 +24,7 @@
         <div id="col-2">
             <h1>About Us</h1>
             <div class="centered">
-                <p>KeysON Lab – we are committed to helping you build an exceptional keyboard that matches your unique style and preferences. With a wide selection, the ability to customize layouts, switches, keycaps, and designs, we give you the tools and knowledge to make your dream keyboard a reality. Our team of keyboard enthusiasts is dedicated to delivering the ultimate typing experience, one key at a time. Join us on this journey featuring keyboards as unique as you are.</p>
+                <p>Hi, I’m Nojus, the person behind KeysON Lab. I love keyboards and helping people create something that fits them perfectly. Here, you can customize every detail—layouts, switches, keycaps, and cases—to make a keyboard that feels truly yours. I’m here to share what I’ve learned and make sure your typing experience is as smooth and satisfying as possible. Let’s build your dream keyboard together, one key at a time.</p>
             </div>
         </div>
         <div id="col-1" style="background-color: #00CED1;">

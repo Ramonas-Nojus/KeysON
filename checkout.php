@@ -22,11 +22,13 @@ $_SESSION['user'] = [
     'firstName'   => $_POST['firstName'],
     'lastName'    => $_POST['lastName'],
     'email'       => $_POST['email'],
+    'phone'       => $_POST['phone'],
     'country'     => $_POST['country'],
     'city'        => $_POST['city'],
     'address'     => $_POST['address'],
     'postal_code' => $_POST['postal_code'],
 ];
+
 
 $order['price'] = $_POST['total_price'] * 100;
 
@@ -48,6 +50,7 @@ $price = $order['price'];
 
 $firstName = $user['firstName'];
 $email = $user['email'];
+$phone = $user['phone'];
 $lastName = $user['lastName'];
 $country = $user['country'];
 $city = $user['city'];
@@ -72,6 +75,7 @@ $success_url =  BASE_URL. '/finish_order.php?' .
                 '&postal_code=' . urlencode($postal_code) .
                 '&price=' . urlencode($price/100) .
                 '&email=' . urlencode($email).
+                '&phone=' . urlencode($phone).
                 '&KeyboardSizeValue=' . urlencode($KeyboardSizeValue) .
                 '&KeyboardColorValue=' . urlencode($KeyboardColorValue) .
                 '&SwitchTypeValue=' . urlencode($SwitchTypeValue) .

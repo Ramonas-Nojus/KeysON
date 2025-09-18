@@ -30,7 +30,9 @@ $_SESSION['order'] = [
 
 $order = $_SESSION['order'];
 
-
+if(isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+}
 
 $total_price = $order['KeyboardSizePrice'] + $order['KeyboardColorPrice'] + $order['SwitchTypePrice'] + $order['KeycapsPrice'] + $order['CableColorPrice'] + $order['PVM'] + 30;
 $order['totalPrice'] = $total_price;
@@ -310,7 +312,13 @@ tfoot td {
 }
 
 
-
+.iti {
+  width: 100% !important;
+}
+.iti input {
+  width: 100% !important;
+  box-sizing: border-box;
+}
 
 
 </style>
@@ -330,9 +338,9 @@ tfoot td {
 
   <nav>
     <ul>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder.php">Builder</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products.php">Accessories</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts.php">Contacts</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder">Builder</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products">Accessories</a></li>
+      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts">Contacts</a></li>
     </ul>
   </nav>
 </header>
@@ -382,6 +390,13 @@ tfoot td {
             <input type="text" id="email" name="email" placeholder="you@example.com"
                 value="<?= isset($user['email']) ? htmlspecialchars($user['email']) : '' ?>" required>
         </div>
+
+        <div class="form-group" >
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required
+                value="<?= isset($user['phone']) ? htmlspecialchars($user['phone']) : '' ?>">
+        </div>
+
 
         <div class="form-group">
             <label for="country">Country:</label>
@@ -460,6 +475,71 @@ tfoot td {
     document.querySelector("header nav").classList.toggle("show");
   });
 </script>
+
+
+<!-- Cleave.js for live formatting -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+<!-- intl-tel-input for country selection -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/css/intlTelInput.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/js/intlTelInput.min.js"></script>
+
+<script>
+const phoneInput = document.querySelector("#phone");
+
+// Initialize intl-tel-input
+const iti = window.intlTelInput(phoneInput, {
+  initialCountry: "auto",
+  geoIpLookup: (callback) => {
+    fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(data => callback(data.country_code))
+      .catch(() => callback("")); // no default
+  },
+  nationalMode: false,
+  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/js/utils.js"
+});
+
+// Prefill country code on focus
+phoneInput.addEventListener("focus", () => {
+  if (!phoneInput.value.startsWith("+")) {
+    const countryData = iti.getSelectedCountryData();
+    phoneInput.value = "+" + countryData.dialCode + " ";
+  }
+});
+
+// Initialize Cleave.js after intl-tel-input has loaded country
+let cleave = new Cleave(phoneInput, {
+  phone: true,
+  phoneRegionCode: iti.getSelectedCountryData().iso2 || "us",
+  delimiter: ' ',
+  noImmediatePrefix: true
+});
+
+// Update Cleave's region if user changes country
+phoneInput.addEventListener("countrychange", () => {
+  const country = iti.getSelectedCountryData().iso2;
+  cleave.destroy();
+  cleave = new Cleave(phoneInput, {
+    phone: true,
+    phoneRegionCode: country,
+    delimiter: ' ',
+    noImmediatePrefix: true
+  });
+});
+
+// Optional: block letters manually
+phoneInput.addEventListener("keypress", (e) => {
+  if (!/[0-9+]/.test(e.key)) e.preventDefault();
+});
+
+
+
+// On submit, send E.164 formatted number
+document.querySelector("form").addEventListener("submit", () => {
+  phoneInput.value = iti.getNumber();
+});
+</script>
+
 </body>
 </html>
 

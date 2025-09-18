@@ -85,7 +85,7 @@ $html_content = "
           <p style='margin:0 0 8px 0;'><strong>Total Amount:</strong> $price €</p>
           <p style='margin:0 0 8px 0;'><strong>Buyer:</strong> $firstName $lastName</p>
           <p style='margin:0 0 8px 0;'><strong>Email:</strong> $email</p>
-          <p style='margin:0 0 8px 0;'><strong>Phone Numberº:</strong> $phone</p>
+          <p style='margin:0 0 8px 0;'><strong>Phone Number:</strong> $phone</p>
           <p style='margin:0 0 8px 0;'><strong>Delivery:</strong> courier to your home</p>
           <p style='margin:0;'><strong>Address:</strong> $address, $city, $country, $postal_code</p>
         </div>
@@ -141,7 +141,7 @@ try {
 
     $mail->send();
 
-    header('Location: thank_you.php');
+    header('Location: thank_you');
 } catch (Exception $e) {
     echo "Error sending email: {$mail->ErrorInfo}";
 }

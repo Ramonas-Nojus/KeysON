@@ -27,6 +27,7 @@ if(isset($_GET['KeyboardSize'])){
     $postal_code = $_GET['postal_code'];
     $price = $_GET['price'];
     $email = $_GET['email'];
+    $phone = $_GET['phone'];
     
     $date = date('Y/m/d');
 
@@ -44,7 +45,7 @@ $order_number = date('Ymd') . uniqid();
 $full_address = $country.', '. $city. ', '.$address.', '.$postal_code;
 
 $order = new Order;
-$order->addOrder($firstName.' '.$lastName, $email, $full_address, $components, $date, $price, $order_number, $component_images, $privacy_policy_consent);
+$order->addOrder($firstName.' '.$lastName, $email, $phone, $full_address, $components, $date, $price, $order_number, $component_images, $privacy_policy_consent);
 
 $html_content = "
 <!DOCTYPE html>
@@ -78,6 +79,7 @@ $html_content = "
           <p style='margin:0 0 8px 0;'><strong>Total Amount:</strong> $price €</p>
           <p style='margin:0 0 8px 0;'><strong>Buyer:</strong> $firstName $lastName</p>
           <p style='margin:0 0 8px 0;'><strong>Email:</strong> $email</p>
+          <p style='margin:0 0 8px 0;'><strong>Phone Number:</strong> $phone</p>
           <p style='margin:0 0 8px 0;'><strong>Delivery:</strong> courier to your home</p>
           <p style='margin:0;'><strong>Address:</strong> $address, $city, $country, $postal_code</p>
         </div>
@@ -133,7 +135,7 @@ try {
 
     $mail->send();
 
-    header('Location: thank_you.php');
+    header('Location: thank_you');
 } catch (Exception $e) {
     echo "Error sending email: {$mail->ErrorInfo}";
 }

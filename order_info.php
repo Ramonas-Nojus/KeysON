@@ -79,13 +79,11 @@ if(isset($_GET['order_number'])){
         <div class="status-bar">
             <div class="status">Ordered</div>
             <div class="status-line"></div>
-            <div class="status">Components Received</div>
+            <div class="status">Waiting For Components</div>
             <div class="status-line"></div>
             <div class="status">Being Assembled</div>
             <div class="status-line"></div>
             <div class="status">Shipped</div>
-            <div class="status-line"></div>
-            <div class="status">Delivered</div>
         </div>
 
         <script>

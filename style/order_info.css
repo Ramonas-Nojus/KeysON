@@ -55,6 +55,7 @@ body {
         }
 
         .status {
+            border: 1px #007bff solid;
             position: relative;
             text-align: center;
             padding: 10px 20px;

@@ -359,7 +359,7 @@ tfoot td {
         <label for="phone">Phone Number:</label>
         <input type="tel" id="phone" name="phone" required
             value="<?= isset($user['phone']) ? htmlspecialchars($user['phone']) : '' ?>">
-  </div>
+    </div>
 
     <div class="form-group">
         <label for="country">Country:</label>

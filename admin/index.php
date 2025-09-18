@@ -52,9 +52,9 @@ if(isset($_GET['order_id'])){
 <div class="container">
         <section id="orders">
             <h2>Orders</h2>
-            <a class="order-button" href="./index.php?progress=0">Not Processed</a>
-            <a class="order-button" href="./index.php?progress=1">Being Processed</a>
-            <a class="order-button" href="./index.php?progress=2">Processed</a>
+            <a class="order-button <?php echo (!isset($_GET['progress']) || $_GET['progress'] == 0) ? "active" : ""; ?>"  href="./index.php?progress=0">Not Processed</a>
+            <a class="order-button <?php echo (isset($_GET['progress']) && $_GET['progress'] == 1) ? "active" : ""; ?>" href="./index.php?progress=1">Being Processed</a>
+            <a class="order-button <?php echo (isset($_GET['progress']) && $_GET['progress'] == 2) ? "active" : ""; ?>" href="./index.php?progress=2">Processed</a>
 
             <table>
                 <thead>
@@ -108,7 +108,7 @@ if(isset($_GET['order_id'])){
                                 <td><?php echo $worker; ?></td>
                             <?php } ?> 
 
-                            <?php if(isset($_GET['progress']) && $_GET['progress'] == 0){ ?> 
+                            <?php if(!isset($_GET['progress']) || $_GET['progress'] == 0){ ?> 
                                 <td>
                                     <a class="btn" href="./index.php?order_id=<?php echo $id; ?>">Accept</a>
                                 </td>
@@ -126,9 +126,10 @@ if(isset($_GET['order_id'])){
         </section>
     </div>
 
-    <div class="footer">
-        &copy; 2024 KeyON
-        <p class="copyright">Visos teisės saugomos.</p>
+    <div style="text-align:center; padding:20px; font-size:14px; color: white;">
+        &copy; 2025 KeysON Lab | 
+        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
+        <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
     </div>
 
     <!-- Add your JavaScript files here -->

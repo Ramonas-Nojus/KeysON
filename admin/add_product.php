@@ -193,9 +193,11 @@ if(isset($_POST['create_product'])){
     CKEDITOR.instances.description.resize('100%', 200);
 </script>
 <!-- Footer -->
-<footer class="bg-white text-center py-3 mt-auto shadow-sm">
-    &copy; 2025 KeysON Lab. <span class="text-muted">Visos teisės saugomos.</span>
-</footer>
+<div style="text-align:center; padding:20px; font-size:14px; color: white;">
+        &copy; 2025 KeysON Lab | 
+        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
+        <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
+</div>
 
 </body>
 </html>

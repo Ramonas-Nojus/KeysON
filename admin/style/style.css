@@ -142,13 +142,18 @@ main {
 }
 
 
+
 .order-button {
+    border: 2px solid black;
     text-decoration: none;
     border-radius: 7px;
-    background: linear-gradient(90deg, rgb(112, 86, 184) 0%,  rgb(74, 9, 128) 100%);
-    color: white;
+    background: linear-gradient(90deg, rgb(247, 157, 157) 0%,  rgb(192, 109, 255) 100%);
     padding: 10px;
     margin-bottom: 1000px;
     font-size: 16px;
-    border: none;
+}
+
+.active{
+    background: linear-gradient(90deg, rgb(112, 86, 184) 0%,  rgb(74, 9, 128) 100%);
+    color: white;
 }

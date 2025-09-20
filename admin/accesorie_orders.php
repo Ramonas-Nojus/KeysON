@@ -25,8 +25,8 @@ $orders = new Order;
 
 if(isset($_GET['order_id'])){
     $order_id = $_GET['order_id'];
-    $orders->assignWorker($_SESSION['id'], $order_id);
-    header('Location: ./admin/');
+    $orders->assignAccesoriesWorker($_SESSION['id'], $order_id);
+    header('Location: ./accesorie_orders.php');
 }
 
 ?>
@@ -52,9 +52,8 @@ if(isset($_GET['order_id'])){
 <div class="container">
         <section id="orders">
             <h2>Orders</h2>
-            <a class="order-button <?php echo (!isset($_GET['progress']) || $_GET['progress'] == 0) ? "active" : ""; ?>"  href="./index.php?progress=0">Not Processed</a>
-            <a class="order-button <?php echo (isset($_GET['progress']) && $_GET['progress'] == 1) ? "active" : ""; ?>" href="./index.php?progress=1">Being Processed</a>
-            <a class="order-button <?php echo (isset($_GET['progress']) && $_GET['progress'] == 2) ? "active" : ""; ?>" href="./index.php?progress=2">Processed</a>
+            <a class="order-button <?php echo (!isset($_GET['progress']) || $_GET['progress'] == 0) ? "active" : ""; ?>"  href="?progress=0">Not Processed</a>
+            <a class="order-button <?php echo (isset($_GET['progress']) && $_GET['progress'] == 1) ? "active" : ""; ?>" href="?progress=1">Processed</a>
 
             <table>
                 <thead>
@@ -65,10 +64,7 @@ if(isset($_GET['order_id'])){
                         <th>Date</th>
                         <th>Order Status</th>
                         <th>Price</th>
-
-                        <?php if(isset($_GET['progress']) && $_GET['progress'] != 0){ ?> 
-                            <th>Worker ID</th>
-                        <?php } ?>  
+                        <th>Worker ID</th>
 
                     </tr>
                 </thead>
@@ -77,10 +73,8 @@ if(isset($_GET['order_id'])){
                     <?php 
 
                     if(!isset($_GET['progress']) || $_GET['progress'] == 0){
-                        $order = $orders->getOrders($_SESSION['id']);
+                        $order = $orders->getProductOrders($_SESSION['id']);
                     } else if (isset($_GET['progress']) && $_GET['progress'] == 1){ 
-                        $order = $orders->getAllAssignedOrders($_SESSION['id']);
-                     } else if (isset($_GET['progress']) && $_GET['progress'] == 2){ 
                         $order = $orders->getFinishedOrders($_SESSION['id']);
                      }
 
@@ -103,14 +97,11 @@ if(isset($_GET['order_id'])){
                             <td><?php echo $date; ?></td>
                             <td><?php echo $status; ?></td>
                             <td><?php echo $price; ?> €</td>
+                            <td><?php echo $worker; ?></td>
 
-                            <?php if(isset($_GET['progress']) && $_GET['progress'] != 0){ ?> 
-                                <td><?php echo $worker; ?></td>
-                            <?php } ?> 
-
-                            <?php if(!isset($_GET['progress']) || $_GET['progress'] == 0){ ?> 
+                            <?php if($worker == 0){ ?> 
                                 <td>
-                                    <a class="btn" href="./index.php?order_id=<?php echo $id; ?>">Accept</a>
+                                    <a class="btn" href="?order_id=<?php echo $id; ?>">Accept</a>
                                 </td>
                             <?php } ?> 
 

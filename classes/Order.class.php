@@ -55,6 +55,14 @@ class Order extends Db{
         return $sth->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public function getProductOrders(){
+        $sql = "SELECT * FROM product_orders WHERE status = 'Ordered' ";
+        $sth = $this->connection()->prepare($sql);
+        $sth->execute();
+
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function getOrders(){
         $sql = "SELECT * FROM orders WHERE worker = 0";
         $sth = $this->connection()->prepare($sql);
@@ -64,6 +72,14 @@ class Order extends Db{
 
     public function assignWorker($worker_id, $order_id) {
         $sql = "UPDATE orders SET worker = :worker_id WHERE id = :order_id";
+        $sth = $this->connection()->prepare($sql);
+        $sth->bindValue(':worker_id', $worker_id, PDO::PARAM_INT);
+        $sth->bindValue(':order_id', $order_id, PDO::PARAM_INT);
+        $sth->execute();
+    }
+
+    public function assignAccesoriesWorker($worker_id, $order_id) {
+        $sql = "UPDATE product_orders SET worker = :worker_id WHERE id = :order_id";
         $sth = $this->connection()->prepare($sql);
         $sth->bindValue(':worker_id', $worker_id, PDO::PARAM_INT);
         $sth->bindValue(':order_id', $order_id, PDO::PARAM_INT);

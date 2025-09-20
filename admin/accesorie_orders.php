@@ -75,7 +75,7 @@ if(isset($_GET['order_id'])){
                     if(!isset($_GET['progress']) || $_GET['progress'] == 0){
                         $order = $orders->getProductOrders($_SESSION['id']);
                     } else if (isset($_GET['progress']) && $_GET['progress'] == 1){ 
-                        $order = $orders->getFinishedOrders($_SESSION['id']);
+                        $order = $orders->getFinisheProductdOrders($_SESSION['id']);
                      }
 
                     

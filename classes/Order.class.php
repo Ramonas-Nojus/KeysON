@@ -112,7 +112,14 @@ class Order extends Db{
     }
 
     public function getFinishedOrders(){
-        $sql = "SELECT * FROM orders WHERE status = 'Pristatytas' ";
+        $sql = "SELECT * FROM orders WHERE status = 'Shipped' ";
+        $sth = $this->connection()->prepare($sql);
+        $sth->execute();
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getFinisheProductdOrders(){
+        $sql = "SELECT * FROM product_orders WHERE status = 'Shipped' ";
         $sth = $this->connection()->prepare($sql);
         $sth->execute();
         return $sth->fetchAll(\PDO::FETCH_ASSOC);

@@ -48,7 +48,7 @@ if(isset($_GET['order_id'])){
                 <li><a class="dropbtn" href="./add_product.php">Add Product</a></li>
             </ul>
         </nav>
-</header>
+    </header>
 <div class="container">
         <section id="orders">
             <h2>Orders</h2>

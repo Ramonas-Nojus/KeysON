@@ -134,6 +134,14 @@ class Order extends Db{
         $sth->execute();
     }
 
+    public function updateAccesorieStatus($status, $order_id){
+        $sql = "UPDATE product_orders SET status = :status WHERE id = :order_id ";
+        $sth = $this->connection()->prepare($sql);
+        $sth->bindValue(':status', $status, PDO::PARAM_STR);
+        $sth->bindValue(':order_id', $order_id, PDO::PARAM_INT);
+        $sth->execute();
+    }
+
     public function getGraphData(){
         $sql = "SELECT DATE(date) AS order_date, SUM(price) AS total_price, COUNT(order_number) AS order_count FROM orders GROUP BY DATE(date)";
         $sth = $this->connection()->prepare($sql);

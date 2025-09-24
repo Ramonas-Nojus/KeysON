@@ -33,21 +33,24 @@
     
     ?>
 
-<header>
+    <header>    
         <div class="logo">
-            <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="Your Logo">
+            <a href="/">
+                <img src="../img/logo-no-background-2.png" alt="Your Logo">
+            </a>
         </div>
         <nav>
             <ul>
-                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>">Home</a></li>
-                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/">Orders</a></li>
-                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/my_orders.php">My Assigned Orders</a></li>
-                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/dashboard.php">Dashboard</a></li>
-                <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/admin/logout.php">Logout</a></li>
+                <li><a class="dropbtn" href="/admin/">Orders</a></li>
+                <li><a class="dropbtn" href="/admin/accesorie_orders.php">Accesorie Orders</a></li>
+                <li><a class="dropbtn" href="/admin/my_orders.php">My Assigned Orders</a></li>
+                <li><a class="dropbtn" href="/admin/dashboard.php">Dashboard</a></li>
+                <li><a class="dropbtn" href="/admin/logout.php">Logout</a></li>
                 <li><a class="dropbtn" href="./add_product.php">Add Product</a></li>
             </ul>
         </nav>
-</header>
+    </header>
+
     <div class="container">
         <h1>Analytics</h1>
 

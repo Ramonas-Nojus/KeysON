@@ -90,20 +90,22 @@ nav ul li a:hover {
 
 </style>
 
-<header>
-            <div class="logo">
+    <header>
+        <div class="logo">
+            <a href="/">
                 <img src="../img/logo-no-background-2.png" alt="Your Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a class="dropbtn" href="/">Home</a></li>
-                    <li><a class="dropbtn" href="./">Orders</a></li>
-                    <li><a class="dropbtn" href="./my_orders.php">My Assigned Orders</a></li>
-                    <li><a class="dropbtn" href="./dashboard.php">Dashboard</a></li>
-                    <li><a class="dropbtn" href="./logout.php">Logout</a></li>
-                    <li><a class="dropbtn" href="./add_product.php">Add Product</a></li>
-                </ul>
-            </nav>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a class="dropbtn" href="/admin/">Orders</a></li>
+                <li><a class="dropbtn" href="/admin/accesorie_orders.php">Accesorie Orders</a></li>
+                <li><a class="dropbtn" href="/admin/my_orders.php">My Assigned Orders</a></li>
+                <li><a class="dropbtn" href="/admin/dashboard.php">Dashboard</a></li>
+                <li><a class="dropbtn" href="/admin/logout.php">Logout</a></li>
+                <li><a class="dropbtn" href="./add_product.php">Add Product</a></li>
+            </ul>
+        </nav>
     </header>
 
 <?php 

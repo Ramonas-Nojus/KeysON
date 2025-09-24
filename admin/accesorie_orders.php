@@ -48,7 +48,7 @@ if(isset($_GET['order_id'])){
                 <li><a class="dropbtn" href="./add_product.php">Add Product</a></li>
             </ul>
         </nav>
-</header>
+    </header>
 <div class="container">
         <section id="orders">
             <h2>Orders</h2>
@@ -106,7 +106,7 @@ if(isset($_GET['order_id'])){
                             <?php } ?> 
 
                             <td>
-                                <a class="btn" href="./order.php?order_nr=<?php echo $order_nr; ?>">Details</a>
+                                <a class="btn" href="./accesorie.php?order_nr=<?php echo $order_nr; ?>">Details</a>
                             </td>
                         </tr>
 

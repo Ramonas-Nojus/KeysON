@@ -32,11 +32,13 @@
     <?php 
     
     $orders = new Order;
+    $products = new Products;
+
 
     if(isset($_GET['order_nr'])){
         $order_nr = $_GET['order_nr'];
 
-        $order = $orders->getOrder($order_nr);
+        $order = $orders->getProductOrder($order_nr);
 
         $name = $order['customer_name'];
         $address = $order['address'];
@@ -46,23 +48,24 @@
         $status = $order['status'];
         $id = $order['id'];
         $worker = $order['worker'];
+        $phone = $order['phone'];
         
         
-        $components = explode(",", $order['components']);
-        $component_images = explode(",", $order['component_images']);        
-    } else {
+        $products_ids = explode(",", $order["products"]);
+
+     } else {
         header('Location: ./');
     }
 
     if(isset($_GET['accept'])){
-        $orders->assignWorker($_SESSION['id'], $_GET['accept']);
-        header('Location: ./order.php?order_nr='.$order_nr);
+        $orders->assignAccesoriesWorker($_SESSION['id'], $_GET['accept']);
+        header('Location: ./accesorie.php?order_nr='.$order_nr);
     }
 
     if(isset($_POST['status'])){
         $status = $_POST['status'];
-        $orders->updateStatus($status, $id);
-        header('Location: ./order.php?order_nr='.$order_nr);
+        $orders->updateAccesorieStatus($status, $id);
+        header('Location: ./accesorie.php?order_nr='.$order_nr);
     }
     
     ?>
@@ -75,6 +78,7 @@
                 <p><strong>Order Number:</strong> <?php echo $order_nr; ?></p>
                 <p><strong>Customer:</strong> <?php echo $name; ?></p>
                 <p><strong>Address:</strong> <?php echo $address; ?></p>
+                <p><strong>phone:</strong> <?php echo $phone; ?></p>
                 <p><strong>Email:</strong> <?php echo $email; ?></p>
                 <p><strong>Date:</strong> <?php echo $date; ?></p>
                 <p><strong>Price:</strong> <?php echo $price; ?></p>
@@ -86,35 +90,22 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td><strong>Keyboard Size:</strong></td>
-                            <td><?php echo $components[0]; ?>%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Keyboard Color:</strong></td>
-                            <td><?php echo $components[1]; ?></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Switches:</strong></td>
-                            <td><?php echo $components[2]; ?></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Keycaps:</strong></td>
-                            <td><?php echo $components[3]; ?></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable:</strong></td>
-                            <td><?php echo $components[4]; ?></td>
+                            <?php 
+                            foreach($products_ids as $product_id){ 
+                                
+                                $product =  $products->getById($product_id);
+                                ?>
+                                <tr>
+                                    <td><img style="width: 150px;" src="<?php echo BASE_URL ?>/img/products/<?php echo $product["image"] ?>"></td>
+                                    <td><?php echo $product["name"] ?></td>
+                                    <td><?php echo $product["price"] ?>€</td>
+                                    <td><a class="btn" target="_blank" href="<?php echo $product["supplier_url"] ?>">BUY</a></td>
+                                </tr>
+                            <?php } ?>
                         </tr>
                     </tbody>
                 </table>
                 
-                <div id="container" style="width: 50%; margin: auto; border: 3px solid; border-radius: 10px; position: relative; overflow: hidden;">
-                    <img id="image" src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[1]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
-                    <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[2]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
-                    <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[3]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
-                    <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[4]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
-                </div>
-
                 <script>
                     window.addEventListener('load', function() {
                         document.getElementById('container').style.height = document.getElementById('image').height + 'px';
@@ -128,19 +119,19 @@
 
                  <?php if($worker != 0){  ?>
                 <div class="update-status">
-                    <form action="./order.php?order_nr=<?php echo $order_nr; ?>" method="post">
+                    <form action="./accesorie.php?order_nr=<?php echo $order_nr; ?>" method="post">
                         <label for="status">Update Status:</label>
                         <select name="status" id="status">
                             <option value="Ordered">Ordered</option>
-                            <option value="Waiting For Components">Waiting For Components</option>
-                            <option value="Being Assembled">Being Assembled</option>
+                            <option value="Being Prepared">Being Prepared</option>
                             <option value="Shipped">Shipped</option>
+                            <option value="Cancelled">Cancelled</option>
                         </select>
                         <button class="btn" type="submit">Update</button>
                     </form>
                 </div>
                 <?php  } else { ?>                                  
-                    <a class="btn" href="./order.php?order_nr=<?php echo $order_nr; ?>&accept=<?php echo $id; ?>">Accept</a>
+                    <a class="btn" href="?order_nr=<?php echo $order_nr; ?>&accept=<?php echo $id; ?>">Accept</a>
                 <?php } ?>
             </div>
         </section>

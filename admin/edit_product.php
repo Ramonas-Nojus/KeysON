@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
+    <title>Edit Product</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!-- CKEditor -->
@@ -113,7 +113,23 @@ nav ul li a:hover {
 
 $products = new Products();
 
-if(isset($_POST['create_product'])){
+if(isset($_GET['p_id'])){
+
+    $id = $_GET['p_id'];
+
+    $product = $products->getById($id);
+
+    $name = $product['name'];
+    $category = $product['category'];
+    $image = $product['image'];
+    $url = $product['supplier_url'];
+    $stock = $product['stock'];
+    $price = $product['price'];
+    $description = $product['description'];
+
+}
+
+if(isset($_POST['edit_product'])){
 
     $name = $_POST['name'];
     $category = $_POST['category'];
@@ -123,7 +139,13 @@ if(isset($_POST['create_product'])){
     $price = $_POST['price'];
     $description = $_POST['description'];
 
-    $add_product = $products->addProduct($name, $category, $image, $url, $stock, $price, $description);
+    $edit_product = $products->editProduct($id, $name, $category, $image, $url, $stock, $price, $description, $product['image']);
+}
+
+if(isset($_GET['delete'])){
+
+    $products->deleteProduct($_GET['delete']);
+    header("Location: ".BASE_URL."/admin/products.php");
 }
 
 
@@ -140,49 +162,60 @@ if(isset($_POST['create_product'])){
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Product Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
+                    <input type="text" value="<?php echo $name ?>" class="form-control" id="name" name="name" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
                     <select class="form-select" id="category" name="category" required>
-                        <option value="Keycaps">Keycaps</option>
-                        <option value="Arm Rests">Arm Rests</option>
-                        <option value="Cables">Cables</option>
-                        <option value="Mats">Mats</option>
-                        <option value="Cases">Cases</option>
+                        <option value="Keycaps" <?= $category == "Keycaps" ? "selected" : "" ?>>Keycaps</option>
+                        <option value="Arm Rests" <?= $category == "Arm Rests" ? "selected" : "" ?>>Arm Rests</option>
+                        <option value="Cables" <?= $category == "Cables" ? "selected" : "" ?>>Cables</option>
+                        <option value="Mats" <?= $category == "Mats" ? "selected" : "" ?>>Mats</option>
+                        <option value="Cases" <?= $category == "Cases" ? "selected" : "" ?>>Cases</option>
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <label for="image" class="form-label">Product Image</label>
-                    <input type="file" class="form-control" id="image" name="image" required>
+                    <input type="file" class="form-control" id="image" name="image">
+                    
+                    <?php if (!empty($image)): ?>
+                        <p class="mt-2">Current Image:</p>
+                        <img width="150" src="<?php echo BASE_URL?>/img/products/<?php echo htmlspecialchars($image) ?>" alt="Current product image">
+                        <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($image) ?>">
+                    <?php endif; ?>
                 </div>
+
 
                 <div class="mb-3">
                     <label for="url" class="form-label">Product URL</label>
-                    <input type="text" class="form-control" id="url" name="url">
+                    <input type="text" class="form-control" id="url" value="<?php echo $url ?>" name="url">
+                    <a  target="_blank" href="<?php echo $url ?>">check link</a>
                 </div>
 
                 <div class="mb-3">
                     <label for="stock" class="form-label">Stock Quantity</label>
-                    <input type="number" class="form-control" id="stock" name="stock" min="0" required>
+                    <input type="number" class="form-control" id="stock" value="<?php echo $stock ?>" name="stock" min="0" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="price" class="form-label">Price ($)</label>
-                    <input type="text" class="form-control" id="price" name="price" required>
+                    <input type="text" class="form-control" id="price" name="price" value="<?php echo $price ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="6"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="6"><?php echo htmlspecialchars($description) ?></textarea>
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" name="create_product" class="btn btn-primary px-4">Add Product</button>
+                    <button type="submit" name="edit_product" class="btn btn-primary px-4">Edit Product</button>
                 </div>
             </form>
+
+            <a class="btn btn-danger" href="?delete=<?php echo $id ?>">DELETE PRODUCT</a>
+
         </div>
     </div>
 </div>

@@ -19,7 +19,7 @@ if(!isset($_SESSION['id'])){
 
 }
 
-$orders = new Order;
+$products = new Products;
 
 
 ?>
@@ -46,52 +46,44 @@ $orders = new Order;
 
 <div class="container">
         <section id="orders">
-        <h2>My Assigned Orders</h2>
-            <a class="order-button" href="./my_orders.php?not_proccessed=true">Not Processed</a>
-            <a class="order-button" href="./my_orders.php">Being Processed</a>
             <table>
                 <thead>
                     <tr>
-                        <th>Order ID</th>
-                        <th>Customer Name</th>
-                        <th>Date</th>
-                        <th>Order Status</th>
+                        <th>Product ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Category</th>
                         <th>Price</th>
-
+                        <th>stock</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php 
-                    
-                    if(isset($_GET['not_proccessed'])){
-                        $order = $orders->getNotProcessedOrders($_SESSION['id']);
-                    } else { 
-                        $order = $orders->getAssignedOrders($_SESSION['id']);
-                     }
 
+                        $product = $products->getFilteredProducts();
 
-                        foreach($order as $row){
+                        foreach($product as $row){
 
                             $id = $row['id'];
-                            $name = $row['customer_name'];
-                            $status = $row['status'];
-                            $order_number = $row['order_number'];
-                            $date = $row['date'];
+
+                            $name = $row['name'];
+                            $category = $row['category'];
+                            $image = $row['image'];
+                            $url = $row['supplier_url'];
+                            $stock = $row['stock'];
                             $price = $row['price'];
+                            $description = $row['description'];
+
                     ?>
-                        <tr>
-                            <td><?php echo $id; ?></td>
-                            <td><?php echo $name; ?></td>
-                            <td><?php echo $date; ?></td>
-                            <td><?php echo $status; ?></td>
-                            <td><?php echo $price; ?> €</td>
-
-                            <td>
-                                <a class="btn" href="./order.php?order_nr=<?php echo $order_number; ?>">Details</a>
-                            </td>
-                        </tr>
-
+                            <tr onclick="window.location='<?php echo BASE_URL ?>/admin/edit_product.php?p_id=<?php echo $id ?>'" style="cursor:pointer;">
+                                <td><?php echo $id; ?></td>
+                                <td><img width="125px" src="<?php echo BASE_URL ?>/img/products/<?php echo $image; ?>"> </td>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $category; ?></td>
+                                <td><?php echo $price; ?> €</td>
+                                <td><?php echo $stock; ?></td>
+                            </tr>
                     <?php } ?>
                     
                 </tbody>

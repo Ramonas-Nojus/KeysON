@@ -35,6 +35,49 @@ class Products extends Db{
         }
     }
 
+    public function editProduct($id, $name, $category, $image, $supplier_url, $stock, $price, $description, $old_image) {
+
+        if ($image['error'] === UPLOAD_ERR_OK) {
+            $imageTmp = $image['tmp_name'];
+            $imageName = basename($image['name']);
+            $uploadDir = '../img/products/';
+            $imagePath = $uploadDir . $imageName;
+
+            if (!move_uploaded_file($imageTmp, $imagePath)) {
+                echo "Failed to move uploaded file.";
+                $imageName = null;
+            }
+        } else {
+            $imageName = $old_image ?? null;
+        }
+
+        $sql = "UPDATE products 
+                SET name = :name, 
+                    price = :price, 
+                    image = :image, 
+                    description = :description, 
+                    category = :category, 
+                    stock = :stock, 
+                    supplier_url = :supplier_url 
+                WHERE id = :id";       
+
+        $stmt = $this->connection()->prepare($sql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":category", $category);
+        $stmt->bindParam(":image", $imageName);
+        $stmt->bindParam(":supplier_url", $supplier_url);
+        $stmt->bindParam(":stock", $stock);
+        $stmt->bindParam(":price", $price);
+        $stmt->bindParam(":description", $description);
+
+        if($stmt->execute()) {
+            echo "Product updated successfully!";
+        } else {
+            echo "Error updating product.";
+        }
+    }
+
     public function getFilteredProducts($search = null, $category = null, $from = 0, $to = 99999) {
         $sql = "SELECT * FROM products WHERE price BETWEEN :from AND :to";
         
@@ -73,6 +116,14 @@ class Products extends Db{
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteProduct($id) {
+        $sql = "DELETE FROM products WHERE id = :id LIMIT 1";
+
+        $stmt = $this->connection()->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 
     public function getRelated($productId, $category, $limit = 8) {

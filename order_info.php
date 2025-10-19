@@ -1,181 +1,246 @@
-<?php require 'inlcudes/autoload.php'; ?>
-<?php include 'settings-core-7189.php'; ?>
 <?php
-error_reporting(E_ALL);  // Show all errors
-ini_set('display_errors', 1);  // Enable error display
-?>
+/* ---- bootstrap (keep these 2 if you use BASE_URL + Order class) ---- */
+require 'inlcudes/autoload.php';
+include 'settings-core-7189.php';
 
+/* ---- errors in dev ---- */
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+/* ---- load order ---- */
+if (!isset($_GET['order_number'])) { header('Location: '.(defined('BASE_URL')?BASE_URL:'./')); exit; }
+$order_number = preg_replace('/[^A-Za-z0-9\-]/','',$_GET['order_number']);
+
+$Orders = new Order();
+$order   = $Orders->getOrder($order_number);
+if (!$order) { header('Location: '.(defined('BASE_URL')?BASE_URL:'./')); exit; }
+
+/* expected fields */
+$name       = htmlspecialchars($order['customer_name'] ?? '');
+$address    = htmlspecialchars($order['address'] ?? '');
+$price      = number_format((float)($order['price'] ?? 0), 2);
+$email      = htmlspecialchars($order['email'] ?? '');
+$date       = htmlspecialchars($order['date'] ?? '');
+$status     = trim($order['status'] ?? 'Ordered');
+
+/* components */
+$components = array_map('trim', explode(',', $order['components'] ?? ',,,,'));
+$components += [0=>'',1=>'','2'=>'','3'=>'','4'=>'']; // ensure indexes
+$component_images = array_map('trim', explode(',', $order['component_images'] ?? ',,,,'));
+$component_images += [0=>'',1=>'','2'=>'','3'=>'','4'=>''];
+
+/* status map */
+$steps = ['Ordered','Waiting For Components','Being Assembled','Shipped'];
+$active_idx = array_search($status, $steps);
+if ($active_idx === false) $active_idx = 0;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Information | KeysON Lab</title>
-    <link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/order_info.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Order Information | KeysON Lab</title>
+<link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>/img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Exo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --violet-1:#2b0a49; --violet-2:#4b18d2; --magenta:#7d11b9; --violet-3:#9b2bff; --cyan:#00e4ff;
+  --bg:#130a21; --bg2:#170e2d; --text:#f5f7fb; --muted:#b6bdd0;
+  --panel:rgba(255,255,255,.05); --stroke:rgba(255,255,255,.10);
+  --grad:linear-gradient(90deg,var(--violet-2),var(--magenta),var(--violet-3));
+  --grad2:linear-gradient(90deg,var(--violet-3),var(--magenta),var(--cyan));
+  --radius:20px; --header-h:76px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  color:var(--text); font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 5% 0%, rgba(155,43,255,.22), transparent 60%),
+    radial-gradient(900px 450px at 100% 0%, rgba(0,228,255,.18), transparent 60%),
+    linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+  background-attachment: fixed; overflow-x:hidden;
+}
+.neon-grid::before{
+  content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+    linear-gradient(rgba(255,255,255,.04), rgba(255,255,255,.04)) center/100% 1px no-repeat,
+    repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 120px);
+  mask: radial-gradient(ellipse at center, rgba(0,0,0,.9), transparent 80%);
+}
+
+/* Header */
+header{
+  position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 6%; background:rgba(20,10,40,.6); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--stroke);
+}
+header img{height:55px}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{color:var(--text);text-decoration:none;font-weight:700;font-family:'Exo 2',sans-serif;position:relative}
+nav a::after{content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--grad);transition:width .25s}
+nav a:hover::after{width:100%}
+.menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:28px;cursor:pointer}
+@media (max-width:860px){
+  .menu-toggle{display:block}
+  nav{position:absolute; right:6%; top:var(--header-h); background:rgba(20,10,40,.95);
+      border:1px solid var(--stroke); border-radius:12px; overflow:hidden; max-height:0; transition:max-height .3s}
+  nav.open{max-height:280px}
+  nav ul{flex-direction:column; padding:10px}
+}
+
+/* Layout */
+main{max-width:1200px; margin:0 auto; padding:calc(var(--header-h) + 28px) 6% 72px; display:grid; gap:24px; grid-template-columns:1.2fr .8fr;}
+@media (max-width:1080px){ main{grid-template-columns:1fr}}
+
+/* Panels */
+.panel{
+  background:var(--panel); border:1px solid var(--stroke); border-radius:var(--radius);
+  backdrop-filter:blur(8px); padding:22px; box-shadow:0 0 28px rgba(155,43,255,.16);
+}
+h1,h2{font-family:'Exo 2',sans-serif; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+h1{font-size:2.1rem; margin-bottom:8px}
+h2{font-size:1.4rem; margin:14px 0}
+
+/* Simple table */
+.table{width:100%; border-collapse:separate; border-spacing:0 10px}
+.table tr td,.table tr th{
+  padding:12px 14px; background:rgba(255,255,255,.04); border:1px solid var(--stroke);
+}
+.table tr td:first-child,.table tr th:first-child{border-radius:12px 0 0 12px}
+.table tr td:last-child,.table tr th:last-child{border-radius:0 12px 12px 0}
+.table .center{text-align:right; font-weight:800}
+.meta{color:var(--muted); font-size:.95rem; margin-bottom:8px}
+
+/* Status tracker */
+.tracker{display:flex; align-items:center; gap:10px; margin:14px 0 6px}
+.step{flex:0 0 auto; padding:10px 14px; border-radius:999px; border:1px solid var(--stroke);
+      background:rgba(255,255,255,.05); color:var(--muted); font-weight:700; font-size:.92rem; white-space:nowrap}
+.step.active{color:#fff; border-color:rgba(155,43,255,.45); box-shadow:0 0 0 3px rgba(155,43,255,.18) inset, 0 0 30px rgba(155,43,255,.18)}
+.line{height:2px; flex:1 1 auto; background:rgba(255,255,255,.12); position:relative; border-radius:2px}
+.line.active{background:linear-gradient(90deg, rgba(75,24,210,.65), rgba(155,43,255,.65), rgba(0,228,255,.55))}
+
+/* Preview */
+.preview{
+  margin:12px 0; border:1px solid var(--stroke); border-radius:16px;
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01)); padding:14px;
+}
+.preview-title{font-family:'Exo 2',sans-serif; font-weight:800; margin-bottom:10px;
+  background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+.kb-wrap{position:relative; width:100%; padding-top:42%; border-radius:12px; overflow:hidden}
+.kbrd-img{position:absolute; inset:0; margin:auto; width:86%; height:auto; object-fit:contain; left:50%; transform:translateX(-50%)}
+.kbrd-base{z-index:2; filter:drop-shadow(0 0 10px rgba(155,43,255,.55)) drop-shadow(0 0 20px rgba(75,24,210,.45)) drop-shadow(0 0 38px rgba(0,228,255,.35)) brightness(1.04); animation:basePulse 4.5s ease-in-out infinite}
+.kbrd-cable{z-index:3} .kbrd-switches{z-index:4} .kbrd-keycaps{z-index:5}
+@keyframes basePulse{0%,100%{filter:drop-shadow(0 0 10px rgba(155,43,255,.55)) drop-shadow(0 0 20px rgba(75,24,210,.45)) drop-shadow(0 0 38px rgba(0,228,255,.35)) brightness(1.04)}50%{filter:drop-shadow(0 0 15px rgba(155,43,255,.75)) drop-shadow(0 0 32px rgba(75,24,210,.6)) drop-shadow(0 0 60px rgba(0,228,255,.45)) brightness(1.08)}}
+
+/* Right column cards */
+.card{background:var(--panel); border:1px solid var(--stroke); border-radius:16px; padding:18px; margin-bottom:16px}
+.card h3{font-family:'Exo 2',sans-serif; font-size:1.1rem; margin-bottom:8px; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+
+/* Footer */
+footer{text-align:center;padding:28px 6%;font-size:.92rem;color:var(--muted);border-top:1px solid var(--stroke)}
+footer a{color:var(--violet-3); text-decoration:none} footer a:hover{color:var(--magenta)}
+
+a { color: white;}
+</style>
 </head>
+<body class="neon-grid">
 
 <header>
   <a href="<?php echo BASE_URL; ?>/">
-    <div class="logo">
-      <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysOn">
-    </div>
+    <img src="<?php echo BASE_URL; ?>/img/logo-no-background-2.png" alt="KeysON Lab">
   </a>
-
-  <!-- Mobile menu toggle -->
-  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-
+  <button class="menu-toggle" aria-label="Toggle menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
   <nav>
     <ul>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/keyboard_builder">Builder</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/products">Accessories</a></li>
-      <li><a class="dropbtn" href="<?php echo BASE_URL; ?>/contacts">Contacts</a></li>
+      <li><a href="<?php echo BASE_URL; ?>/keyboard_builder">Builder</a></li>
+      <li><a href="<?php echo BASE_URL; ?>/products">Accessories</a></li>
+      <li><a href="<?php echo BASE_URL; ?>/contacts">Contacts</a></li>
     </ul>
   </nav>
 </header>
 
+<main>
+  <!-- LEFT -->
+  <section class="panel">
+    <div class="meta">Order details</div>
+    <h1>Order Information</h1>
 
-<?php
-if(isset($_GET['order_number'])){
-    $order_number = $_GET['order_number'];
+    <table class="table" aria-describedby="order-meta">
+      <tr>
+        <td>Date</td>
+        <td class="center"><?php echo $date; ?></td>
+      </tr>
+      <tr>
+        <td>Order Number</td>
+        <td class="center">#<?php echo htmlspecialchars($order_number); ?></td>
+      </tr>
+      <tr>
+        <td>Total Price</td>
+        <td class="center"><?php echo $price; ?> €</td>
+      </tr>
+    </table>
 
-    $orders = new Order;
-    $order = $orders->getOrder($order_number);
-
-    $name = $order['customer_name'];
-    $address = $order['address'];
-    $price = $order['price'];
-    $email = $order['email'];
-    $date = $order['date'];
-    $status = $order['status'];
-
-    $components = explode(",", $order['components']);
-    $component_images = explode(",", $order['component_images']);
-
-} else {
-    header('Location: index.php');
-}
-
-?>
-
-<body>
-    <div class="container">
-        <h1>Order Information</h1>        
-        <table>
-            <tr>
-                <td>Date</td>
-                <td class="center"><?php echo $date; ?></td>
-            </tr>
-            <tr>
-                <td>Order Number</td>
-                <td class="center">#<?php echo $order_number ?></td>
-            </tr>
-            <tr>
-                <td>Total Price</td>
-                <td class="center"><?php echo $price; ?> €</td>
-            </tr>
-        </table>
-
-        <div class="status-bar">
-            <div class="status">Ordered</div>
-            <div class="status-line"></div>
-            <div class="status">Waiting For Components</div>
-            <div class="status-line"></div>
-            <div class="status">Being Assembled</div>
-            <div class="status-line"></div>
-            <div class="status">Shipped</div>
-        </div>
-
-        <script>
-            var status = "<?php echo $status; ?>";
-            var statusElements = document.querySelectorAll('.status');
-            var statusLineElements = document.querySelectorAll('.status-line');
-            var statusIndex = -1;
-
-            for (var i = 0; i < statusElements.length; i++) {
-                if (statusElements[i].textContent.trim() === status) {
-                    statusIndex = i;
-                    break;
-                }
-            }
-
-            if (statusIndex !== -1) {
-                for (var j = 0; j <= statusIndex; j++) {
-                    statusElements[j].classList.add('active');
-                    if (j > 0) {
-                        statusLineElements[j - 1].classList.add('active');
-                    }
-                }
-            }
-        </script>
-
-        <h2>Keyboard Components</h2>
-        <table>
-            <tr>
-                <td>Keyboard Size</td>
-                <td class="center"><?php echo $components[0]; ?>%</td>
-            </tr>
-            <tr>
-                <td>Keyboard Color</td>
-                <td class="center"><?php echo $components[1]; ?></td>
-            </tr>
-            <tr>
-                <td>Switches</td>
-                <td class="center"><?php echo $components[2]; ?></td>
-            </tr>
-            <tr>
-                <td>Keycaps</td>
-                <td class="center"><?php echo $components[3]; ?></td>
-            </tr>
-            <tr>
-                <td>Cable</td>
-                <td class="center"><?php echo $components[4]; ?></td>
-            </tr>
-        </table>
-
-        <div id="container" style="width: 65%; margin: auto; border: 1px solid; border-radius: 10px; position: relative; overflow: hidden;">
-            <img id="image" src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[1]; ?>.png" style="z-index: 1; width: 100%; position: absolute;">
-            <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[2]; ?>.png" style="z-index: 2; width: 100%; position: absolute;">
-            <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[3]; ?>.png" style="z-index: 3; width: 100%; position: absolute;">
-            <img src="<?php echo BASE_URL ?>/img/<?php echo $component_images[0].'/'.$component_images[4]; ?>.png" style="z-index: 0; width: 100%; position: absolute;">
-        </div>
-
-        <script>
-            window.addEventListener('load', function() {
-                document.getElementById('container').style.height = document.getElementById('image').height + 'px';
-            });
-
-            window.addEventListener('resize', function() {
-                document.getElementById('container').style.height = document.getElementById('image').height + 'px';
-            });
-        </script>
-
-        <h2>User Information</h2>
-        <table>
-            <tr>
-                <td>Name</td>
-                <td class="center"><?php echo $name; ?></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td class="center"><?php echo $email; ?></td>
-            </tr>
-            <tr>
-                <td>Address</td>
-                <td class="center"><?php echo $address; ?></td>
-            </tr>
-        </table>
+    <h2>Status</h2>
+    <div class="tracker" role="list" aria-label="Order status">
+      <?php for($i=0;$i<count($steps);$i++): ?>
+        <div class="step <?php echo ($i <= $active_idx ? 'active' : ''); ?>" role="listitem"><?php echo $steps[$i]; ?></div>
+        <?php if($i < count($steps)-1): ?>
+          <div class="line <?php echo ($i < $active_idx ? 'active' : ''); ?>"></div>
+        <?php endif; ?>
+      <?php endfor; ?>
     </div>
 
-    <div style="text-align:center; padding:20px; font-size:14px; color: white;">
-        &copy; 2025 KeysON Lab | 
-        <a href="<?php echo BASE_URL ?>/privacy_policy.php" style="color:#4B18D2; text-decoration:none;">Privacy Policy</a>
-        <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
+    <h2>Keyboard Components</h2>
+    <table class="table">
+      <tr><td>Keyboard Size</td>   <td class="center"><?php echo htmlspecialchars($components[0]); ?><?php echo is_numeric($components[0])?'%':''; ?></td></tr>
+      <tr><td>Keyboard Color</td>  <td class="center"><?php echo htmlspecialchars($components[1]); ?></td></tr>
+      <tr><td>Switches</td>        <td class="center"><?php echo htmlspecialchars($components[2]); ?></td></tr>
+      <tr><td>Keycaps</td>         <td class="center"><?php echo htmlspecialchars($components[3]); ?></td></tr>
+      <tr><td>Cable</td>           <td class="center"><?php echo htmlspecialchars($components[4]); ?></td></tr>
+    </table>
+
+    <div class="preview">
+      <div class="preview-title">Build Preview</div>
+      <div class="kb-wrap">
+        <img class="kbrd-img kbrd-base"     loading="eager" src="<?php echo BASE_URL ?>/img/<?php echo htmlspecialchars($component_images[0]).'/'.htmlspecialchars($component_images[1]); ?>.png" alt="Keyboard base">
+        <img class="kbrd-img kbrd-cable"    loading="lazy"  src="<?php echo BASE_URL ?>/img/<?php echo htmlspecialchars($component_images[0]).'/'.htmlspecialchars($component_images[4]); ?>.png" alt="Cable">
+        <img class="kbrd-img kbrd-switches" loading="lazy"  src="<?php echo BASE_URL ?>/img/<?php echo htmlspecialchars($component_images[0]).'/'.htmlspecialchars($component_images[2]); ?>.png" alt="Switches">
+        <img class="kbrd-img kbrd-keycaps"  loading="lazy"  src="<?php echo BASE_URL ?>/img/<?php echo htmlspecialchars($component_images[0]).'/'.htmlspecialchars($component_images[3]); ?>.png" alt="Keycaps">
+      </div>
     </div>
-</body>
+
+    <h2>User Information</h2>
+    <table class="table">
+      <tr><td>Name</td>    <td class="center"><?php echo $name; ?></td></tr>
+      <tr><td>Email</td>   <td class="center"><?php echo $email; ?></td></tr>
+      <tr><td>Address</td> <td class="center"><?php echo $address; ?></td></tr>
+    </table>
+  </section>
+
+  <!-- RIGHT -->
+  <aside>
+    <div class="card">
+      <h3>What happens next?</h3>
+      <p class="meta">We’ll source any missing parts, assemble, lube/tune, test, and ship with tracking (EU).</p>
+    </div>
+    <div class="card">
+      <h3>Need help?</h3>
+      <p class="meta">Questions about your order? <a href="<?php echo BASE_URL; ?>/contacts">Contact us</a> with your order number.</p>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  &copy; 2025 KeysON Lab — <a href="<?php echo BASE_URL; ?>/privacy_policy.php">Privacy Policy</a><br/>All rights reserved. EU delivery only.
+</footer>
+
 <script>
-  document.querySelector(".menu-toggle").addEventListener("click", () => {
+document.querySelector(".menu-toggle").addEventListener("click", () => {
     document.querySelector("header nav").classList.toggle("show");
   });
 </script>
+</body>
 </html>

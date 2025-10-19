@@ -321,12 +321,20 @@ prevButton.addEventListener("click", () => {
                 let existingImg = document.getElementById(imgId);
                 if(existingImg) existingImg.remove();
 
-                const img = document.createElement('img');
-                img.setAttribute('id', imgId);
-                img.setAttribute('class', 'kbrd-img');
-                img.src = `img/${keyboardSize}/${button.getAttribute('data-value')}.png`;
-                img.style.zIndex = index === 4 ? 0 : index + 1;
-                keyboardDisplay.appendChild(img);
+            const img = document.createElement('img');
+            img.setAttribute('id', imgId);
+            img.classList.add('kbrd-img');
+
+            // 🟣 add glow only for base (first photo)
+            if (index === 0) img.classList.add('glow');
+
+            img.src = `img/${keyboardSize}/${button.getAttribute('data-value')}.png`;
+img.style.zIndex = index === 0 ? 2 : index === 4 ? 1 : index + 5;
+
+            // ✅ append ONLY once (this fixes the missing glow)
+            keyboardDisplay.appendChild(img);
+
+
             }
 
             updateSummary();

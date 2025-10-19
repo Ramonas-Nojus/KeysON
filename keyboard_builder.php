@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
     <title>Custom Keyboard Builder | KeysON Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Exo+2:wght@600;700;800&display=swap" rel="stylesheet">
+
     <link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/img/favicon.png">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>/style/builder.css">
 </head>
@@ -367,6 +369,10 @@ button:hover {
         <p class="copyright" style="margin-top:5px;">All rights reserved.</p>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js">
+        document.querySelector(".menu-toggle").addEventListener("click", () => {
+            document.querySelector("header nav").classList.toggle("show");
+        });
+    </script>
 </body>
 </html>

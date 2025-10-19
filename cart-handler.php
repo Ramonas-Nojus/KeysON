@@ -33,33 +33,42 @@ if ($product_id && $action) {
 // Return updated cart HTML
 ob_start();
 $total = 0;
-if(!empty($_SESSION['cart'])){
-    foreach($_SESSION['cart'] as $product):
-        $total += $product['price']; ?>
+
+if (!empty($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $product) {
+        $total += (float)$product['price'];
+
+        $id    = (int)$product['id'];
+        $name  = htmlspecialchars($product['name']);
+        $img   = htmlspecialchars($product['image']);
+        $price = number_format((float)$product['price'], 2);
+        ?>
         <div class="cart-item">
-            <a style="color: black;" href="<?php echo BASE_URL ?>/product/<?= $product['id'] ?>">
-                <img src="<?php echo BASE_URL ?>/img/products/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                <div class="cart-item-details">
-                    <h3><?= htmlspecialchars($product['name']) ?></h3>
-                    <p><strong><?= htmlspecialchars($product['price']) ?>€</strong></p>
-            </a>
-                    <form method="post" class="cart-form">
-                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                        <input type="hidden" name="action" value="remove">
-                        <button type="submit">Remove</button>
-                    </form>
-                </div>
-            
+          <a href="<?php echo BASE_URL; ?>/product/<?= $id ?>" style="color: white; text-decoration: none;">
+            <img src="<?php echo BASE_URL; ?>/img/products/<?= $img ?>" alt="<?= $name ?>">
+          </a>
+          <div class="cart-item-details">
+            <h3><?= $name ?></h3>
+            <p><strong><?= $price ?>€</strong></p>
+          </div>
+          <form method="post" action="<?php echo BASE_URL; ?>/cart-handler.php" class="cart-form">
+            <input type="hidden" name="product_id" value="<?= $id ?>">
+            <input type="hidden" name="action" value="remove">
+            <button type="submit" class="remove">Remove</button>
+          </form>
         </div>
-    <?php endforeach; ?>
+        <?php
+    }
+    ?>
     <div class="cart-summary">
-        <p><strong>Total: <?= number_format($total, 2) ?>€</strong></p>
-        <a href="<?php echo BASE_URL ?>/order_products" class="checkout-btn">Checkout</a>
+      <p><strong>Total: <?= number_format($total, 2) ?>€</strong></p>
+      <a href="<?php echo BASE_URL; ?>/order_products" class="checkout">Checkout</a>
     </div>
-<?php
+    <?php
 } else {
-    echo "<p>Cart is empty</p>";
+    echo '<p style="color:var(--muted)">Cart is empty</p>';
 }
+
 $cart_html = ob_get_clean();
 header('Content-Type: application/json');
 echo json_encode(['cart' => $cart_html]);
